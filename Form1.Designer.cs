@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             registerBtn = new Button();
             fullName = new TextBox();
             label1 = new Label();
@@ -50,7 +51,7 @@
             registerBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             registerBtn.Location = new Point(37, 434);
             registerBtn.Name = "registerBtn";
-            registerBtn.Size = new Size(218, 42);
+            registerBtn.Size = new Size(321, 42);
             registerBtn.TabIndex = 0;
             registerBtn.Text = "Register";
             registerBtn.UseVisualStyleBackColor = true;
@@ -64,7 +65,7 @@
             fullName.Margin = new Padding(6);
             fullName.MinimumSize = new Size(30, 30);
             fullName.Name = "fullName";
-            fullName.Size = new Size(218, 31);
+            fullName.Size = new Size(321, 31);
             fullName.TabIndex = 1;
             fullName.TextChanged += fullName_TextChanged;
             // 
@@ -99,14 +100,14 @@
             // email
             // 
             email.BorderStyle = BorderStyle.FixedSingle;
+            email.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             email.Location = new Point(37, 133);
             email.Margin = new Padding(6);
             email.MinimumSize = new Size(30, 30);
             email.Name = "email";
-            email.Size = new Size(218, 30);
+            email.Size = new Size(321, 31);
             email.TabIndex = 4;
             email.TextChanged += textBox1_TextChanged;
-            email.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // positionLabel
             // 
@@ -121,14 +122,14 @@
             // position
             // 
             position.BorderStyle = BorderStyle.FixedSingle;
+            position.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             position.Location = new Point(37, 210);
             position.Margin = new Padding(6);
             position.MinimumSize = new Size(30, 30);
             position.Name = "position";
-            position.Size = new Size(218, 30);
+            position.Size = new Size(321, 31);
             position.TabIndex = 6;
             position.TextChanged += position_TextChanged;
-            position.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // passwordLabel
             // 
@@ -143,19 +144,19 @@
             // password
             // 
             password.BorderStyle = BorderStyle.FixedSingle;
+            password.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             password.Location = new Point(37, 287);
             password.Margin = new Padding(6);
             password.MinimumSize = new Size(30, 30);
             password.Name = "password";
-            password.Size = new Size(218, 30);
+            password.Size = new Size(321, 31);
             password.TabIndex = 8;
             password.TextChanged += password_TextChanged;
-            password.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // confirmPasswordLabel
             // 
             confirmPasswordLabel.AutoSize = true;
-            confirmPasswordLabel.Location = new Point(37, 338);
+            confirmPasswordLabel.Location = new Point(37, 345);
             confirmPasswordLabel.Name = "confirmPasswordLabel";
             confirmPasswordLabel.Size = new Size(103, 15);
             confirmPasswordLabel.TabIndex = 11;
@@ -164,19 +165,21 @@
             // confirmPassword
             // 
             confirmPassword.BorderStyle = BorderStyle.FixedSingle;
-            confirmPassword.Location = new Point(37, 356);
+            confirmPassword.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            confirmPassword.Location = new Point(37, 363);
             confirmPassword.Margin = new Padding(6);
             confirmPassword.MinimumSize = new Size(30, 30);
             confirmPassword.Name = "confirmPassword";
-            confirmPassword.Size = new Size(218, 30);
+            confirmPassword.Size = new Size(321, 31);
             confirmPassword.TabIndex = 10;
             confirmPassword.TextChanged += confirmPassword_TextChanged;
-            confirmPassword.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(976, 588);
             Controls.Add(confirmPasswordLabel);
             Controls.Add(confirmPassword);
