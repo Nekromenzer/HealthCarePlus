@@ -59,11 +59,12 @@
             // fullName
             // 
             fullName.BorderStyle = BorderStyle.FixedSingle;
+            fullName.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             fullName.Location = new Point(37, 67);
             fullName.Margin = new Padding(6);
             fullName.MinimumSize = new Size(30, 30);
             fullName.Name = "fullName";
-            fullName.Size = new Size(218, 30);
+            fullName.Size = new Size(218, 31);
             fullName.TabIndex = 1;
             fullName.TextChanged += fullName_TextChanged;
             // 
@@ -105,6 +106,7 @@
             email.Size = new Size(218, 30);
             email.TabIndex = 4;
             email.TextChanged += textBox1_TextChanged;
+            email.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // positionLabel
             // 
@@ -126,6 +128,7 @@
             position.Size = new Size(218, 30);
             position.TabIndex = 6;
             position.TextChanged += position_TextChanged;
+            position.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // passwordLabel
             // 
@@ -147,6 +150,7 @@
             password.Size = new Size(218, 30);
             password.TabIndex = 8;
             password.TextChanged += password_TextChanged;
+            password.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // confirmPasswordLabel
             // 
@@ -167,6 +171,7 @@
             confirmPassword.Size = new Size(218, 30);
             confirmPassword.TabIndex = 10;
             confirmPassword.TextChanged += confirmPassword_TextChanged;
+            confirmPassword.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // Form1
             // 

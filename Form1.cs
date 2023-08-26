@@ -2,14 +2,13 @@ using MySql.Data.MySqlClient;
 namespace HealthCarePlus
 {
     public partial class Form1 : Form
-         
+
     {
         string mysqlCon = "server='127.0.0.1'; user=root; database=hospital; password= ";
         public Form1()
         {
             InitializeComponent();
-            //MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -119,7 +118,10 @@ namespace HealthCarePlus
 
         }
 
+        private void label2_Click_2(object sender, EventArgs e)
+        {
 
+        }
 
         private void fullName_TextChanged(object sender, EventArgs e)
         {
