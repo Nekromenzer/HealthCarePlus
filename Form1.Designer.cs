@@ -1,6 +1,6 @@
 ﻿namespace HealthCarePlus
 {
-    partial class Form1
+    partial class Register
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             registerBtn = new Button();
             fullName = new TextBox();
             label1 = new Label();
@@ -174,7 +174,7 @@
             confirmPassword.TabIndex = 10;
             confirmPassword.TextChanged += confirmPassword_TextChanged;
             // 
-            // Form1
+            // Register
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -195,7 +195,7 @@
             Controls.Add(registerBtn);
             Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Name = "Form1";
+            Name = "Register";
             Text = "Register";
             Load += Form1_Load;
             ResumeLayout(false);

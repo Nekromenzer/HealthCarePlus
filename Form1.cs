@@ -1,11 +1,14 @@
 using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
+
 namespace HealthCarePlus
 {
-    public partial class Form1 : Form
+    public partial class Register : Form
 
     {
         string mysqlCon = "server='127.0.0.1'; user=root; database=hospital; password= ";
-        public Form1()
+        public Register()
         {
             InitializeComponent();
 
@@ -16,11 +19,48 @@ namespace HealthCarePlus
 
         }
 
+        private bool UserExists(string email)
+        {
+            using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    mySqlConnection.Open();
+                    string query = "SELECT COUNT(*) FROM userstable WHERE Email = @Email";
+                    MySqlCommand cmd = new MySqlCommand(query, mySqlConnection);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    return count > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+        }
+
+        private void OpenLoginForm()
+        {
+            Login loginForm = new Login();
+            loginForm.Show();
+            this.Hide(); // Hide the reg form
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (ValidateInputs())
             {
-                RegisterUser();
+                if (!UserExists(email.Text))
+                {
+                    RegisterUser();
+                    OpenLoginForm();
+                }
+                else
+                {
+                    MessageBox.Show("User with this email already exists.");
+                }
             }
 
         }
