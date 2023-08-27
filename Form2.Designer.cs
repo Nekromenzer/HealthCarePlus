@@ -54,6 +54,7 @@
             email.Name = "email";
             email.Size = new Size(321, 31);
             email.TabIndex = 6;
+            email.TextChanged += email_TextChanged;
             // 
             // passwordLabel
             // 
@@ -74,6 +75,7 @@
             password.Name = "password";
             password.Size = new Size(321, 31);
             password.TabIndex = 10;
+            password.TextChanged += password_TextChanged;
             // 
             // LoginBtn
             // 
@@ -87,6 +89,7 @@
             LoginBtn.TabIndex = 12;
             LoginBtn.Text = "Login";
             LoginBtn.UseVisualStyleBackColor = true;
+            LoginBtn.Click += LoginBtn_Click;
             // 
             // Login
             // 
