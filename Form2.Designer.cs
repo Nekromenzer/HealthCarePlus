@@ -33,6 +33,8 @@
             passwordLabel = new Label();
             password = new TextBox();
             LoginBtn = new Button();
+            label1 = new Label();
+            navigateRegister = new Button();
             SuspendLayout();
             // 
             // emailLabel
@@ -69,12 +71,15 @@
             // 
             password.BorderStyle = BorderStyle.FixedSingle;
             password.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            password.HideSelection = false;
             password.Location = new Point(44, 234);
             password.Margin = new Padding(6);
             password.MinimumSize = new Size(30, 30);
             password.Name = "password";
+            password.PasswordChar = '*';
             password.Size = new Size(321, 31);
             password.TabIndex = 10;
+            password.UseSystemPasswordChar = true;
             password.TextChanged += password_TextChanged;
             // 
             // LoginBtn
@@ -91,11 +96,34 @@
             LoginBtn.UseVisualStyleBackColor = true;
             LoginBtn.Click += LoginBtn_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(44, 410);
+            label1.Name = "label1";
+            label1.Size = new Size(134, 15);
+            label1.TabIndex = 13;
+            label1.Text = "Don't have an account ?";
+            // 
+            // navigateRegister
+            // 
+            navigateRegister.BackColor = Color.Transparent;
+            navigateRegister.ForeColor = Color.Black;
+            navigateRegister.Location = new Point(195, 406);
+            navigateRegister.Name = "navigateRegister";
+            navigateRegister.Size = new Size(75, 23);
+            navigateRegister.TabIndex = 14;
+            navigateRegister.Text = "Register";
+            navigateRegister.UseVisualStyleBackColor = false;
+            navigateRegister.Click += button1_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(923, 560);
+            Controls.Add(navigateRegister);
+            Controls.Add(label1);
             Controls.Add(LoginBtn);
             Controls.Add(passwordLabel);
             Controls.Add(password);
@@ -114,5 +142,7 @@
         private Label passwordLabel;
         private TextBox password;
         private Button LoginBtn;
+        private Label label1;
+        private Button navigateRegister;
     }
 }

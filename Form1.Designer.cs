@@ -41,6 +41,8 @@
             password = new TextBox();
             confirmPasswordLabel = new Label();
             confirmPassword = new TextBox();
+            navigateLogin = new Button();
+            label2 = new Label();
             SuspendLayout();
             // 
             // registerBtn
@@ -149,6 +151,7 @@
             password.Margin = new Padding(6);
             password.MinimumSize = new Size(30, 30);
             password.Name = "password";
+            password.PasswordChar = '*';
             password.Size = new Size(321, 31);
             password.TabIndex = 8;
             password.TextChanged += password_TextChanged;
@@ -170,9 +173,32 @@
             confirmPassword.Margin = new Padding(6);
             confirmPassword.MinimumSize = new Size(30, 30);
             confirmPassword.Name = "confirmPassword";
+            confirmPassword.PasswordChar = '*';
             confirmPassword.Size = new Size(321, 31);
             confirmPassword.TabIndex = 10;
             confirmPassword.TextChanged += confirmPassword_TextChanged;
+            // 
+            // navigateLogin
+            // 
+            navigateLogin.BackColor = Color.Transparent;
+            navigateLogin.ForeColor = Color.Black;
+            navigateLogin.Location = new Point(193, 503);
+            navigateLogin.Name = "navigateLogin";
+            navigateLogin.Size = new Size(75, 23);
+            navigateLogin.TabIndex = 16;
+            navigateLogin.Text = "Login";
+            navigateLogin.UseVisualStyleBackColor = false;
+            navigateLogin.Click += navigateLogin_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = SystemColors.ButtonFace;
+            label2.Location = new Point(42, 507);
+            label2.Name = "label2";
+            label2.Size = new Size(134, 15);
+            label2.TabIndex = 15;
+            label2.Text = "Don't have an account ?";
             // 
             // Register
             // 
@@ -181,6 +207,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(976, 588);
+            Controls.Add(navigateLogin);
+            Controls.Add(label2);
             Controls.Add(confirmPasswordLabel);
             Controls.Add(confirmPassword);
             Controls.Add(passwordLabel);
@@ -216,5 +244,7 @@
         private TextBox password;
         private Label confirmPasswordLabel;
         private TextBox confirmPassword;
+        private Button navigateLogin;
+        private Label label2;
     }
 }

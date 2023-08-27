@@ -57,9 +57,9 @@ namespace HealthCarePlus
 
         private void OpenMainApplication()
         {
-            Dashboard mainForm = new Dashboard(); // Replace "MainForm" with your actual main application form class name
+            Dashboard mainForm = new Dashboard();
             mainForm.Show();
-            this.Hide(); // Hide the current login form
+            this.Hide();
         }
 
         private void LoginBtn_Click(object sender, EventArgs e)
@@ -87,5 +87,11 @@ namespace HealthCarePlus
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Register registerForm = new Register();
+            registerForm.Show();
+            this.Hide();
+        }
     }
 }
