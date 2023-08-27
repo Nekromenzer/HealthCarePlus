@@ -109,7 +109,7 @@
             // 
             navigateRegister.BackColor = Color.Transparent;
             navigateRegister.ForeColor = Color.Black;
-            navigateRegister.Location = new Point(195, 406);
+            navigateRegister.Location = new Point(184, 406);
             navigateRegister.Name = "navigateRegister";
             navigateRegister.Size = new Size(75, 23);
             navigateRegister.TabIndex = 14;

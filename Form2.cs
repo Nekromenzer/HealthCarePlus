@@ -57,8 +57,19 @@ namespace HealthCarePlus
 
         private void OpenMainApplication()
         {
-            Dashboard mainForm = new Dashboard();
-            mainForm.Show();
+            string userEmail = email.Text;
+
+            Dashboard dashboard = new Dashboard();
+            AdminDashboard adminDashboard = new AdminDashboard();
+            if (userEmail == "admin@healthcareplus.com")
+            {
+                adminDashboard.Show();
+            }
+            else
+            {
+                dashboard.Show();
+            }
+
             this.Hide();
         }
 

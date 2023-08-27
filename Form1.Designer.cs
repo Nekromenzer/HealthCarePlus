@@ -36,13 +36,14 @@
             emailLabel = new Label();
             email = new TextBox();
             positionLabel = new Label();
-            position = new TextBox();
             passwordLabel = new Label();
             password = new TextBox();
             confirmPasswordLabel = new Label();
             confirmPassword = new TextBox();
             navigateLogin = new Button();
             label2 = new Label();
+            mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            position = new ComboBox();
             SuspendLayout();
             // 
             // registerBtn
@@ -61,13 +62,13 @@
             // 
             // fullName
             // 
-            fullName.BorderStyle = BorderStyle.FixedSingle;
+            fullName.BorderStyle = BorderStyle.None;
             fullName.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             fullName.Location = new Point(37, 67);
             fullName.Margin = new Padding(6);
             fullName.MinimumSize = new Size(30, 30);
             fullName.Name = "fullName";
-            fullName.Size = new Size(321, 31);
+            fullName.Size = new Size(321, 30);
             fullName.TabIndex = 1;
             fullName.TextChanged += fullName_TextChanged;
             // 
@@ -101,13 +102,13 @@
             // 
             // email
             // 
-            email.BorderStyle = BorderStyle.FixedSingle;
+            email.BorderStyle = BorderStyle.None;
             email.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             email.Location = new Point(37, 133);
             email.Margin = new Padding(6);
             email.MinimumSize = new Size(30, 30);
             email.Name = "email";
-            email.Size = new Size(321, 31);
+            email.Size = new Size(321, 30);
             email.TabIndex = 4;
             email.TextChanged += textBox1_TextChanged;
             // 
@@ -121,18 +122,6 @@
             positionLabel.Text = "Position";
             positionLabel.Click += label2_Click_1;
             // 
-            // position
-            // 
-            position.BorderStyle = BorderStyle.FixedSingle;
-            position.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            position.Location = new Point(37, 210);
-            position.Margin = new Padding(6);
-            position.MinimumSize = new Size(30, 30);
-            position.Name = "position";
-            position.Size = new Size(321, 31);
-            position.TabIndex = 6;
-            position.TextChanged += position_TextChanged;
-            // 
             // passwordLabel
             // 
             passwordLabel.AutoSize = true;
@@ -145,14 +134,14 @@
             // 
             // password
             // 
-            password.BorderStyle = BorderStyle.FixedSingle;
+            password.BorderStyle = BorderStyle.None;
             password.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             password.Location = new Point(37, 287);
             password.Margin = new Padding(6);
             password.MinimumSize = new Size(30, 30);
             password.Name = "password";
             password.PasswordChar = '*';
-            password.Size = new Size(321, 31);
+            password.Size = new Size(321, 30);
             password.TabIndex = 8;
             password.TextChanged += password_TextChanged;
             // 
@@ -167,14 +156,14 @@
             // 
             // confirmPassword
             // 
-            confirmPassword.BorderStyle = BorderStyle.FixedSingle;
+            confirmPassword.BorderStyle = BorderStyle.None;
             confirmPassword.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             confirmPassword.Location = new Point(37, 363);
             confirmPassword.Margin = new Padding(6);
             confirmPassword.MinimumSize = new Size(30, 30);
             confirmPassword.Name = "confirmPassword";
             confirmPassword.PasswordChar = '*';
-            confirmPassword.Size = new Size(321, 31);
+            confirmPassword.Size = new Size(321, 30);
             confirmPassword.TabIndex = 10;
             confirmPassword.TextChanged += confirmPassword_TextChanged;
             // 
@@ -200,6 +189,24 @@
             label2.TabIndex = 15;
             label2.Text = "Don't have an account ?";
             // 
+            // mySqlCommand1
+            // 
+            mySqlCommand1.CacheAge = 0;
+            mySqlCommand1.Connection = null;
+            mySqlCommand1.EnableCaching = false;
+            mySqlCommand1.Transaction = null;
+            // 
+            // position
+            // 
+            position.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            position.FormattingEnabled = true;
+            position.Items.AddRange(new object[] { "Doctor", "Nurse", "Other" });
+            position.Location = new Point(37, 210);
+            position.Name = "position";
+            position.Size = new Size(319, 31);
+            position.TabIndex = 17;
+            position.SelectedIndexChanged += position_SelectedIndexChanged;
+            // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -207,6 +214,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(976, 588);
+            Controls.Add(position);
             Controls.Add(navigateLogin);
             Controls.Add(label2);
             Controls.Add(confirmPasswordLabel);
@@ -214,7 +222,6 @@
             Controls.Add(passwordLabel);
             Controls.Add(password);
             Controls.Add(positionLabel);
-            Controls.Add(position);
             Controls.Add(emailLabel);
             Controls.Add(email);
             Controls.Add(fullNameLabel);
@@ -239,12 +246,13 @@
         private Label emailLabel;
         private TextBox email;
         private Label positionLabel;
-        private TextBox position;
         private Label passwordLabel;
         private TextBox password;
         private Label confirmPasswordLabel;
         private TextBox confirmPassword;
         private Button navigateLogin;
         private Label label2;
+        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
+        private ComboBox position;
     }
 }

@@ -98,6 +98,21 @@ namespace HealthCarePlus
             return System.Text.RegularExpressions.Regex.IsMatch(email, pattern);
         }
 
+        private string GetPositionIndex(string selectedPosition)
+        {
+            switch (selectedPosition)
+            {
+                case "Doctor":
+                    return "1";
+                case "Nurse":
+                    return "2";
+                case "Other":
+                    return "3";
+                default:
+                    return "0";
+            }
+        }
+
         private void RegisterUser()
         {
             using (MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon))
@@ -109,7 +124,7 @@ namespace HealthCarePlus
                     MySqlCommand cmd = new MySqlCommand(insertQuery, mySqlConnection);
                     cmd.Parameters.AddWithValue("@FullName", fullName.Text);
                     cmd.Parameters.AddWithValue("@Email", email.Text);
-                    cmd.Parameters.AddWithValue("@Position", position.Text);
+                    cmd.Parameters.AddWithValue("@Position", GetPositionIndex(position.SelectedItem.ToString()));
                     cmd.Parameters.AddWithValue("@Password", password.Text);
                     int result = cmd.ExecuteNonQuery();
                     if (result > 0)
@@ -187,7 +202,12 @@ namespace HealthCarePlus
         {
             Login loginForm = new Login();
             loginForm.Show();
-            this.Hide(); 
+            this.Hide();
+        }
+
+        private void position_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
