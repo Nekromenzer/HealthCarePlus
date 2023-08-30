@@ -26,5 +26,11 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DoctorSchdulesForm doctorSchdulesForm = new DoctorSchdulesForm();
+            doctorSchdulesForm.Show();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace HealthCarePlus
 {
-    partial class Dashboard
+    partial class DoctorSchdulesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            addDoctorSchedules = new Button();
+            doctorId = new TextBox();
             SuspendLayout();
             // 
-            // addDoctorSchedules
+            // doctorId
             // 
-            addDoctorSchedules.Location = new Point(12, 96);
-            addDoctorSchedules.Name = "addDoctorSchedules";
-            addDoctorSchedules.Size = new Size(171, 49);
-            addDoctorSchedules.TabIndex = 1;
-            addDoctorSchedules.Text = "Add doctor";
-            addDoctorSchedules.UseVisualStyleBackColor = true;
-            addDoctorSchedules.Click += button1_Click;
+            doctorId.AutoCompleteMode = AutoCompleteMode.Suggest;
+            doctorId.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            doctorId.BorderStyle = BorderStyle.FixedSingle;
+            doctorId.Location = new Point(12, 64);
+            doctorId.Name = "doctorId";
+            doctorId.Size = new Size(245, 23);
+            doctorId.TabIndex = 0;
+            doctorId.TextChanged += doctorId_TextChanged;
             // 
-            // Dashboard
+            // DoctorSchdulesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(addDoctorSchedules);
-            Name = "Dashboard";
-            Text = "Dashboard";
-            Load += Form3_Load;
+            Controls.Add(doctorId);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Name = "DoctorSchdulesForm";
+            Text = "Add Doctor Schedules";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Button addDoctorSchedules;
+        private TextBox doctorId;
     }
 }
