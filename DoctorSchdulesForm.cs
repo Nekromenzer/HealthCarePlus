@@ -36,5 +36,27 @@ namespace HealthCarePlus
             doctorId.AutoCompleteMode = AutoCompleteMode.Suggest;
             conn.Close();
         }
+
+        private void startTime_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void patients_TextChanged(object sender, EventArgs e)
+        {
+            MySqlConnection conn = new MySqlConnection(mysqlCon);
+            MySqlCommand cmd = new MySqlCommand("SELECT PatientID, FullName FROM patients", conn);
+            conn.Open();
+            AutoCompleteStringCollection str_coll = new AutoCompleteStringCollection();
+            MySqlDataReader myreader = cmd.ExecuteReader();
+            while (myreader.Read())
+            {
+                str_coll.Add(myreader.GetString(1));
+            }
+            patients.AutoCompleteCustomSource = str_coll;
+            patients.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            patients.AutoCompleteMode = AutoCompleteMode.Suggest;
+            conn.Close();
+        }
     }
 }
