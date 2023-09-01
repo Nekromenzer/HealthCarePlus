@@ -79,7 +79,6 @@
             date.Name = "date";
             date.Size = new Size(279, 33);
             date.TabIndex = 4;
-            date.ValueChanged += date_ValueChanged;
             // 
             // DateLabel
             // 
@@ -110,7 +109,6 @@
             startTime.ShowUpDown = true;
             startTime.Size = new Size(279, 33);
             startTime.TabIndex = 6;
-            startTime.ValueChanged += startTime_ValueChanged;
             // 
             // EndTimeLabel
             // 
@@ -132,7 +130,6 @@
             endTime.ShowUpDown = true;
             endTime.Size = new Size(279, 33);
             endTime.TabIndex = 8;
-            endTime.ValueChanged += endTime_ValueChanged;
             // 
             // AppointmentLabel
             // 
@@ -193,7 +190,6 @@
             note.Name = "note";
             note.Size = new Size(279, 33);
             note.TabIndex = 18;
-            note.TextChanged += note_TextChanged;
             // 
             // submitBtn
             // 
@@ -229,7 +225,6 @@
             location.Name = "location";
             location.Size = new Size(279, 33);
             location.TabIndex = 23;
-            location.SelectedIndexChanged += location_SelectedIndexChanged;
             // 
             // appointmentType
             // 
@@ -241,7 +236,6 @@
             appointmentType.Name = "appointmentType";
             appointmentType.Size = new Size(279, 33);
             appointmentType.TabIndex = 24;
-            appointmentType.SelectedIndexChanged += appointmentType_SelectedIndexChanged;
             // 
             // DoctorSchdulesForm
             // 
