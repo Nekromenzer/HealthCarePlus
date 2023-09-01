@@ -58,5 +58,30 @@ namespace HealthCarePlus
             patients.AutoCompleteMode = AutoCompleteMode.Suggest;
             conn.Close();
         }
+
+        private void appointmentType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void location_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void date_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void note_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void endTime_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

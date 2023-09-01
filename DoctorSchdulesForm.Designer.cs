@@ -37,15 +37,15 @@
             EndTimeLabel = new Label();
             endTime = new DateTimePicker();
             AppointmentLabel = new Label();
-            appointment = new TextBox();
             patientsLabel = new Label();
             patients = new TextBox();
             locationLabel = new Label();
-            location = new TextBox();
             noteLabel = new Label();
             note = new TextBox();
             submitBtn = new Button();
             label1 = new Label();
+            location = new ComboBox();
+            appointmentType = new ComboBox();
             SuspendLayout();
             // 
             // doctorId
@@ -79,6 +79,7 @@
             date.Name = "date";
             date.Size = new Size(279, 33);
             date.TabIndex = 4;
+            date.ValueChanged += date_ValueChanged;
             // 
             // DateLabel
             // 
@@ -131,6 +132,7 @@
             endTime.ShowUpDown = true;
             endTime.Size = new Size(279, 33);
             endTime.TabIndex = 8;
+            endTime.ValueChanged += endTime_ValueChanged;
             // 
             // AppointmentLabel
             // 
@@ -140,18 +142,6 @@
             AppointmentLabel.Size = new Size(105, 15);
             AppointmentLabel.TabIndex = 11;
             AppointmentLabel.Text = "Appointment Type";
-            // 
-            // appointment
-            // 
-            appointment.AutoCompleteCustomSource.AddRange(new string[] { "General Checkup", "Follow-up Visit", "Consultation", "Vaccination", "Test Results Discussion", "Treatment Session", "Procedure or Surgery", "Specialized Consultation", "Medication Review", "Physical Therapy Session" });
-            appointment.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            appointment.BorderStyle = BorderStyle.FixedSingle;
-            appointment.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            appointment.Location = new Point(76, 205);
-            appointment.Name = "appointment";
-            appointment.PlaceholderText = "Surgery";
-            appointment.Size = new Size(279, 33);
-            appointment.TabIndex = 10;
             // 
             // patientsLabel
             // 
@@ -184,18 +174,6 @@
             locationLabel.TabIndex = 17;
             locationLabel.Text = "Location";
             // 
-            // location
-            // 
-            location.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
-            location.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            location.BorderStyle = BorderStyle.FixedSingle;
-            location.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            location.Location = new Point(429, 205);
-            location.Name = "location";
-            location.PlaceholderText = "London";
-            location.Size = new Size(279, 33);
-            location.TabIndex = 16;
-            // 
             // noteLabel
             // 
             noteLabel.AutoSize = true;
@@ -215,6 +193,7 @@
             note.Name = "note";
             note.Size = new Size(279, 33);
             note.TabIndex = 18;
+            note.TextChanged += note_TextChanged;
             // 
             // submitBtn
             // 
@@ -240,21 +219,44 @@
             label1.TabIndex = 22;
             label1.Text = "Add Doctor Schedules";
             // 
+            // location
+            // 
+            location.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            location.FormattingEnabled = true;
+            location.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            location.Location = new Point(429, 205);
+            location.Name = "location";
+            location.Size = new Size(279, 33);
+            location.TabIndex = 23;
+            location.SelectedIndexChanged += location_SelectedIndexChanged;
+            // 
+            // appointmentType
+            // 
+            appointmentType.AutoCompleteCustomSource.AddRange(new string[] { "General Checkup", "Follow-up Visit", "Consultation", "Vaccination", "Test Results Discussion", "Treatment Session", "Procedure or Surgery", "Specialized Consultation", "Medication Review", "Physical Therapy Session" });
+            appointmentType.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            appointmentType.FormattingEnabled = true;
+            appointmentType.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            appointmentType.Location = new Point(76, 205);
+            appointmentType.Name = "appointmentType";
+            appointmentType.Size = new Size(279, 33);
+            appointmentType.TabIndex = 24;
+            appointmentType.SelectedIndexChanged += appointmentType_SelectedIndexChanged;
+            // 
             // DoctorSchdulesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 522);
+            Controls.Add(appointmentType);
+            Controls.Add(location);
             Controls.Add(label1);
             Controls.Add(submitBtn);
             Controls.Add(noteLabel);
             Controls.Add(note);
             Controls.Add(locationLabel);
-            Controls.Add(location);
             Controls.Add(patientsLabel);
             Controls.Add(patients);
             Controls.Add(AppointmentLabel);
-            Controls.Add(appointment);
             Controls.Add(EndTimeLabel);
             Controls.Add(endTime);
             Controls.Add(StartTimeLabel);
@@ -281,14 +283,14 @@
         private Label EndTimeLabel;
         private DateTimePicker endTime;
         private Label AppointmentLabel;
-        private TextBox appointment;
         private Label patientsLabel;
         private TextBox patients;
         private Label locationLabel;
-        private TextBox location;
         private Label noteLabel;
         private TextBox note;
         private Button submitBtn;
         private Label label1;
+        private ComboBox location;
+        private ComboBox appointmentType;
     }
 }
