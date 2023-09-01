@@ -207,6 +207,7 @@
             submitBtn.TabIndex = 21;
             submitBtn.Text = "Add Schedule +";
             submitBtn.UseVisualStyleBackColor = true;
+            submitBtn.Click += submitBtn_Click;
             // 
             // label1
             // 

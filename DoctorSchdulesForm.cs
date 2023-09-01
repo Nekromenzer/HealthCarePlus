@@ -20,6 +20,41 @@ namespace HealthCarePlus
             InitializeComponent();
         }
 
+        private int GetDoctorIdByName(string doctorName)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT DoctorID FROM doctors WHERE FullName = @FullName";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@FullName", doctorName);
+                object result = cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    return Convert.ToInt32(result);
+                }
+                return -1; // Return a value to indicate that the doctor was not found
+            }
+        }
+
+        private int GetPatientIdByName(string patientName)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT PatientID FROM patients WHERE FullName = @FullName";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@FullName", patientName);
+                object result = cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    return Convert.ToInt32(result);
+                }
+                return -1; // Return a value to indicate that the patient was not found
+            }
+        }
+
+
         private void doctorId_TextChanged(object sender, EventArgs e)
         {
             MySqlConnection conn = new MySqlConnection(mysqlCon);
@@ -82,6 +117,60 @@ namespace HealthCarePlus
         private void endTime_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ClearFields()
+        {
+            doctorId.Text = "";
+            patients.Text = "";
+            startTime.Value = DateTime.Now;
+            endTime.Value = DateTime.Now;
+            appointmentType.SelectedIndex = -1;
+            location.SelectedIndex = -1;
+            date.Value = DateTime.Now;
+            note.Text = "";
+        }
+
+        private void submitBtn_Click(object sender, EventArgs e)
+        {
+            string selectedDoctorName = doctorId.Text;
+            string selectedPatientName = patients.Text;
+            DateTime selectedStartTime = startTime.Value;
+            DateTime selectedEndTime = endTime.Value;
+            string selectedAppointmentType = appointmentType.SelectedItem.ToString();
+            string selectedLocation = location.SelectedItem.ToString();
+            DateTime selectedDate = date.Value;
+            string selectedNote = note.Text;
+
+            int doctorIdSelected = GetDoctorIdByName(selectedDoctorName);
+            int patientId = GetPatientIdByName(selectedPatientName);
+
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string insertQuery = "INSERT INTO doctorschedules (DoctorID, PatientID, StartTime, EndTime, AppointmentType, Location, ScheduleDate, Notes) " +
+                                     "VALUES (@DoctorID, @PatientID, @StartTime, @EndTime, @AppointmentType, @Location, @ScheduleDate, @Notes)";
+                MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
+                cmd.Parameters.AddWithValue("@DoctorID", doctorIdSelected);
+                cmd.Parameters.AddWithValue("@PatientID", patientId);
+                cmd.Parameters.AddWithValue("@StartTime", selectedStartTime);
+                cmd.Parameters.AddWithValue("@EndTime", selectedEndTime);
+                cmd.Parameters.AddWithValue("@AppointmentType", selectedAppointmentType);
+                cmd.Parameters.AddWithValue("@Location", selectedLocation);
+                cmd.Parameters.AddWithValue("@ScheduleDate", selectedDate);
+                cmd.Parameters.AddWithValue("@Notes", selectedNote);
+
+                int result = cmd.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    MessageBox.Show("Schedule inserted successfully.");
+                    ClearFields();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to insert schedule.");
+                }
+            }
         }
     }
 }
