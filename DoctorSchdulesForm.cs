@@ -447,6 +447,9 @@ namespace HealthCarePlus
             }
         }
 
+        private void appointmentType_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

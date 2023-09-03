@@ -250,11 +250,12 @@ namespace HealthCarePlus
             appointmentType.AutoCompleteCustomSource.AddRange(new string[] { "General Checkup", "Follow-up Visit", "Consultation", "Vaccination", "Test Results Discussion", "Treatment Session", "Procedure or Surgery", "Specialized Consultation", "Medication Review", "Physical Therapy Session" });
             appointmentType.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             appointmentType.FormattingEnabled = true;
-            appointmentType.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            appointmentType.Items.AddRange(new object[] { "General Checkup", "Follow-up Visit", "Consultation", "Vaccination", "Test Results Discussion", "Treatment Session", "Procedure or Surgery", "Specialized Consultation", "Medication Review", "Physical Therapy Session" });
             appointmentType.Location = new Point(676, 106);
             appointmentType.Name = "appointmentType";
             appointmentType.Size = new Size(279, 33);
             appointmentType.TabIndex = 24;
+            appointmentType.SelectedIndexChanged += appointmentType_SelectedIndexChanged;
             // 
             // doctoSchdulesTable
             // 
