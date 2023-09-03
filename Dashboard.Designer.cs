@@ -50,6 +50,7 @@
             addDoctorBtn.TabIndex = 2;
             addDoctorBtn.Text = "Add doctor";
             addDoctorBtn.UseVisualStyleBackColor = true;
+            addDoctorBtn.Click += addDoctorBtn_Click;
             // 
             // Dashboard
             // 
