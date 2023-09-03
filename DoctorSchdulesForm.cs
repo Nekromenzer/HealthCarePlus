@@ -188,8 +188,8 @@ namespace HealthCarePlus
             string selectedPatientName = patients.Text;
             DateTime selectedStartTime = startTime.Value;
             DateTime selectedEndTime = endTime.Value;
-            string selectedAppointmentType = appointmentType.SelectedItem.ToString();
-            string selectedLocation = location.SelectedItem.ToString();
+            string? selectedAppointmentType = appointmentType.SelectedItem.ToString();
+            string? selectedLocation = location.SelectedItem.ToString();
             DateTime selectedDate = date.Value;
             string selectedNote = note.Text;
 
@@ -237,8 +237,8 @@ namespace HealthCarePlus
                 string selectedPatientName = patients.Text;
                 DateTime selectedStartTime = startTime.Value;
                 DateTime selectedEndTime = endTime.Value;
-                string selectedAppointmentType = appointmentType.SelectedItem.ToString();
-                string selectedLocation = location.SelectedItem.ToString();
+                string? selectedAppointmentType = appointmentType.SelectedItem.ToString();
+                string? selectedLocation = location.SelectedItem.ToString();
                 DateTime selectedDate = date.Value;
                 string selectedNote = note.Text;
 
@@ -267,7 +267,7 @@ namespace HealthCarePlus
             if (doctoSchdulesTable.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = doctoSchdulesTable.SelectedRows[0];
-                string primaryKeyValue = selectedRow.Cells["ScheduleID"].Value.ToString();
+                string? primaryKeyValue = selectedRow.Cells["ScheduleID"].Value.ToString();
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this schedule?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
