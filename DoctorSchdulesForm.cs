@@ -208,7 +208,7 @@ namespace HealthCarePlus
             {
                 if (e.Value != null)
                 {
-                    string doctorName = GetDoctorNameById(Convert.ToInt32(e.Value));
+                    string? doctorName = GetDoctorNameById(Convert.ToInt32(e.Value));
                     e.Value = doctorName;
                 }
             }
@@ -232,6 +232,18 @@ namespace HealthCarePlus
             }
         }
 
+        private void doctoSchdulesTable_SelectionChanged(object sender, EventArgs e)
+        {
+            if (doctoSchdulesTable.SelectedRows.Count > 0)
+            {
+                submitBtn.Enabled = false;
+                ClearFields();
+            }
+            else
+            {
+                submitBtn.Enabled = true;
+            }
+        }
         private void doctoSchdulesTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
@@ -285,9 +297,9 @@ namespace HealthCarePlus
 
                     string? cellValue = row.Cells["dataGridViewTextBoxColumn2"].Value.ToString();
                     int index = appointmentType.FindString(cellValue);
-                    appointmentType.SelectedIndex = index != -1 ? index: -1;
+                    appointmentType.SelectedIndex = index != -1 ? index : -1;
 
-                    string? locationCellValue = row.Cells["dataGridViewTextBoxColumn5"].Value.ToString(); 
+                    string? locationCellValue = row.Cells["dataGridViewTextBoxColumn5"].Value.ToString();
                     int locationIndex = location.FindString(locationCellValue);
                     location.SelectedIndex = locationIndex != -1 ? locationIndex : -1;
 
