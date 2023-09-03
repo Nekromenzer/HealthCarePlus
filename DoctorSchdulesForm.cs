@@ -242,18 +242,6 @@ namespace HealthCarePlus
                 DateTime selectedDate = date.Value;
                 string selectedNote = note.Text;
 
-                if (string.IsNullOrWhiteSpace(selectedDoctorName) ||
-        string.IsNullOrWhiteSpace(selectedPatientName) ||
-        selectedStartTime == DateTime.MinValue ||
-        selectedEndTime == DateTime.MinValue ||
-        string.IsNullOrWhiteSpace(selectedAppointmentType) ||
-        string.IsNullOrWhiteSpace(selectedLocation) ||
-        selectedDate == DateTime.MinValue)
-                {
-                    MessageBox.Show("All fields except Notes are required.");
-                    return; // Don't proceed further if validation fails
-                }
-
                 int doctorIdSelected = GetDoctorIdByName(selectedDoctorName);
                 int patientId = GetPatientIdByName(selectedPatientName);
 
