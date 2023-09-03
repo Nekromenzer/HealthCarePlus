@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             addDoctorSchedules = new Button();
+            addDoctorBtn = new Button();
             SuspendLayout();
             // 
             // addDoctorSchedules
             // 
-            addDoctorSchedules.Location = new Point(12, 96);
+            addDoctorSchedules.Location = new Point(12, 95);
             addDoctorSchedules.Name = "addDoctorSchedules";
             addDoctorSchedules.Size = new Size(171, 49);
             addDoctorSchedules.TabIndex = 1;
@@ -41,11 +42,21 @@
             addDoctorSchedules.UseVisualStyleBackColor = true;
             addDoctorSchedules.Click += button1_Click;
             // 
+            // addDoctorBtn
+            // 
+            addDoctorBtn.Location = new Point(12, 173);
+            addDoctorBtn.Name = "addDoctorBtn";
+            addDoctorBtn.Size = new Size(171, 49);
+            addDoctorBtn.TabIndex = 2;
+            addDoctorBtn.Text = "Add doctor";
+            addDoctorBtn.UseVisualStyleBackColor = true;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(addDoctorBtn);
             Controls.Add(addDoctorSchedules);
             Name = "Dashboard";
             Text = "Dashboard";
@@ -56,5 +67,6 @@
         #endregion
 
         private Button addDoctorSchedules;
+        private Button addDoctorBtn;
     }
 }
