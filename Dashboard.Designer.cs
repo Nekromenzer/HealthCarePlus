@@ -37,7 +37,7 @@
             addDoctorSchedules.Name = "addDoctorSchedules";
             addDoctorSchedules.Size = new Size(171, 49);
             addDoctorSchedules.TabIndex = 1;
-            addDoctorSchedules.Text = "Add doctor";
+            addDoctorSchedules.Text = "Add doctor schdule";
             addDoctorSchedules.UseVisualStyleBackColor = true;
             addDoctorSchedules.Click += button1_Click;
             // 

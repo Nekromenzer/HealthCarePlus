@@ -18,6 +18,7 @@ namespace HealthCarePlus
         public DoctorSchdulesForm()
         {
             InitializeComponent();
+            DisplayDoctorSchedules();
         }
 
         private int GetDoctorIdByName(string doctorName)
@@ -33,7 +34,7 @@ namespace HealthCarePlus
                 {
                     return Convert.ToInt32(result);
                 }
-                return -1; // Return a value to indicate that the doctor was not found
+                return -1;
             }
         }
 
@@ -50,10 +51,47 @@ namespace HealthCarePlus
                 {
                     return Convert.ToInt32(result);
                 }
-                return -1; // Return a value to indicate that the patient was not found
+                return -1;
             }
         }
 
+        private string GetPatientNameById(int patientId)
+        {
+            string? patientName = string.Empty;
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT FullName FROM patients WHERE PatientID = @PatientID";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@PatientID", patientId);
+                object result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    patientName = result.ToString();
+                }
+            }
+            return patientName;
+        }
+
+        private string GetDoctorNameById(int doctorId)
+        {
+            string? doctorName = string.Empty;
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT FullName FROM doctors WHERE DoctorID = @DoctorID";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@DoctorID", doctorId);
+                object result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    doctorName = result.ToString();
+                }
+            }
+            return doctorName;
+        }
 
         private void doctorId_TextChanged(object sender, EventArgs e)
         {
@@ -74,19 +112,30 @@ namespace HealthCarePlus
 
         private void patients_TextChanged(object sender, EventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection(mysqlCon);
-            MySqlCommand cmd = new MySqlCommand("SELECT PatientID, FullName FROM patients", conn);
-            conn.Open();
-            AutoCompleteStringCollection str_coll = new AutoCompleteStringCollection();
-            MySqlDataReader myreader = cmd.ExecuteReader();
-            while (myreader.Read())
+            try
             {
-                str_coll.Add(myreader.GetString(1));
+                using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("SELECT PatientID, FullName FROM patients", conn);
+                    AutoCompleteStringCollection str_coll = new AutoCompleteStringCollection();
+                    using (MySqlDataReader myreader = cmd.ExecuteReader())
+                    {
+                        while (myreader.Read())
+                        {
+                            str_coll.Add(myreader.GetString(1));
+                        }
+                    }
+                    patients.AutoCompleteCustomSource = str_coll;
+                    patients.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    patients.AutoCompleteMode = AutoCompleteMode.Suggest;
+                }
             }
-            patients.AutoCompleteCustomSource = str_coll;
-            patients.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            patients.AutoCompleteMode = AutoCompleteMode.Suggest;
-            conn.Close();
+            catch (Exception ex)
+            {
+                // Handle the exception here, e.g., log it or display an error message
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
 
         private void ClearFields()
@@ -135,12 +184,128 @@ namespace HealthCarePlus
                 {
                     MessageBox.Show("Schedule inserted successfully.");
                     ClearFields();
+                    DisplayDoctorSchedules();
                 }
                 else
                 {
                     MessageBox.Show("Failed to insert schedule.");
                 }
             }
+        }
+
+        private void doctoSchdulesTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (doctoSchdulesTable.Columns[e.ColumnIndex].Name == "PatientID")
+            {
+                if (e.Value != null)
+                {
+                    string patientName = GetPatientNameById(Convert.ToInt32(e.Value));
+                    e.Value = patientName;
+                }
+            }
+
+            if (doctoSchdulesTable.Columns[e.ColumnIndex].Name == "dataGridViewTextBoxColumn1")
+            {
+                if (e.Value != null)
+                {
+                    string doctorName = GetDoctorNameById(Convert.ToInt32(e.Value));
+                    e.Value = doctorName;
+                }
+            }
+        }
+
+        private void DisplayDoctorSchedules()
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT * FROM doctorschedules";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    // bind table
+                    doctoSchdulesTable.DataSource = dataTable;
+                }
+            }
+        }
+
+        private void doctoSchdulesTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dataGridView = (DataGridView)sender;
+                DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
+
+                // Deselect any previously selected rows
+                dataGridView.ClearSelection();
+
+                // Select the clicked row
+                selectedRow.Selected = true;
+
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = doctoSchdulesTable.Rows[e.RowIndex];
+
+                    doctorId.Text = GetDoctorNameById(Convert.ToInt32(row.Cells["dataGridViewTextBoxColumn1"].Value.ToString()));
+                    patients.Text = GetPatientNameById(Convert.ToInt32(row.Cells["PatientID"].Value.ToString()));
+                    if (row.Cells["dataGridViewTextBoxColumn3"].Value != null)
+                    {
+                        if (TimeSpan.TryParse(row.Cells["dataGridViewTextBoxColumn3"].Value.ToString(), out TimeSpan startTimeValue))
+                        {
+                            startTime.Value = DateTime.Today.Add(startTimeValue);
+                        }
+                        else
+                        {
+                            startTime.Value = DateTime.Now;
+                        }
+                    }
+                    else
+                    {
+                        startTime.Value = DateTime.Now;
+                    }
+
+                    if (row.Cells["dataGridViewTextBoxColumn4"].Value != null)
+                    {
+                        if (TimeSpan.TryParse(row.Cells["dataGridViewTextBoxColumn4"].Value.ToString(), out TimeSpan endTimeValue))
+                        {
+                            endTime.Value = DateTime.Today.Add(endTimeValue);
+                        }
+                        else
+                        {
+                            endTime.Value = DateTime.Now;
+                        }
+                    }
+                    else
+                    {
+                        endTime.Value = DateTime.Now;
+                    }
+
+                    string? cellValue = row.Cells["dataGridViewTextBoxColumn2"].Value.ToString();
+                    int index = appointmentType.FindString(cellValue);
+                    appointmentType.SelectedIndex = index != -1 ? index: -1;
+
+                    string? locationCellValue = row.Cells["dataGridViewTextBoxColumn5"].Value.ToString(); 
+                    int locationIndex = location.FindString(locationCellValue);
+                    location.SelectedIndex = locationIndex != -1 ? locationIndex : -1;
+
+                    if (row.Cells["ScheduleDate"].Value != null)
+                    {
+                        date.Value = (DateTime)row.Cells["ScheduleDate"].Value;
+                    }
+                    else
+                    {
+                        date.Value = DateTime.Now;
+                    }
+                    note.Text = row.Cells["Notes"].Value.ToString();
+                }
+            }
+        }
+        private void doctoSchdulesTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

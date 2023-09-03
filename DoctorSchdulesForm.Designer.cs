@@ -1,4 +1,6 @@
-﻿namespace HealthCarePlus
+﻿using System.Windows.Forms;
+
+namespace HealthCarePlus
 {
     partial class DoctorSchdulesForm
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             doctorId = new TextBox();
             doctorIdLabel = new Label();
             date = new DateTimePicker();
@@ -46,6 +49,17 @@
             label1 = new Label();
             location = new ComboBox();
             appointmentType = new ComboBox();
+            doctoSchdulesTable = new DataGridView();
+            ScheduleID = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            PatientID = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            ScheduleDate = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            Notes = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)doctoSchdulesTable).BeginInit();
             SuspendLayout();
             // 
             // doctorId
@@ -54,7 +68,7 @@
             doctorId.AutoCompleteSource = AutoCompleteSource.CustomSource;
             doctorId.BorderStyle = BorderStyle.FixedSingle;
             doctorId.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            doctorId.Location = new Point(76, 137);
+            doctorId.Location = new Point(77, 105);
             doctorId.Name = "doctorId";
             doctorId.PlaceholderText = "Dr.Jane Low";
             doctorId.Size = new Size(279, 33);
@@ -64,7 +78,7 @@
             // doctorIdLabel
             // 
             doctorIdLabel.AutoSize = true;
-            doctorIdLabel.Location = new Point(76, 119);
+            doctorIdLabel.Location = new Point(77, 87);
             doctorIdLabel.Name = "doctorIdLabel";
             doctorIdLabel.Size = new Size(43, 15);
             doctorIdLabel.TabIndex = 1;
@@ -74,7 +88,7 @@
             // 
             date.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             date.Format = DateTimePickerFormat.Short;
-            date.Location = new Point(76, 272);
+            date.Location = new Point(77, 173);
             date.MinDate = new DateTime(2023, 8, 31, 0, 0, 0, 0);
             date.Name = "date";
             date.Size = new Size(279, 33);
@@ -83,7 +97,7 @@
             // DateLabel
             // 
             DateLabel.AutoSize = true;
-            DateLabel.Location = new Point(76, 254);
+            DateLabel.Location = new Point(77, 155);
             DateLabel.Name = "DateLabel";
             DateLabel.Size = new Size(31, 15);
             DateLabel.TabIndex = 5;
@@ -92,7 +106,7 @@
             // StartTimeLabel
             // 
             StartTimeLabel.AutoSize = true;
-            StartTimeLabel.Location = new Point(76, 328);
+            StartTimeLabel.Location = new Point(376, 155);
             StartTimeLabel.Name = "StartTimeLabel";
             StartTimeLabel.Size = new Size(60, 15);
             StartTimeLabel.TabIndex = 7;
@@ -103,7 +117,7 @@
             startTime.CustomFormat = "HH:mm";
             startTime.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             startTime.Format = DateTimePickerFormat.Custom;
-            startTime.Location = new Point(76, 346);
+            startTime.Location = new Point(376, 173);
             startTime.MinDate = new DateTime(2023, 8, 31, 0, 0, 0, 0);
             startTime.Name = "startTime";
             startTime.ShowUpDown = true;
@@ -113,7 +127,7 @@
             // EndTimeLabel
             // 
             EndTimeLabel.AutoSize = true;
-            EndTimeLabel.Location = new Point(429, 328);
+            EndTimeLabel.Location = new Point(676, 155);
             EndTimeLabel.Name = "EndTimeLabel";
             EndTimeLabel.Size = new Size(56, 15);
             EndTimeLabel.TabIndex = 9;
@@ -124,7 +138,7 @@
             endTime.CustomFormat = "HH:mm";
             endTime.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             endTime.Format = DateTimePickerFormat.Custom;
-            endTime.Location = new Point(429, 346);
+            endTime.Location = new Point(676, 173);
             endTime.MinDate = new DateTime(2023, 8, 31, 0, 0, 0, 0);
             endTime.Name = "endTime";
             endTime.ShowUpDown = true;
@@ -134,7 +148,7 @@
             // AppointmentLabel
             // 
             AppointmentLabel.AutoSize = true;
-            AppointmentLabel.Location = new Point(76, 187);
+            AppointmentLabel.Location = new Point(676, 88);
             AppointmentLabel.Name = "AppointmentLabel";
             AppointmentLabel.Size = new Size(105, 15);
             AppointmentLabel.TabIndex = 11;
@@ -143,7 +157,7 @@
             // patientsLabel
             // 
             patientsLabel.AutoSize = true;
-            patientsLabel.Location = new Point(429, 119);
+            patientsLabel.Location = new Point(376, 88);
             patientsLabel.Name = "patientsLabel";
             patientsLabel.Size = new Size(49, 15);
             patientsLabel.TabIndex = 13;
@@ -155,7 +169,7 @@
             patients.AutoCompleteSource = AutoCompleteSource.CustomSource;
             patients.BorderStyle = BorderStyle.FixedSingle;
             patients.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            patients.Location = new Point(429, 137);
+            patients.Location = new Point(376, 106);
             patients.Name = "patients";
             patients.PlaceholderText = "Jane doe";
             patients.Size = new Size(279, 33);
@@ -165,7 +179,7 @@
             // locationLabel
             // 
             locationLabel.AutoSize = true;
-            locationLabel.Location = new Point(429, 187);
+            locationLabel.Location = new Point(978, 88);
             locationLabel.Name = "locationLabel";
             locationLabel.Size = new Size(53, 15);
             locationLabel.TabIndex = 17;
@@ -174,7 +188,7 @@
             // noteLabel
             // 
             noteLabel.AutoSize = true;
-            noteLabel.Location = new Point(429, 254);
+            noteLabel.Location = new Point(978, 155);
             noteLabel.Name = "noteLabel";
             noteLabel.Size = new Size(33, 15);
             noteLabel.TabIndex = 19;
@@ -186,7 +200,7 @@
             note.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             note.BorderStyle = BorderStyle.FixedSingle;
             note.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            note.Location = new Point(429, 272);
+            note.Location = new Point(978, 173);
             note.Name = "note";
             note.Size = new Size(279, 33);
             note.TabIndex = 18;
@@ -197,11 +211,11 @@
             submitBtn.Cursor = Cursors.Hand;
             submitBtn.FlatAppearance.BorderSize = 2;
             submitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            submitBtn.Location = new Point(76, 412);
+            submitBtn.Location = new Point(77, 235);
             submitBtn.Name = "submitBtn";
-            submitBtn.Size = new Size(279, 42);
+            submitBtn.Size = new Size(167, 37);
             submitBtn.TabIndex = 21;
-            submitBtn.Text = "Add Schedule +";
+            submitBtn.Text = "Add Schedule ➕";
             submitBtn.UseVisualStyleBackColor = true;
             submitBtn.Click += submitBtn_Click;
             // 
@@ -221,7 +235,7 @@
             location.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             location.FormattingEnabled = true;
             location.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
-            location.Location = new Point(429, 205);
+            location.Location = new Point(978, 106);
             location.Name = "location";
             location.Size = new Size(279, 33);
             location.TabIndex = 23;
@@ -232,16 +246,116 @@
             appointmentType.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             appointmentType.FormattingEnabled = true;
             appointmentType.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
-            appointmentType.Location = new Point(76, 205);
+            appointmentType.Location = new Point(676, 106);
             appointmentType.Name = "appointmentType";
             appointmentType.Size = new Size(279, 33);
             appointmentType.TabIndex = 24;
+            // 
+            // doctoSchdulesTable
+            // 
+            doctoSchdulesTable.AllowUserToOrderColumns = true;
+            doctoSchdulesTable.AllowUserToResizeColumns = false;
+            doctoSchdulesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            doctoSchdulesTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            doctoSchdulesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            doctoSchdulesTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            doctoSchdulesTable.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, dataGridViewTextBoxColumn1, PatientID, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, ScheduleDate, dataGridViewTextBoxColumn5, Notes });
+            doctoSchdulesTable.GridColor = SystemColors.Control;
+            doctoSchdulesTable.Location = new Point(77, 306);
+            doctoSchdulesTable.Name = "doctoSchdulesTable";
+            doctoSchdulesTable.RowTemplate.Height = 25;
+            doctoSchdulesTable.RowTemplate.Resizable = DataGridViewTriState.True;
+            doctoSchdulesTable.Size = new Size(1180, 484);
+            doctoSchdulesTable.TabIndex = 25;
+            doctoSchdulesTable.CellContentClick += doctoSchdulesTable_CellContentClick;
+            doctoSchdulesTable.CellFormatting += doctoSchdulesTable_CellFormatting;
+            doctoSchdulesTable.CellClick += doctoSchdulesTable_CellClick;
+            // 
+            // ScheduleID
+            // 
+            ScheduleID.DataPropertyName = "ScheduleID";
+            ScheduleID.FillWeight = 382.0895F;
+            ScheduleID.HeaderText = "ID";
+            ScheduleID.MinimumWidth = 2;
+            ScheduleID.Name = "ScheduleID";
+            ScheduleID.Width = 43;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn1.DataPropertyName = "DoctorID";
+            dataGridViewTextBoxColumn1.FillWeight = 59.7015038F;
+            dataGridViewTextBoxColumn1.HeaderText = "Doctor Name";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // PatientID
+            // 
+            PatientID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PatientID.DataPropertyName = "PatientID";
+            PatientID.FillWeight = 59.7015038F;
+            PatientID.HeaderText = "Patient Name";
+            PatientID.Name = "PatientID";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "AppointmentType";
+            dataGridViewTextBoxColumn2.HeaderText = "Appointment Type";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn3.DataPropertyName = "StartTime";
+            dataGridViewTextBoxColumn3.FillWeight = 59.7015038F;
+            dataGridViewTextBoxColumn3.HeaderText = "Start Time";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn4.DataPropertyName = "EndTime";
+            dataGridViewTextBoxColumn4.FillWeight = 59.7015038F;
+            dataGridViewTextBoxColumn4.HeaderText = "End Time";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // ScheduleDate
+            // 
+            ScheduleDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ScheduleDate.DataPropertyName = "ScheduleDate";
+            ScheduleDate.FillWeight = 59.7015038F;
+            ScheduleDate.HeaderText = "Schedule Date";
+            ScheduleDate.Name = "ScheduleDate";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn5.DataPropertyName = "Location";
+            dataGridViewTextBoxColumn5.FillWeight = 59.7015038F;
+            dataGridViewTextBoxColumn5.HeaderText = "Location";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // Notes
+            // 
+            Notes.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Notes.DataPropertyName = "Notes";
+            Notes.FillWeight = 59.7015038F;
+            Notes.HeaderText = "Notes";
+            Notes.Name = "Notes";
             // 
             // DoctorSchdulesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 522);
+            ClientSize = new Size(1337, 834);
+            Controls.Add(doctoSchdulesTable);
             Controls.Add(appointmentType);
             Controls.Add(location);
             Controls.Add(label1);
@@ -263,6 +377,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "DoctorSchdulesForm";
             Text = "Add Doctor Schedules";
+            ((System.ComponentModel.ISupportInitialize)doctoSchdulesTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -287,5 +402,16 @@
         private Label label1;
         private ComboBox location;
         private ComboBox appointmentType;
+        private DataGridView doctoSchdulesTable;
+        private DataGridViewTextBoxColumn SchedduleID;
+        private DataGridViewTextBoxColumn ScheduleID;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn PatientID;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn ScheduleDate;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn Notes;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }
