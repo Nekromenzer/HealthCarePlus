@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,39 @@ namespace HealthCarePlus
 {
     public partial class DoctorAddForm : Form
     {
+        private string mysqlCon = "Data source=127.0.0.1; user=root; database=hospital; password= ";
         public DoctorAddForm()
         {
             InitializeComponent();
+            DisplayDoctorList();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void DisplayDoctorList()
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT * FROM doctorschedules";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    // bind table
+                    doctorTable.DataSource = dataTable;
+                }
+            }
+        }
+
+
+        private void doctorTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
