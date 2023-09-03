@@ -45,6 +45,7 @@ namespace HealthCarePlus
             // 
             // doctorTable
             // 
+            doctorTable.AllowUserToAddRows = false;
             doctorTable.AllowUserToOrderColumns = true;
             doctorTable.AllowUserToResizeColumns = false;
             doctorTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -68,6 +69,7 @@ namespace HealthCarePlus
             doctorTable.RowHeadersVisible = false;
             doctorTable.RowTemplate.Height = 25;
             doctorTable.ScrollBars = ScrollBars.Vertical;
+            doctorTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             doctorTable.Size = new Size(1180, 484);
             doctorTable.TabIndex = 0;
             doctorTable.CellContentClick += doctorTable_CellContentClick;
