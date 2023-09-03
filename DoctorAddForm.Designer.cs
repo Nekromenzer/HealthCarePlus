@@ -1,4 +1,6 @@
-﻿namespace HealthCarePlus
+﻿using System.Windows.Forms;
+
+namespace HealthCarePlus
 {
     partial class DoctorAddForm
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             doctorTable = new DataGridView();
             doctorId = new DataGridViewTextBoxColumn();
             doctorFullName = new DataGridViewTextBoxColumn();
@@ -42,10 +45,27 @@
             // 
             // doctorTable
             // 
+            doctorTable.AllowUserToOrderColumns = true;
+            doctorTable.AllowUserToResizeColumns = false;
+            doctorTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            doctorTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            doctorTable.BackgroundColor = SystemColors.Control;
+            doctorTable.BorderStyle = BorderStyle.None;
+            doctorTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            doctorTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             doctorTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             doctorTable.Columns.AddRange(new DataGridViewColumn[] { doctorId, doctorFullName, doctorContactNumber, doctorEmail, doctorLocation, doctorAvailability, doctorExpertise, doctorOtherDetails });
-            doctorTable.Location = new Point(70, 174);
+            doctorTable.EnableHeadersVisualStyles = false;
+            doctorTable.Location = new Point(68, 167);
             doctorTable.Name = "doctorTable";
+            doctorTable.RowHeadersVisible = false;
             doctorTable.RowTemplate.Height = 25;
             doctorTable.ScrollBars = ScrollBars.Vertical;
             doctorTable.Size = new Size(1180, 484);
@@ -54,22 +74,25 @@
             // 
             // doctorId
             // 
+            doctorId.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             doctorId.DataPropertyName = "DoctorID";
-            doctorId.HeaderText = "DoctorID";
+            doctorId.HeaderText = "ID";
             doctorId.Name = "doctorId";
-            doctorId.Width = 60;
+            doctorId.Width = 42;
             // 
             // doctorFullName
             // 
             doctorFullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             doctorFullName.DataPropertyName = "FullName";
+            doctorFullName.FillWeight = 40.9090919F;
             doctorFullName.HeaderText = "Full Name";
             doctorFullName.Name = "doctorFullName";
             // 
             // doctorContactNumber
             // 
-            doctorContactNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            doctorContactNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             doctorContactNumber.DataPropertyName = "ContactNumber";
+            doctorContactNumber.FillWeight = 40.9090919F;
             doctorContactNumber.HeaderText = "Phone";
             doctorContactNumber.Name = "doctorContactNumber";
             // 
@@ -77,6 +100,7 @@
             // 
             doctorEmail.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             doctorEmail.DataPropertyName = "Email";
+            doctorEmail.FillWeight = 40.9090919F;
             doctorEmail.HeaderText = "Email";
             doctorEmail.Name = "doctorEmail";
             // 
@@ -84,20 +108,23 @@
             // 
             doctorLocation.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             doctorLocation.DataPropertyName = "Location";
+            doctorLocation.FillWeight = 40.9090919F;
             doctorLocation.HeaderText = "Location";
             doctorLocation.Name = "doctorLocation";
             // 
             // doctorAvailability
             // 
-            doctorAvailability.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             doctorAvailability.DataPropertyName = "Availability";
+            doctorAvailability.FillWeight = 454.545441F;
             doctorAvailability.HeaderText = "Availability";
             doctorAvailability.Name = "doctorAvailability";
+            doctorAvailability.Width = 89;
             // 
             // doctorExpertise
             // 
             doctorExpertise.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             doctorExpertise.DataPropertyName = "Expertise";
+            doctorExpertise.FillWeight = 40.9090919F;
             doctorExpertise.HeaderText = "Expertise";
             doctorExpertise.Name = "doctorExpertise";
             // 
@@ -105,6 +132,7 @@
             // 
             doctorOtherDetails.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             doctorOtherDetails.DataPropertyName = "OtherDetails";
+            doctorOtherDetails.FillWeight = 40.9090919F;
             doctorOtherDetails.HeaderText = "Other Details";
             doctorOtherDetails.Name = "doctorOtherDetails";
             // 

@@ -20,16 +20,12 @@ namespace HealthCarePlus
             DisplayDoctorList();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         private void DisplayDoctorList()
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
                 conn.Open();
-                string query = "SELECT * FROM doctorschedules";
+                string query = "SELECT * FROM doctors";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
