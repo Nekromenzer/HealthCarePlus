@@ -61,6 +61,7 @@ namespace HealthCarePlus
             Notes = new DataGridViewTextBoxColumn();
             updateBtn = new Button();
             deleteBtn = new Button();
+            clearBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)doctoSchdulesTable).BeginInit();
             SuspendLayout();
             // 
@@ -209,23 +210,25 @@ namespace HealthCarePlus
             // 
             // submitBtn
             // 
+            submitBtn.BackColor = Color.DodgerBlue;
             submitBtn.BackgroundImageLayout = ImageLayout.None;
             submitBtn.Cursor = Cursors.Hand;
-            submitBtn.FlatAppearance.BorderSize = 2;
+            submitBtn.FlatAppearance.BorderSize = 0;
+            submitBtn.FlatStyle = FlatStyle.Flat;
             submitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             submitBtn.Location = new Point(77, 235);
             submitBtn.Name = "submitBtn";
             submitBtn.Size = new Size(167, 37);
             submitBtn.TabIndex = 21;
             submitBtn.Text = "Add Schedule ➕";
-            submitBtn.UseVisualStyleBackColor = true;
+            submitBtn.UseVisualStyleBackColor = false;
             submitBtn.Click += submitBtn_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.CornflowerBlue;
+            label1.ForeColor = Color.DodgerBlue;
             label1.Location = new Point(72, 30);
             label1.Name = "label1";
             label1.Size = new Size(284, 36);
@@ -259,6 +262,8 @@ namespace HealthCarePlus
             doctoSchdulesTable.AllowUserToResizeColumns = false;
             doctoSchdulesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             doctoSchdulesTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            doctoSchdulesTable.BackgroundColor = SystemColors.Control;
+            doctoSchdulesTable.BorderStyle = BorderStyle.None;
             doctoSchdulesTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
@@ -271,7 +276,7 @@ namespace HealthCarePlus
             doctoSchdulesTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             doctoSchdulesTable.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, dataGridViewTextBoxColumn1, PatientID, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, ScheduleDate, dataGridViewTextBoxColumn5, Notes });
             doctoSchdulesTable.GridColor = SystemColors.Control;
-            doctoSchdulesTable.Location = new Point(77, 306);
+            doctoSchdulesTable.Location = new Point(77, 315);
             doctoSchdulesTable.Name = "doctoSchdulesTable";
             doctoSchdulesTable.RowHeadersVisible = false;
             doctoSchdulesTable.RowTemplate.Height = 25;
@@ -357,24 +362,28 @@ namespace HealthCarePlus
             // 
             // updateBtn
             // 
-            updateBtn.BackColor = SystemColors.Control;
+            updateBtn.BackColor = Color.Gold;
             updateBtn.BackgroundImageLayout = ImageLayout.None;
             updateBtn.Cursor = Cursors.Hand;
-            updateBtn.FlatAppearance.BorderSize = 2;
+            updateBtn.FlatAppearance.BorderSize = 0;
+            updateBtn.FlatStyle = FlatStyle.Flat;
             updateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            updateBtn.ForeColor = SystemColors.ActiveCaptionText;
             updateBtn.Location = new Point(282, 235);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(167, 37);
             updateBtn.TabIndex = 26;
-            updateBtn.Text = "Update  ";
+            updateBtn.Text = "Update  🔧";
             updateBtn.UseVisualStyleBackColor = false;
+            updateBtn.Click += updateBtn_Click;
             // 
             // deleteBtn
             // 
             deleteBtn.BackColor = Color.IndianRed;
             deleteBtn.BackgroundImageLayout = ImageLayout.None;
             deleteBtn.Cursor = Cursors.Hand;
-            deleteBtn.FlatAppearance.BorderSize = 2;
+            deleteBtn.FlatAppearance.BorderSize = 0;
+            deleteBtn.FlatStyle = FlatStyle.Flat;
             deleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             deleteBtn.ForeColor = SystemColors.ButtonHighlight;
             deleteBtn.Location = new Point(488, 235);
@@ -383,12 +392,31 @@ namespace HealthCarePlus
             deleteBtn.TabIndex = 27;
             deleteBtn.Text = "Delete ❌";
             deleteBtn.UseVisualStyleBackColor = false;
+            deleteBtn.Click += deleteBtn_Click;
+            // 
+            // clearBtn
+            // 
+            clearBtn.BackColor = Color.White;
+            clearBtn.BackgroundImageLayout = ImageLayout.None;
+            clearBtn.Cursor = Cursors.Hand;
+            clearBtn.FlatAppearance.BorderSize = 0;
+            clearBtn.FlatStyle = FlatStyle.Flat;
+            clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            clearBtn.ForeColor = Color.DimGray;
+            clearBtn.Location = new Point(774, 235);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(167, 37);
+            clearBtn.TabIndex = 28;
+            clearBtn.Text = "clear";
+            clearBtn.UseVisualStyleBackColor = false;
+            clearBtn.Click += clearBtn_Click;
             // 
             // DoctorSchdulesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1337, 834);
+            ClientSize = new Size(1325, 834);
+            Controls.Add(clearBtn);
             Controls.Add(deleteBtn);
             Controls.Add(updateBtn);
             Controls.Add(doctoSchdulesTable);
@@ -451,5 +479,6 @@ namespace HealthCarePlus
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private Button updateBtn;
         private Button deleteBtn;
+        private Button clearBtn;
     }
 }

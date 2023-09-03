@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace HealthCarePlus
@@ -149,6 +141,46 @@ namespace HealthCarePlus
             date.Value = DateTime.Now;
             note.Text = "";
         }
+        private bool UpdateDoctorSchedule(string primaryKeyValue, int doctorId, int patientId, DateTime startTime, DateTime endTime, string appointmentType, string location, DateTime scheduleDate, string notes)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+                    string updateQuery = "UPDATE doctorschedules SET DoctorID = @DoctorID, PatientID = @PatientID, StartTime = @StartTime, EndTime = @EndTime, AppointmentType = @AppointmentType, Location = @Location, ScheduleDate = @ScheduleDate, Notes = @Notes WHERE ScheduleID = @PrimaryKeyValue";
+                    MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
+                    cmd.Parameters.AddWithValue("@DoctorID", doctorId);
+                    cmd.Parameters.AddWithValue("@PatientID", patientId);
+                    cmd.Parameters.AddWithValue("@StartTime", startTime);
+                    cmd.Parameters.AddWithValue("@EndTime", endTime);
+                    cmd.Parameters.AddWithValue("@AppointmentType", appointmentType);
+                    cmd.Parameters.AddWithValue("@Location", location);
+                    cmd.Parameters.AddWithValue("@ScheduleDate", scheduleDate);
+                    cmd.Parameters.AddWithValue("@Notes", notes);
+                    cmd.Parameters.AddWithValue("@PrimaryKeyValue", primaryKeyValue);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Update successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    return rowsAffected > 0;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+        }
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
@@ -193,6 +225,75 @@ namespace HealthCarePlus
             }
         }
 
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected in the DataGridView
+            if (doctoSchdulesTable.SelectedRows.Count > 0)
+            {
+                // Get the selected row
+                DataGridViewRow selectedRow = doctoSchdulesTable.SelectedRows[0];
+
+                string selectedDoctorName = doctorId.Text;
+                string selectedPatientName = patients.Text;
+                DateTime selectedStartTime = startTime.Value;
+                DateTime selectedEndTime = endTime.Value;
+                string selectedAppointmentType = appointmentType.SelectedItem.ToString();
+                string selectedLocation = location.SelectedItem.ToString();
+                DateTime selectedDate = date.Value;
+                string selectedNote = note.Text;
+
+                int doctorIdSelected = GetDoctorIdByName(selectedDoctorName);
+                int patientId = GetPatientIdByName(selectedPatientName);
+
+                // Update the row in the database
+                if (UpdateDoctorSchedule(selectedRow.Cells["ScheduleID"].Value.ToString(), doctorIdSelected, patientId, selectedStartTime, selectedEndTime, selectedAppointmentType, selectedLocation, selectedDate, selectedNote))
+                {
+                    // Update successful, refresh
+                    DisplayDoctorSchedules();
+                }
+                else
+                {
+                    MessageBox.Show("Update failed.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to update.");
+            }
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            if (doctoSchdulesTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = doctoSchdulesTable.SelectedRows[0];
+                string primaryKeyValue = selectedRow.Cells["ScheduleID"].Value.ToString();
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this schedule?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (DeleteDoctorSchedule(primaryKeyValue))
+                    {
+                        doctoSchdulesTable.Rows.Remove(selectedRow);
+                        MessageBox.Show("Schedule deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete schedule.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a schedule to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+            doctoSchdulesTable.ClearSelection();
+        }
         private void doctoSchdulesTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (doctoSchdulesTable.Columns[e.ColumnIndex].Name == "PatientID")
@@ -237,11 +338,15 @@ namespace HealthCarePlus
             if (doctoSchdulesTable.SelectedRows.Count > 0)
             {
                 submitBtn.Enabled = false;
+                updateBtn.Enabled = true;
+                deleteBtn.Enabled = true;
                 ClearFields();
             }
             else
             {
                 submitBtn.Enabled = true;
+                updateBtn.Enabled = false;
+                deleteBtn.Enabled = false;
             }
         }
         private void doctoSchdulesTable_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -319,5 +424,29 @@ namespace HealthCarePlus
         {
 
         }
+
+        private bool DeleteDoctorSchedule(string primaryKeyValue)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+                    string deleteQuery = "DELETE FROM doctorschedules WHERE ScheduleID = @PrimaryKeyValue";
+                    MySqlCommand cmd = new MySqlCommand(deleteQuery, conn);
+                    cmd.Parameters.AddWithValue("@PrimaryKeyValue", primaryKeyValue);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+
+
     }
 }
