@@ -282,6 +282,7 @@ namespace HealthCarePlus
             doctoSchdulesTable.RowHeadersVisible = false;
             doctoSchdulesTable.RowTemplate.Height = 25;
             doctoSchdulesTable.RowTemplate.Resizable = DataGridViewTriState.True;
+            doctoSchdulesTable.ScrollBars = ScrollBars.Vertical;
             doctoSchdulesTable.Size = new Size(1180, 484);
             doctoSchdulesTable.TabIndex = 25;
             doctoSchdulesTable.CellClick += doctoSchdulesTable_CellClick;
