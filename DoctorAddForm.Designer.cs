@@ -30,7 +30,7 @@ namespace HealthCarePlus
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             doctorTable = new DataGridView();
             doctorId = new DataGridViewTextBoxColumn();
             doctorFullName = new DataGridViewTextBoxColumn();
@@ -45,6 +45,8 @@ namespace HealthCarePlus
             deleteBtn = new Button();
             updateBtn = new Button();
             submitBtn = new Button();
+            noteLabel = new Label();
+            fullName = new TextBox();
             ((System.ComponentModel.ISupportInitialize)doctorTable).BeginInit();
             SuspendLayout();
             // 
@@ -58,14 +60,14 @@ namespace HealthCarePlus
             doctorTable.BackgroundColor = SystemColors.Control;
             doctorTable.BorderStyle = BorderStyle.None;
             doctorTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            doctorTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            doctorTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             doctorTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             doctorTable.Columns.AddRange(new DataGridViewColumn[] { doctorId, doctorFullName, doctorContactNumber, doctorEmail, doctorLocation, doctorAvailability, doctorExpertise, doctorOtherDetails });
             doctorTable.EnableHeadersVisualStyles = false;
@@ -217,11 +219,33 @@ namespace HealthCarePlus
             submitBtn.Text = "Add Schedule ➕";
             submitBtn.UseVisualStyleBackColor = false;
             // 
+            // noteLabel
+            // 
+            noteLabel.AutoSize = true;
+            noteLabel.Location = new Point(68, 72);
+            noteLabel.Name = "fullNameLabel";
+            noteLabel.Text = "Full Name";
+            noteLabel.Size = new Size(0, 15);
+            noteLabel.TabIndex = 34;
+            // 
+            // fullName
+            // 
+            fullName.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            fullName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            fullName.BorderStyle = BorderStyle.FixedSingle;
+            fullName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            fullName.Location = new Point(68, 90);
+            fullName.Name = "fullName";
+            fullName.Size = new Size(279, 33);
+            fullName.TabIndex = 33;
+            // 
             // DoctorAddForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1325, 834);
+            Controls.Add(noteLabel);
+            Controls.Add(fullName);
             Controls.Add(clearBtn);
             Controls.Add(deleteBtn);
             Controls.Add(updateBtn);
@@ -251,5 +275,7 @@ namespace HealthCarePlus
         private Button deleteBtn;
         private Button updateBtn;
         private Button submitBtn;
+        private Label noteLabel;
+        private TextBox fullName;
     }
 }
