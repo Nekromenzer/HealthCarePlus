@@ -28,14 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
             SuspendLayout();
             // 
             // AdminDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.White;
+            ClientSize = new Size(1325, 834);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Dashboard";
             Load += Form4_Load;
             ResumeLayout(false);

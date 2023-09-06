@@ -211,9 +211,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(976, 588);
+            ClientSize = new Size(1325, 834);
             Controls.Add(position);
             Controls.Add(navigateLogin);
             Controls.Add(label2);
@@ -230,7 +230,9 @@
             Controls.Add(registerBtn);
             Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Register";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Register";
             Load += Form1_Load;
             ResumeLayout(false);

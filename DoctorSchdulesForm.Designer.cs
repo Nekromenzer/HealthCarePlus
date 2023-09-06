@@ -31,6 +31,7 @@ namespace HealthCarePlus
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DoctorSchdulesForm));
             doctorId = new TextBox();
             doctorIdLabel = new Label();
             date = new DateTimePicker();
@@ -416,6 +417,7 @@ namespace HealthCarePlus
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(1325, 834);
             Controls.Add(clearBtn);
             Controls.Add(deleteBtn);
@@ -440,6 +442,7 @@ namespace HealthCarePlus
             Controls.Add(doctorIdLabel);
             Controls.Add(doctorId);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "DoctorSchdulesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Doctor Schedules";

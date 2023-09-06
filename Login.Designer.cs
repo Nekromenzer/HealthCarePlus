@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             emailLabel = new Label();
             email = new TextBox();
             passwordLabel = new Label();
@@ -40,7 +41,7 @@
             // emailLabel
             // 
             emailLabel.AutoSize = true;
-            emailLabel.Location = new Point(44, 128);
+            emailLabel.Location = new Point(441, 233);
             emailLabel.Name = "emailLabel";
             emailLabel.Size = new Size(36, 15);
             emailLabel.TabIndex = 7;
@@ -50,7 +51,7 @@
             // 
             email.BorderStyle = BorderStyle.FixedSingle;
             email.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            email.Location = new Point(44, 146);
+            email.Location = new Point(441, 251);
             email.Margin = new Padding(6);
             email.MinimumSize = new Size(30, 30);
             email.Name = "email";
@@ -61,7 +62,7 @@
             // passwordLabel
             // 
             passwordLabel.AutoSize = true;
-            passwordLabel.Location = new Point(44, 216);
+            passwordLabel.Location = new Point(441, 321);
             passwordLabel.Name = "passwordLabel";
             passwordLabel.Size = new Size(57, 15);
             passwordLabel.TabIndex = 11;
@@ -72,7 +73,7 @@
             password.BorderStyle = BorderStyle.FixedSingle;
             password.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             password.HideSelection = false;
-            password.Location = new Point(44, 234);
+            password.Location = new Point(441, 339);
             password.Margin = new Padding(6);
             password.MinimumSize = new Size(30, 30);
             password.Name = "password";
@@ -88,7 +89,7 @@
             LoginBtn.Cursor = Cursors.Hand;
             LoginBtn.FlatAppearance.BorderSize = 2;
             LoginBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            LoginBtn.Location = new Point(44, 326);
+            LoginBtn.Location = new Point(441, 431);
             LoginBtn.Name = "LoginBtn";
             LoginBtn.Size = new Size(321, 42);
             LoginBtn.TabIndex = 12;
@@ -99,7 +100,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(44, 410);
+            label1.Location = new Point(441, 515);
             label1.Name = "label1";
             label1.Size = new Size(134, 15);
             label1.TabIndex = 13;
@@ -109,7 +110,7 @@
             // 
             navigateRegister.BackColor = Color.Transparent;
             navigateRegister.ForeColor = Color.Black;
-            navigateRegister.Location = new Point(184, 406);
+            navigateRegister.Location = new Point(581, 511);
             navigateRegister.Name = "navigateRegister";
             navigateRegister.Size = new Size(75, 23);
             navigateRegister.TabIndex = 14;
@@ -121,7 +122,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(923, 560);
+            BackColor = Color.White;
+            ClientSize = new Size(1325, 834);
             Controls.Add(navigateRegister);
             Controls.Add(label1);
             Controls.Add(LoginBtn);
@@ -129,7 +131,9 @@
             Controls.Add(password);
             Controls.Add(emailLabel);
             Controls.Add(email);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             ResumeLayout(false);
             PerformLayout();
