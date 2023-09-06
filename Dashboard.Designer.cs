@@ -43,20 +43,24 @@
             roomSearchBtn = new Button();
             pictureBox3 = new PictureBox();
             scannersBtn = new Button();
+            textBox1 = new TextBox();
+            pictureBox4 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // addDoctorSchedulesBtn
             // 
             addDoctorSchedulesBtn.BackColor = Color.ForestGreen;
+            addDoctorSchedulesBtn.FlatAppearance.BorderSize = 0;
             addDoctorSchedulesBtn.FlatStyle = FlatStyle.Flat;
             addDoctorSchedulesBtn.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            addDoctorSchedulesBtn.ForeColor = Color.WhiteSmoke;
+            addDoctorSchedulesBtn.ForeColor = Color.White;
             addDoctorSchedulesBtn.Image = (Image)resources.GetObject("addDoctorSchedulesBtn.Image");
             addDoctorSchedulesBtn.ImageAlign = ContentAlignment.MiddleRight;
-            addDoctorSchedulesBtn.Location = new Point(128, 644);
+            addDoctorSchedulesBtn.Location = new Point(131, 676);
             addDoctorSchedulesBtn.Name = "addDoctorSchedulesBtn";
             addDoctorSchedulesBtn.Padding = new Padding(10, 0, 10, 0);
             addDoctorSchedulesBtn.Size = new Size(260, 49);
@@ -72,10 +76,10 @@
             manageDoctorBtn.FlatAppearance.BorderSize = 0;
             manageDoctorBtn.FlatStyle = FlatStyle.Flat;
             manageDoctorBtn.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            manageDoctorBtn.ForeColor = Color.WhiteSmoke;
+            manageDoctorBtn.ForeColor = Color.White;
             manageDoctorBtn.Image = (Image)resources.GetObject("manageDoctorBtn.Image");
             manageDoctorBtn.ImageAlign = ContentAlignment.MiddleRight;
-            manageDoctorBtn.Location = new Point(128, 556);
+            manageDoctorBtn.Location = new Point(131, 588);
             manageDoctorBtn.Margin = new Padding(0);
             manageDoctorBtn.Name = "manageDoctorBtn";
             manageDoctorBtn.Padding = new Padding(10, 0, 10, 0);
@@ -103,7 +107,7 @@
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(200, 297);
+            pictureBox1.Location = new Point(203, 329);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(118, 118);
             pictureBox1.TabIndex = 3;
@@ -116,10 +120,10 @@
             searchDoctorBtn.FlatAppearance.BorderSize = 0;
             searchDoctorBtn.FlatStyle = FlatStyle.Flat;
             searchDoctorBtn.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            searchDoctorBtn.ForeColor = Color.WhiteSmoke;
+            searchDoctorBtn.ForeColor = Color.White;
             searchDoctorBtn.Image = (Image)resources.GetObject("searchDoctorBtn.Image");
             searchDoctorBtn.ImageAlign = ContentAlignment.MiddleRight;
-            searchDoctorBtn.Location = new Point(128, 465);
+            searchDoctorBtn.Location = new Point(131, 497);
             searchDoctorBtn.Margin = new Padding(0);
             searchDoctorBtn.Name = "searchDoctorBtn";
             searchDoctorBtn.Padding = new Padding(10, 0, 10, 0);
@@ -135,10 +139,10 @@
             searchPatient.FlatAppearance.BorderSize = 0;
             searchPatient.FlatStyle = FlatStyle.Flat;
             searchPatient.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            searchPatient.ForeColor = Color.WhiteSmoke;
+            searchPatient.ForeColor = Color.White;
             searchPatient.Image = (Image)resources.GetObject("searchPatient.Image");
             searchPatient.ImageAlign = ContentAlignment.MiddleRight;
-            searchPatient.Location = new Point(537, 465);
+            searchPatient.Location = new Point(540, 497);
             searchPatient.Margin = new Padding(0);
             searchPatient.Name = "searchPatient";
             searchPatient.Padding = new Padding(10, 0, 10, 0);
@@ -154,7 +158,7 @@
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(621, 297);
+            pictureBox2.Location = new Point(624, 329);
             pictureBox2.Margin = new Padding(5, 3, 3, 3);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(118, 118);
@@ -167,10 +171,10 @@
             managePatientBtn.FlatAppearance.BorderSize = 0;
             managePatientBtn.FlatStyle = FlatStyle.Flat;
             managePatientBtn.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            managePatientBtn.ForeColor = Color.WhiteSmoke;
+            managePatientBtn.ForeColor = Color.White;
             managePatientBtn.Image = (Image)resources.GetObject("managePatientBtn.Image");
             managePatientBtn.ImageAlign = ContentAlignment.MiddleRight;
-            managePatientBtn.Location = new Point(537, 556);
+            managePatientBtn.Location = new Point(540, 588);
             managePatientBtn.Margin = new Padding(0);
             managePatientBtn.Name = "managePatientBtn";
             managePatientBtn.Padding = new Padding(10, 0, 10, 0);
@@ -183,12 +187,13 @@
             // addAppointmentBtn
             // 
             addAppointmentBtn.BackColor = Color.ForestGreen;
+            addAppointmentBtn.FlatAppearance.BorderSize = 0;
             addAppointmentBtn.FlatStyle = FlatStyle.Flat;
             addAppointmentBtn.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            addAppointmentBtn.ForeColor = Color.WhiteSmoke;
+            addAppointmentBtn.ForeColor = Color.White;
             addAppointmentBtn.Image = (Image)resources.GetObject("addAppointmentBtn.Image");
             addAppointmentBtn.ImageAlign = ContentAlignment.MiddleRight;
-            addAppointmentBtn.Location = new Point(537, 644);
+            addAppointmentBtn.Location = new Point(540, 676);
             addAppointmentBtn.Name = "addAppointmentBtn";
             addAppointmentBtn.Padding = new Padding(10, 0, 10, 0);
             addAppointmentBtn.Size = new Size(260, 49);
@@ -199,14 +204,14 @@
             // 
             // logoutBtn
             // 
-            logoutBtn.BackColor = SystemColors.ActiveBorder;
+            logoutBtn.BackColor = Color.Transparent;
             logoutBtn.FlatAppearance.BorderSize = 0;
             logoutBtn.FlatStyle = FlatStyle.Flat;
             logoutBtn.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             logoutBtn.ForeColor = Color.Black;
             logoutBtn.Image = (Image)resources.GetObject("logoutBtn.Image");
             logoutBtn.ImageAlign = ContentAlignment.MiddleRight;
-            logoutBtn.Location = new Point(1181, 9);
+            logoutBtn.Location = new Point(1063, 44);
             logoutBtn.Margin = new Padding(0);
             logoutBtn.Name = "logoutBtn";
             logoutBtn.Padding = new Padding(10, 0, 10, 0);
@@ -222,10 +227,10 @@
             roomSearchBtn.FlatAppearance.BorderSize = 0;
             roomSearchBtn.FlatStyle = FlatStyle.Flat;
             roomSearchBtn.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            roomSearchBtn.ForeColor = Color.WhiteSmoke;
+            roomSearchBtn.ForeColor = Color.White;
             roomSearchBtn.Image = (Image)resources.GetObject("roomSearchBtn.Image");
             roomSearchBtn.ImageAlign = ContentAlignment.MiddleRight;
-            roomSearchBtn.Location = new Point(935, 465);
+            roomSearchBtn.Location = new Point(938, 497);
             roomSearchBtn.Margin = new Padding(0);
             roomSearchBtn.Name = "roomSearchBtn";
             roomSearchBtn.Padding = new Padding(10, 0, 10, 0);
@@ -241,7 +246,7 @@
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox3.InitialImage = (Image)resources.GetObject("pictureBox3.InitialImage");
-            pictureBox3.Location = new Point(1019, 297);
+            pictureBox3.Location = new Point(1022, 329);
             pictureBox3.Margin = new Padding(5, 3, 3, 3);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(118, 118);
@@ -254,10 +259,10 @@
             scannersBtn.FlatAppearance.BorderSize = 0;
             scannersBtn.FlatStyle = FlatStyle.Flat;
             scannersBtn.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            scannersBtn.ForeColor = Color.WhiteSmoke;
+            scannersBtn.ForeColor = Color.White;
             scannersBtn.Image = (Image)resources.GetObject("scannersBtn.Image");
             scannersBtn.ImageAlign = ContentAlignment.MiddleRight;
-            scannersBtn.Location = new Point(935, 556);
+            scannersBtn.Location = new Point(938, 588);
             scannersBtn.Margin = new Padding(0);
             scannersBtn.Name = "scannersBtn";
             scannersBtn.Padding = new Padding(10, 0, 10, 0);
@@ -267,12 +272,42 @@
             scannersBtn.TextAlign = ContentAlignment.MiddleLeft;
             scannersBtn.UseVisualStyleBackColor = false;
             // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.White;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
+            textBox1.ForeColor = Color.DarkCyan;
+            textBox1.Location = new Point(131, 44);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(288, 47);
+            textBox1.TabIndex = 14;
+            textBox1.Text = "HealthCare Plus";
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackColor = Color.Transparent;
+            pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
+            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
+            pictureBox4.Location = new Point(405, 44);
+            pictureBox4.Margin = new Padding(5, 3, 3, 3);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(53, 47);
+            pictureBox4.TabIndex = 15;
+            pictureBox4.TabStop = false;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1325, 834);
+            Controls.Add(pictureBox4);
+            Controls.Add(textBox1);
             Controls.Add(roomSearchBtn);
             Controls.Add(pictureBox3);
             Controls.Add(scannersBtn);
@@ -294,7 +329,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -312,5 +349,7 @@
         private Button roomSearchBtn;
         private PictureBox pictureBox3;
         private Button scannersBtn;
+        private TextBox textBox1;
+        private PictureBox pictureBox4;
     }
 }
