@@ -62,13 +62,13 @@
             // 
             // fullName
             // 
-            fullName.BorderStyle = BorderStyle.None;
+            fullName.BorderStyle = BorderStyle.FixedSingle;
             fullName.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             fullName.Location = new Point(37, 67);
             fullName.Margin = new Padding(6);
             fullName.MinimumSize = new Size(30, 30);
             fullName.Name = "fullName";
-            fullName.Size = new Size(321, 30);
+            fullName.Size = new Size(321, 31);
             fullName.TabIndex = 1;
             fullName.TextChanged += fullName_TextChanged;
             // 
@@ -102,13 +102,14 @@
             // 
             // email
             // 
-            email.BorderStyle = BorderStyle.None;
+            email.BackColor = SystemColors.Window;
+            email.BorderStyle = BorderStyle.FixedSingle;
             email.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            email.Location = new Point(37, 133);
+            email.Location = new Point(35, 136);
             email.Margin = new Padding(6);
             email.MinimumSize = new Size(30, 30);
             email.Name = "email";
-            email.Size = new Size(321, 30);
+            email.Size = new Size(321, 31);
             email.TabIndex = 4;
             email.TextChanged += textBox1_TextChanged;
             // 
@@ -134,14 +135,14 @@
             // 
             // password
             // 
-            password.BorderStyle = BorderStyle.None;
+            password.BorderStyle = BorderStyle.FixedSingle;
             password.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             password.Location = new Point(37, 287);
             password.Margin = new Padding(6);
             password.MinimumSize = new Size(30, 30);
             password.Name = "password";
             password.PasswordChar = '*';
-            password.Size = new Size(321, 30);
+            password.Size = new Size(321, 31);
             password.TabIndex = 8;
             password.TextChanged += password_TextChanged;
             // 
@@ -156,14 +157,14 @@
             // 
             // confirmPassword
             // 
-            confirmPassword.BorderStyle = BorderStyle.None;
+            confirmPassword.BorderStyle = BorderStyle.FixedSingle;
             confirmPassword.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             confirmPassword.Location = new Point(37, 363);
             confirmPassword.Margin = new Padding(6);
             confirmPassword.MinimumSize = new Size(30, 30);
             confirmPassword.Name = "confirmPassword";
             confirmPassword.PasswordChar = '*';
-            confirmPassword.Size = new Size(321, 30);
+            confirmPassword.Size = new Size(321, 31);
             confirmPassword.TabIndex = 10;
             confirmPassword.TextChanged += confirmPassword_TextChanged;
             // 
