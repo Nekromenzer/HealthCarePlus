@@ -15,6 +15,7 @@ namespace HealthCarePlus
         public Dashboard()
         {
             InitializeComponent();
+            pictureBox1.BorderStyle = BorderStyle.None;
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -37,6 +38,11 @@ namespace HealthCarePlus
         {
             DoctorAddForm doctorSchdulesForm = new DoctorAddForm();
             doctorSchdulesForm.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
