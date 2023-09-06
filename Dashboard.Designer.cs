@@ -56,7 +56,7 @@
             addDoctorSchedulesBtn.ForeColor = Color.WhiteSmoke;
             addDoctorSchedulesBtn.Image = (Image)resources.GetObject("addDoctorSchedulesBtn.Image");
             addDoctorSchedulesBtn.ImageAlign = ContentAlignment.MiddleRight;
-            addDoctorSchedulesBtn.Location = new Point(108, 645);
+            addDoctorSchedulesBtn.Location = new Point(128, 644);
             addDoctorSchedulesBtn.Name = "addDoctorSchedulesBtn";
             addDoctorSchedulesBtn.Padding = new Padding(10, 0, 10, 0);
             addDoctorSchedulesBtn.Size = new Size(260, 49);
@@ -75,7 +75,7 @@
             manageDoctorBtn.ForeColor = Color.WhiteSmoke;
             manageDoctorBtn.Image = (Image)resources.GetObject("manageDoctorBtn.Image");
             manageDoctorBtn.ImageAlign = ContentAlignment.MiddleRight;
-            manageDoctorBtn.Location = new Point(108, 557);
+            manageDoctorBtn.Location = new Point(128, 556);
             manageDoctorBtn.Margin = new Padding(0);
             manageDoctorBtn.Name = "manageDoctorBtn";
             manageDoctorBtn.Padding = new Padding(10, 0, 10, 0);
@@ -103,7 +103,7 @@
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(180, 298);
+            pictureBox1.Location = new Point(200, 297);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(118, 118);
             pictureBox1.TabIndex = 3;
@@ -119,7 +119,7 @@
             searchDoctorBtn.ForeColor = Color.WhiteSmoke;
             searchDoctorBtn.Image = (Image)resources.GetObject("searchDoctorBtn.Image");
             searchDoctorBtn.ImageAlign = ContentAlignment.MiddleRight;
-            searchDoctorBtn.Location = new Point(108, 466);
+            searchDoctorBtn.Location = new Point(128, 465);
             searchDoctorBtn.Margin = new Padding(0);
             searchDoctorBtn.Name = "searchDoctorBtn";
             searchDoctorBtn.Padding = new Padding(10, 0, 10, 0);
@@ -138,7 +138,7 @@
             searchPatient.ForeColor = Color.WhiteSmoke;
             searchPatient.Image = (Image)resources.GetObject("searchPatient.Image");
             searchPatient.ImageAlign = ContentAlignment.MiddleRight;
-            searchPatient.Location = new Point(517, 466);
+            searchPatient.Location = new Point(537, 465);
             searchPatient.Margin = new Padding(0);
             searchPatient.Name = "searchPatient";
             searchPatient.Padding = new Padding(10, 0, 10, 0);
@@ -154,7 +154,7 @@
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(601, 298);
+            pictureBox2.Location = new Point(621, 297);
             pictureBox2.Margin = new Padding(5, 3, 3, 3);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(118, 118);
@@ -170,7 +170,7 @@
             managePatientBtn.ForeColor = Color.WhiteSmoke;
             managePatientBtn.Image = (Image)resources.GetObject("managePatientBtn.Image");
             managePatientBtn.ImageAlign = ContentAlignment.MiddleRight;
-            managePatientBtn.Location = new Point(517, 557);
+            managePatientBtn.Location = new Point(537, 556);
             managePatientBtn.Margin = new Padding(0);
             managePatientBtn.Name = "managePatientBtn";
             managePatientBtn.Padding = new Padding(10, 0, 10, 0);
@@ -188,7 +188,7 @@
             addAppointmentBtn.ForeColor = Color.WhiteSmoke;
             addAppointmentBtn.Image = (Image)resources.GetObject("addAppointmentBtn.Image");
             addAppointmentBtn.ImageAlign = ContentAlignment.MiddleRight;
-            addAppointmentBtn.Location = new Point(517, 645);
+            addAppointmentBtn.Location = new Point(537, 644);
             addAppointmentBtn.Name = "addAppointmentBtn";
             addAppointmentBtn.Padding = new Padding(10, 0, 10, 0);
             addAppointmentBtn.Size = new Size(260, 49);
@@ -225,7 +225,7 @@
             roomSearchBtn.ForeColor = Color.WhiteSmoke;
             roomSearchBtn.Image = (Image)resources.GetObject("roomSearchBtn.Image");
             roomSearchBtn.ImageAlign = ContentAlignment.MiddleRight;
-            roomSearchBtn.Location = new Point(915, 466);
+            roomSearchBtn.Location = new Point(935, 465);
             roomSearchBtn.Margin = new Padding(0);
             roomSearchBtn.Name = "roomSearchBtn";
             roomSearchBtn.Padding = new Padding(10, 0, 10, 0);
@@ -241,7 +241,7 @@
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox3.InitialImage = (Image)resources.GetObject("pictureBox3.InitialImage");
-            pictureBox3.Location = new Point(999, 298);
+            pictureBox3.Location = new Point(1019, 297);
             pictureBox3.Margin = new Padding(5, 3, 3, 3);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(118, 118);
@@ -257,7 +257,7 @@
             scannersBtn.ForeColor = Color.WhiteSmoke;
             scannersBtn.Image = (Image)resources.GetObject("scannersBtn.Image");
             scannersBtn.ImageAlign = ContentAlignment.MiddleRight;
-            scannersBtn.Location = new Point(915, 557);
+            scannersBtn.Location = new Point(935, 556);
             scannersBtn.Margin = new Padding(0);
             scannersBtn.Name = "scannersBtn";
             scannersBtn.Padding = new Padding(10, 0, 10, 0);
