@@ -441,7 +441,9 @@ namespace HealthCarePlus
             Controls.Add(doctorId);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "DoctorSchdulesForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Doctor Schedules";
+            TopMost = true;
             ((System.ComponentModel.ISupportInitialize)doctoSchdulesTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
