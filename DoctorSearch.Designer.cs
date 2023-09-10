@@ -53,8 +53,10 @@ namespace HealthCarePlus
             // doctorTable
             // 
             doctorTable.AllowUserToAddRows = false;
+            doctorTable.AllowUserToDeleteRows = false;
             doctorTable.AllowUserToOrderColumns = true;
             doctorTable.AllowUserToResizeColumns = false;
+            doctorTable.AllowUserToResizeRows = false;
             doctorTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             doctorTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             doctorTable.BackgroundColor = SystemColors.Control;

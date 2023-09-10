@@ -84,7 +84,7 @@ namespace HealthCarePlus
                 string? expertise = row.Cells["doctorExpertise"].Value.ToString();
                 string? contactNumber = row.Cells["doctorContactNumber"].Value.ToString();
                 string? email = row.Cells["doctorEmail"].Value.ToString();
-                string? avialability = row.Cells["doctorAvialability"].Value.ToString();
+                string? avialability = row.Cells["doctorAvailability"].Value.ToString();
                 string? other = row.Cells["doctorOtherDetails"].Value.ToString();
                 // Add more details as needed...
 
@@ -92,7 +92,7 @@ namespace HealthCarePlus
                 using (DoctorDetailsPopupForm popupForm = new DoctorDetailsPopupForm())
                 {
                     // Populate the labels or text boxes in the popup form with the extracted details
-                    popupForm.SetDoctorDetails(doctorName, location, expertise, contactNumber,email,avialability,other);
+                    popupForm.SetDoctorDetails(doctorName, location, expertise, contactNumber, email, avialability, other);
 
                     // Show the popup form
                     popupForm.ShowDialog();

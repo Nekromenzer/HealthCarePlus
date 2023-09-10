@@ -49,6 +49,7 @@
             // doctorNameLabel
             // 
             doctorNameLabel.AutoSize = true;
+            doctorNameLabel.BackColor = Color.Transparent;
             doctorNameLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             doctorNameLabel.Location = new Point(276, 218);
             doctorNameLabel.Name = "doctorNameLabel";
@@ -72,6 +73,7 @@
             // 
             // label1
             // 
+            label1.BackColor = Color.Transparent;
             label1.Enabled = false;
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -85,6 +87,7 @@
             // 
             // label2
             // 
+            label2.BackColor = Color.Transparent;
             label2.Enabled = false;
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -99,6 +102,7 @@
             // doctorEmailLabel
             // 
             doctorEmailLabel.AutoSize = true;
+            doctorEmailLabel.BackColor = Color.Transparent;
             doctorEmailLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             doctorEmailLabel.Location = new Point(276, 258);
             doctorEmailLabel.Name = "doctorEmailLabel";
@@ -108,6 +112,7 @@
             // 
             // label3
             // 
+            label3.BackColor = Color.Transparent;
             label3.Enabled = false;
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -122,6 +127,7 @@
             // doctorContactNumber
             // 
             doctorContactNumber.AutoSize = true;
+            doctorContactNumber.BackColor = Color.Transparent;
             doctorContactNumber.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             doctorContactNumber.Location = new Point(276, 297);
             doctorContactNumber.Name = "doctorContactNumber";
@@ -131,6 +137,7 @@
             // 
             // label4
             // 
+            label4.BackColor = Color.Transparent;
             label4.Enabled = false;
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -145,6 +152,7 @@
             // doctorLocation
             // 
             doctorLocation.AutoSize = true;
+            doctorLocation.BackColor = Color.Transparent;
             doctorLocation.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             doctorLocation.Location = new Point(276, 336);
             doctorLocation.Name = "doctorLocation";
@@ -154,6 +162,7 @@
             // 
             // labelava
             // 
+            labelava.BackColor = Color.Transparent;
             labelava.Enabled = false;
             labelava.FlatStyle = FlatStyle.Flat;
             labelava.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -168,6 +177,7 @@
             // doctorAvailability
             // 
             doctorAvailability.AutoSize = true;
+            doctorAvailability.BackColor = Color.Transparent;
             doctorAvailability.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             doctorAvailability.Location = new Point(276, 376);
             doctorAvailability.Name = "doctorAvailability";
@@ -177,6 +187,7 @@
             // 
             // label5
             // 
+            label5.BackColor = Color.Transparent;
             label5.Enabled = false;
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -191,6 +202,7 @@
             // doctorExpertise
             // 
             doctorExpertise.AutoSize = true;
+            doctorExpertise.BackColor = Color.Transparent;
             doctorExpertise.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             doctorExpertise.Location = new Point(276, 418);
             doctorExpertise.Name = "doctorExpertise";
@@ -200,6 +212,7 @@
             // 
             // doctorOtherDetails
             // 
+            doctorOtherDetails.BackColor = Color.White;
             doctorOtherDetails.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             doctorOtherDetails.Location = new Point(88, 488);
             doctorOtherDetails.Name = "doctorOtherDetails";
@@ -211,6 +224,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(521, 664);
             Controls.Add(doctorOtherDetails);
             Controls.Add(label5);

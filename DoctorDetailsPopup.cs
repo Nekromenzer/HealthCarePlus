@@ -22,9 +22,13 @@ namespace HealthCarePlus
 
         public void SetDoctorDetails(string doctorName, string location, string expertise, string contactNumber, string email, string avialability, string other)
         {
-            // Populate the labels or text boxes with the provided details
-            //doctorNameLabel.Text = doctorName;
             doctorNameLabel.Text = doctorName;
+            doctorLocation.Text = location;
+            doctorExpertise.Text = expertise;
+            doctorContactNumber.Text = contactNumber;
+            doctorOtherDetails.Text = other;
+            doctorContactNumber.Text = contactNumber;
+            doctorOtherDetails.Text = other;
         }
 
         private void doctorNameLabel_Click(object sender, EventArgs e)
