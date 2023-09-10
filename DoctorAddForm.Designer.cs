@@ -51,14 +51,14 @@ namespace HealthCarePlus
             emailLabel = new Label();
             email = new TextBox();
             label2 = new Label();
-            textBox1 = new TextBox();
+            phone = new TextBox();
             location = new ComboBox();
             locationLabel = new Label();
-            comboBox1 = new ComboBox();
+            expertise = new ComboBox();
             label3 = new Label();
-            checkBox1 = new CheckBox();
+            available = new CheckBox();
             label4 = new Label();
-            textBox2 = new TextBox();
+            otherDetails = new TextBox();
             ((System.ComponentModel.ISupportInitialize)doctorTable).BeginInit();
             SuspendLayout();
             // 
@@ -262,6 +262,7 @@ namespace HealthCarePlus
             submitBtn.Text = "Add Doctor";
             submitBtn.TextAlign = ContentAlignment.MiddleLeft;
             submitBtn.UseVisualStyleBackColor = false;
+            submitBtn.Click += submitBtn_Click;
             // 
             // emailLabel
             // 
@@ -293,17 +294,17 @@ namespace HealthCarePlus
             label2.TabIndex = 44;
             label2.Text = "Phone";
             // 
-            // textBox1
+            // phone
             // 
-            textBox1.BackColor = SystemColors.Window;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(679, 90);
-            textBox1.Margin = new Padding(6);
-            textBox1.MinimumSize = new Size(30, 30);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(279, 31);
-            textBox1.TabIndex = 43;
+            phone.BackColor = SystemColors.Window;
+            phone.BorderStyle = BorderStyle.FixedSingle;
+            phone.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            phone.Location = new Point(679, 90);
+            phone.Margin = new Padding(6);
+            phone.MinimumSize = new Size(30, 30);
+            phone.Name = "phone";
+            phone.Size = new Size(279, 31);
+            phone.TabIndex = 43;
             // 
             // location
             // 
@@ -324,15 +325,17 @@ namespace HealthCarePlus
             locationLabel.TabIndex = 45;
             locationLabel.Text = "Location";
             // 
-            // comboBox1
+            // expertise
             // 
-            comboBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
-            comboBox1.Location = new Point(68, 155);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(279, 33);
-            comboBox1.TabIndex = 48;
+            expertise.AutoCompleteCustomSource.AddRange(new string[] { "Cardiology", "Dermatology", "Gastroenterology", "Neurology", "Orthopedics", "Pediatrics", "Psychiatry", "Radiology", "Surgery", "Urology" });
+            expertise.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            expertise.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            expertise.FormattingEnabled = true;
+            expertise.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            expertise.Location = new Point(68, 155);
+            expertise.Name = "expertise";
+            expertise.Size = new Size(279, 33);
+            expertise.TabIndex = 48;
             // 
             // label3
             // 
@@ -343,16 +346,17 @@ namespace HealthCarePlus
             label3.TabIndex = 47;
             label3.Text = "Expertise";
             // 
-            // checkBox1
+            // available
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            checkBox1.Location = new Point(369, 155);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(106, 29);
-            checkBox1.TabIndex = 49;
-            checkBox1.Text = "available";
-            checkBox1.UseVisualStyleBackColor = true;
+            available.AutoSize = true;
+            available.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            available.Location = new Point(369, 155);
+            available.Name = "available";
+            available.Padding = new Padding(4, 0, 0, 0);
+            available.Size = new Size(110, 29);
+            available.TabIndex = 49;
+            available.Text = "available";
+            available.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -363,31 +367,32 @@ namespace HealthCarePlus
             label4.TabIndex = 51;
             label4.Text = "Other Details";
             // 
-            // textBox2
+            // otherDetails
             // 
-            textBox2.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
-            textBox2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(507, 156);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(754, 33);
-            textBox2.TabIndex = 50;
+            otherDetails.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            otherDetails.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            otherDetails.BorderStyle = BorderStyle.FixedSingle;
+            otherDetails.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            otherDetails.Location = new Point(507, 156);
+            otherDetails.Name = "otherDetails";
+            otherDetails.Size = new Size(754, 33);
+            otherDetails.TabIndex = 50;
             // 
             // DoctorAddForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
             Controls.Add(label4);
-            Controls.Add(textBox2);
-            Controls.Add(checkBox1);
-            Controls.Add(comboBox1);
+            Controls.Add(otherDetails);
+            Controls.Add(available);
+            Controls.Add(expertise);
             Controls.Add(label3);
             Controls.Add(location);
             Controls.Add(locationLabel);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(phone);
             Controls.Add(emailLabel);
             Controls.Add(email);
             Controls.Add(clearBtn);
@@ -398,6 +403,7 @@ namespace HealthCarePlus
             Controls.Add(fullName);
             Controls.Add(label1);
             Controls.Add(doctorTable);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "DoctorAddForm";
             Text = "Add Doctor";
             ((System.ComponentModel.ISupportInitialize)doctorTable).EndInit();
@@ -426,13 +432,13 @@ namespace HealthCarePlus
         private Label emailLabel;
         private TextBox email;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox phone;
         private ComboBox location;
         private Label locationLabel;
-        private ComboBox comboBox1;
+        private ComboBox expertise;
         private Label label3;
-        private CheckBox checkBox1;
+        private CheckBox available;
         private Label label4;
-        private TextBox textBox2;
+        private TextBox otherDetails;
     }
 }

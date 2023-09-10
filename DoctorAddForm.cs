@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,10 +39,53 @@ namespace HealthCarePlus
             }
         }
 
+        private void ClearFormFields()
+        {
+            fullName.Text = "";
+            phone.Text = "";
+            email.Text = "";
+            location.SelectedIndex = -1;
+            expertise.SelectedIndex = -1;
+        }
+
 
         private void doctorTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+
+
+        private void submitBtn_Click(object sender, EventArgs e)
+        {
+            string doctorName = fullName.Text;
+            string contactNumber = phone.Text;
+            string doctorEmail = email.Text;
+            string? doctorLocation = location.SelectedItem.ToString();
+            string? doctorExpertise = expertise.SelectedItem.ToString();
+            string doctorAvailable = available.Checked ? "available" : "not available" ;
+            string doctorOtherDetails = otherDetails.Text;
+
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+
+                string insertQuery = "INSERT INTO doctors (FullName, ContactNumber, Email, Location, Expertise,Availability,OtherDetails) " +
+                                     "VALUES (@FullName, @ContactNumber, @Email, @Location, @Expertise,@Availability,@OtherDetails)";
+
+                MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
+                cmd.Parameters.AddWithValue("@FullName", doctorName);
+                cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
+                cmd.Parameters.AddWithValue("@Email", doctorEmail);
+                cmd.Parameters.AddWithValue("@Location", doctorLocation);
+                cmd.Parameters.AddWithValue("@Expertise", doctorExpertise);
+                cmd.Parameters.AddWithValue("@Availability", doctorAvailable);
+                cmd.Parameters.AddWithValue("@OtherDetails", doctorOtherDetails);
+                cmd.ExecuteNonQuery();
+            }
+            MessageBox.Show("Doctor added successfully.");
+            DisplayDoctorList();
+            ClearFormFields();
         }
     }
 }
