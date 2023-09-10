@@ -30,8 +30,8 @@ namespace HealthCarePlus
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DoctorSchdulesForm));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             doctorId = new TextBox();
             doctorIdLabel = new Label();
             date = new DateTimePicker();
@@ -211,17 +211,20 @@ namespace HealthCarePlus
             // 
             // submitBtn
             // 
-            submitBtn.BackColor = Color.DodgerBlue;
+            submitBtn.BackColor = Color.MediumSeaGreen;
             submitBtn.BackgroundImageLayout = ImageLayout.None;
             submitBtn.Cursor = Cursors.Hand;
             submitBtn.FlatAppearance.BorderSize = 0;
             submitBtn.FlatStyle = FlatStyle.Flat;
             submitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            submitBtn.Image = (Image)resources.GetObject("submitBtn.Image");
+            submitBtn.ImageAlign = ContentAlignment.MiddleRight;
             submitBtn.Location = new Point(77, 235);
             submitBtn.Name = "submitBtn";
             submitBtn.Size = new Size(167, 37);
             submitBtn.TabIndex = 21;
-            submitBtn.Text = "Add Schedule ➕";
+            submitBtn.Text = "Add Schedule";
+            submitBtn.TextAlign = ContentAlignment.MiddleLeft;
             submitBtn.UseVisualStyleBackColor = false;
             submitBtn.Click += submitBtn_Click;
             // 
@@ -372,11 +375,14 @@ namespace HealthCarePlus
             updateBtn.FlatStyle = FlatStyle.Flat;
             updateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             updateBtn.ForeColor = SystemColors.ActiveCaptionText;
+            updateBtn.Image = (Image)resources.GetObject("updateBtn.Image");
+            updateBtn.ImageAlign = ContentAlignment.MiddleRight;
             updateBtn.Location = new Point(282, 235);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(167, 37);
             updateBtn.TabIndex = 26;
-            updateBtn.Text = "Update  🔧";
+            updateBtn.Text = "Update ";
+            updateBtn.TextAlign = ContentAlignment.MiddleLeft;
             updateBtn.UseVisualStyleBackColor = false;
             updateBtn.Click += updateBtn_Click;
             // 
@@ -389,11 +395,14 @@ namespace HealthCarePlus
             deleteBtn.FlatStyle = FlatStyle.Flat;
             deleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             deleteBtn.ForeColor = SystemColors.ButtonHighlight;
+            deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
+            deleteBtn.ImageAlign = ContentAlignment.MiddleRight;
             deleteBtn.Location = new Point(488, 235);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(167, 37);
             deleteBtn.TabIndex = 27;
-            deleteBtn.Text = "Delete ❌";
+            deleteBtn.Text = "Delete";
+            deleteBtn.TextAlign = ContentAlignment.MiddleLeft;
             deleteBtn.UseVisualStyleBackColor = false;
             deleteBtn.Click += deleteBtn_Click;
             // 
@@ -405,12 +414,15 @@ namespace HealthCarePlus
             clearBtn.FlatAppearance.BorderSize = 0;
             clearBtn.FlatStyle = FlatStyle.Flat;
             clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            clearBtn.ForeColor = Color.DimGray;
+            clearBtn.ForeColor = SystemColors.Desktop;
+            clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
+            clearBtn.ImageAlign = ContentAlignment.MiddleRight;
             clearBtn.Location = new Point(774, 235);
             clearBtn.Name = "clearBtn";
             clearBtn.Size = new Size(167, 37);
             clearBtn.TabIndex = 28;
             clearBtn.Text = "clear";
+            clearBtn.TextAlign = ContentAlignment.MiddleLeft;
             clearBtn.UseVisualStyleBackColor = false;
             clearBtn.Click += clearBtn_Click;
             // 
@@ -419,6 +431,7 @@ namespace HealthCarePlus
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
             Controls.Add(clearBtn);
             Controls.Add(deleteBtn);

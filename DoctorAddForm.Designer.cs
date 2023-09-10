@@ -31,6 +31,7 @@ namespace HealthCarePlus
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DoctorAddForm));
             doctorTable = new DataGridView();
             doctorId = new DataGridViewTextBoxColumn();
             doctorFullName = new DataGridViewTextBoxColumn();
@@ -41,12 +42,23 @@ namespace HealthCarePlus
             doctorExpertise = new DataGridViewTextBoxColumn();
             doctorOtherDetails = new DataGridViewTextBoxColumn();
             label1 = new Label();
+            noteLabel = new Label();
+            fullName = new TextBox();
             clearBtn = new Button();
             deleteBtn = new Button();
             updateBtn = new Button();
             submitBtn = new Button();
-            noteLabel = new Label();
-            fullName = new TextBox();
+            emailLabel = new Label();
+            email = new TextBox();
+            label2 = new Label();
+            textBox1 = new TextBox();
+            location = new ComboBox();
+            locationLabel = new Label();
+            comboBox1 = new ComboBox();
+            label3 = new Label();
+            checkBox1 = new CheckBox();
+            label4 = new Label();
+            textBox2 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)doctorTable).BeginInit();
             SuspendLayout();
             // 
@@ -71,7 +83,7 @@ namespace HealthCarePlus
             doctorTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             doctorTable.Columns.AddRange(new DataGridViewColumn[] { doctorId, doctorFullName, doctorContactNumber, doctorEmail, doctorLocation, doctorAvailability, doctorExpertise, doctorOtherDetails });
             doctorTable.EnableHeadersVisualStyles = false;
-            doctorTable.Location = new Point(68, 309);
+            doctorTable.Location = new Point(68, 304);
             doctorTable.Name = "doctorTable";
             doctorTable.RowHeadersVisible = false;
             doctorTable.RowTemplate.Height = 25;
@@ -156,77 +168,14 @@ namespace HealthCarePlus
             label1.TabIndex = 23;
             label1.Text = "Add Doctor";
             // 
-            // clearBtn
-            // 
-            clearBtn.BackColor = Color.White;
-            clearBtn.BackgroundImageLayout = ImageLayout.None;
-            clearBtn.Cursor = Cursors.Hand;
-            clearBtn.FlatAppearance.BorderSize = 0;
-            clearBtn.FlatStyle = FlatStyle.Flat;
-            clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            clearBtn.ForeColor = Color.DimGray;
-            clearBtn.Location = new Point(767, 226);
-            clearBtn.Name = "clearBtn";
-            clearBtn.Size = new Size(167, 37);
-            clearBtn.TabIndex = 32;
-            clearBtn.Text = "clear";
-            clearBtn.UseVisualStyleBackColor = false;
-            // 
-            // deleteBtn
-            // 
-            deleteBtn.BackColor = Color.IndianRed;
-            deleteBtn.BackgroundImageLayout = ImageLayout.None;
-            deleteBtn.Cursor = Cursors.Hand;
-            deleteBtn.FlatAppearance.BorderSize = 0;
-            deleteBtn.FlatStyle = FlatStyle.Flat;
-            deleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            deleteBtn.ForeColor = SystemColors.ButtonHighlight;
-            deleteBtn.Location = new Point(481, 226);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(167, 37);
-            deleteBtn.TabIndex = 31;
-            deleteBtn.Text = "Delete ❌";
-            deleteBtn.UseVisualStyleBackColor = false;
-            // 
-            // updateBtn
-            // 
-            updateBtn.BackColor = Color.Gold;
-            updateBtn.BackgroundImageLayout = ImageLayout.None;
-            updateBtn.Cursor = Cursors.Hand;
-            updateBtn.FlatAppearance.BorderSize = 0;
-            updateBtn.FlatStyle = FlatStyle.Flat;
-            updateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            updateBtn.ForeColor = SystemColors.ActiveCaptionText;
-            updateBtn.Location = new Point(275, 226);
-            updateBtn.Name = "updateBtn";
-            updateBtn.Size = new Size(167, 37);
-            updateBtn.TabIndex = 30;
-            updateBtn.Text = "Update  🔧";
-            updateBtn.UseVisualStyleBackColor = false;
-            // 
-            // submitBtn
-            // 
-            submitBtn.BackColor = Color.DodgerBlue;
-            submitBtn.BackgroundImageLayout = ImageLayout.None;
-            submitBtn.Cursor = Cursors.Hand;
-            submitBtn.FlatAppearance.BorderSize = 0;
-            submitBtn.FlatStyle = FlatStyle.Flat;
-            submitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            submitBtn.Location = new Point(68, 226);
-            submitBtn.Name = "submitBtn";
-            submitBtn.Size = new Size(167, 37);
-            submitBtn.TabIndex = 29;
-            submitBtn.Text = "Add Schedule ➕";
-            submitBtn.UseVisualStyleBackColor = false;
-            // 
             // noteLabel
             // 
             noteLabel.AutoSize = true;
             noteLabel.Location = new Point(68, 72);
-            noteLabel.Name = "fullNameLabel";
-            noteLabel.Text = "Full Name";
-            noteLabel.Size = new Size(0, 15);
+            noteLabel.Name = "noteLabel";
+            noteLabel.Size = new Size(61, 15);
             noteLabel.TabIndex = 34;
+            noteLabel.Text = "Full Name";
             // 
             // fullName
             // 
@@ -239,17 +188,214 @@ namespace HealthCarePlus
             fullName.Size = new Size(279, 33);
             fullName.TabIndex = 33;
             // 
+            // clearBtn
+            // 
+            clearBtn.BackColor = Color.White;
+            clearBtn.BackgroundImageLayout = ImageLayout.None;
+            clearBtn.Cursor = Cursors.Hand;
+            clearBtn.FlatAppearance.BorderSize = 0;
+            clearBtn.FlatStyle = FlatStyle.Flat;
+            clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            clearBtn.ForeColor = SystemColors.Desktop;
+            clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
+            clearBtn.ImageAlign = ContentAlignment.MiddleRight;
+            clearBtn.Location = new Point(766, 231);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(167, 37);
+            clearBtn.TabIndex = 38;
+            clearBtn.Text = "clear";
+            clearBtn.TextAlign = ContentAlignment.MiddleLeft;
+            clearBtn.UseVisualStyleBackColor = false;
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.BackColor = Color.IndianRed;
+            deleteBtn.BackgroundImageLayout = ImageLayout.None;
+            deleteBtn.Cursor = Cursors.Hand;
+            deleteBtn.FlatAppearance.BorderSize = 0;
+            deleteBtn.FlatStyle = FlatStyle.Flat;
+            deleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            deleteBtn.ForeColor = SystemColors.ButtonHighlight;
+            deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
+            deleteBtn.ImageAlign = ContentAlignment.MiddleRight;
+            deleteBtn.Location = new Point(480, 231);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(167, 37);
+            deleteBtn.TabIndex = 37;
+            deleteBtn.Text = "Delete";
+            deleteBtn.TextAlign = ContentAlignment.MiddleLeft;
+            deleteBtn.UseVisualStyleBackColor = false;
+            // 
+            // updateBtn
+            // 
+            updateBtn.BackColor = Color.Gold;
+            updateBtn.BackgroundImageLayout = ImageLayout.None;
+            updateBtn.Cursor = Cursors.Hand;
+            updateBtn.FlatAppearance.BorderSize = 0;
+            updateBtn.FlatStyle = FlatStyle.Flat;
+            updateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            updateBtn.ForeColor = SystemColors.ActiveCaptionText;
+            updateBtn.Image = (Image)resources.GetObject("updateBtn.Image");
+            updateBtn.ImageAlign = ContentAlignment.MiddleRight;
+            updateBtn.Location = new Point(274, 231);
+            updateBtn.Name = "updateBtn";
+            updateBtn.Size = new Size(167, 37);
+            updateBtn.TabIndex = 36;
+            updateBtn.Text = "Update ";
+            updateBtn.TextAlign = ContentAlignment.MiddleLeft;
+            updateBtn.UseVisualStyleBackColor = false;
+            // 
+            // submitBtn
+            // 
+            submitBtn.BackColor = Color.MediumSeaGreen;
+            submitBtn.BackgroundImageLayout = ImageLayout.None;
+            submitBtn.Cursor = Cursors.Hand;
+            submitBtn.FlatAppearance.BorderSize = 0;
+            submitBtn.FlatStyle = FlatStyle.Flat;
+            submitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            submitBtn.Image = (Image)resources.GetObject("submitBtn.Image");
+            submitBtn.ImageAlign = ContentAlignment.MiddleRight;
+            submitBtn.Location = new Point(69, 231);
+            submitBtn.Name = "submitBtn";
+            submitBtn.Size = new Size(167, 37);
+            submitBtn.TabIndex = 35;
+            submitBtn.Text = "Add Doctor";
+            submitBtn.TextAlign = ContentAlignment.MiddleLeft;
+            submitBtn.UseVisualStyleBackColor = false;
+            // 
+            // emailLabel
+            // 
+            emailLabel.AutoSize = true;
+            emailLabel.Location = new Point(369, 72);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new Size(36, 15);
+            emailLabel.TabIndex = 42;
+            emailLabel.Text = "Email";
+            // 
+            // email
+            // 
+            email.BackColor = SystemColors.Window;
+            email.BorderStyle = BorderStyle.FixedSingle;
+            email.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            email.Location = new Point(369, 90);
+            email.Margin = new Padding(6);
+            email.MinimumSize = new Size(30, 30);
+            email.Name = "email";
+            email.Size = new Size(279, 31);
+            email.TabIndex = 41;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(679, 72);
+            label2.Name = "label2";
+            label2.Size = new Size(41, 15);
+            label2.TabIndex = 44;
+            label2.Text = "Phone";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.Window;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(679, 90);
+            textBox1.Margin = new Padding(6);
+            textBox1.MinimumSize = new Size(30, 30);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(279, 31);
+            textBox1.TabIndex = 43;
+            // 
+            // location
+            // 
+            location.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            location.FormattingEnabled = true;
+            location.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            location.Location = new Point(982, 90);
+            location.Name = "location";
+            location.Size = new Size(279, 33);
+            location.TabIndex = 46;
+            // 
+            // locationLabel
+            // 
+            locationLabel.AutoSize = true;
+            locationLabel.Location = new Point(982, 72);
+            locationLabel.Name = "locationLabel";
+            locationLabel.Size = new Size(53, 15);
+            locationLabel.TabIndex = 45;
+            locationLabel.Text = "Location";
+            // 
+            // comboBox1
+            // 
+            comboBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            comboBox1.Location = new Point(68, 155);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(279, 33);
+            comboBox1.TabIndex = 48;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(68, 137);
+            label3.Name = "label3";
+            label3.Size = new Size(54, 15);
+            label3.TabIndex = 47;
+            label3.Text = "Expertise";
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBox1.Location = new Point(369, 155);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(106, 29);
+            checkBox1.TabIndex = 49;
+            checkBox1.Text = "available";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(507, 138);
+            label4.Name = "label4";
+            label4.Size = new Size(75, 15);
+            label4.TabIndex = 51;
+            label4.Text = "Other Details";
+            // 
+            // textBox2
+            // 
+            textBox2.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            textBox2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox2.Location = new Point(507, 156);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(754, 33);
+            textBox2.TabIndex = 50;
+            // 
             // DoctorAddForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1325, 834);
-            Controls.Add(noteLabel);
-            Controls.Add(fullName);
+            Controls.Add(label4);
+            Controls.Add(textBox2);
+            Controls.Add(checkBox1);
+            Controls.Add(comboBox1);
+            Controls.Add(label3);
+            Controls.Add(location);
+            Controls.Add(locationLabel);
+            Controls.Add(label2);
+            Controls.Add(textBox1);
+            Controls.Add(emailLabel);
+            Controls.Add(email);
             Controls.Add(clearBtn);
             Controls.Add(deleteBtn);
             Controls.Add(updateBtn);
             Controls.Add(submitBtn);
+            Controls.Add(noteLabel);
+            Controls.Add(fullName);
             Controls.Add(label1);
             Controls.Add(doctorTable);
             Name = "DoctorAddForm";
@@ -271,11 +417,22 @@ namespace HealthCarePlus
         private DataGridViewTextBoxColumn doctorExpertise;
         private DataGridViewTextBoxColumn doctorOtherDetails;
         private Label label1;
+        private Label noteLabel;
+        private TextBox fullName;
         private Button clearBtn;
         private Button deleteBtn;
         private Button updateBtn;
         private Button submitBtn;
-        private Label noteLabel;
-        private TextBox fullName;
+        private Label emailLabel;
+        private TextBox email;
+        private Label label2;
+        private TextBox textBox1;
+        private ComboBox location;
+        private Label locationLabel;
+        private ComboBox comboBox1;
+        private Label label3;
+        private CheckBox checkBox1;
+        private Label label4;
+        private TextBox textBox2;
     }
 }
