@@ -46,6 +46,7 @@ namespace HealthCarePlus
             available = new CheckBox();
             clearBtn = new Button();
             label1 = new Label();
+            helpProvider = new HelpProvider();
             ((System.ComponentModel.ISupportInitialize)doctorTable).BeginInit();
             SuspendLayout();
             // 
@@ -243,5 +244,6 @@ namespace HealthCarePlus
         private CheckBox available;
         private Button clearBtn;
         private Label label1;
+        private HelpProvider helpProvider;
     }
 }

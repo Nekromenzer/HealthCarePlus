@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace HealthCarePlus
@@ -72,6 +73,27 @@ namespace HealthCarePlus
 
         private void doctorTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                // Get the selected row
+                DataGridViewRow row = doctorTable.Rows[e.RowIndex];
+
+                // Extract the doctor's details from the selected row
+                string? doctorName = row.Cells["doctorFullName"].Value.ToString();
+                string? location = row.Cells["doctorLocation"].Value.ToString();
+                string? expertise = row.Cells["doctorExpertise"].Value.ToString();
+                // Add more details as needed...
+
+                // Create and show the popup form with the details
+                using (DoctorDetailsPopupForm popupForm = new DoctorDetailsPopupForm())
+                {
+                    // Populate the labels or text boxes in the popup form with the extracted details
+                    popupForm.SetDoctorDetails(doctorName, location, expertise);
+
+                    // Show the popup form
+                    popupForm.ShowDialog();
+                }
+            }
         }
 
         private void searchInput_TextChanged_1(object sender, EventArgs e)
