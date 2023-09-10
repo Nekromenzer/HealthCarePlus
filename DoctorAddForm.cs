@@ -177,7 +177,7 @@ namespace HealthCarePlus
             }
         }
 
-        private bool UpdateDoctor(int doctorId, string fullName, string contactNumber, string email, string location, string expertise, string otherDetails ,string doctorAvailable)
+        private bool UpdateDoctor(int doctorId, string fullName, string contactNumber, string email, string location, string expertise, string otherDetails, string doctorAvailable)
         {
             // Implement the database update logic here
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
