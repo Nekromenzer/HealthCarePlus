@@ -132,6 +132,7 @@
             searchDoctorBtn.Text = "Search Doctor";
             searchDoctorBtn.TextAlign = ContentAlignment.MiddleLeft;
             searchDoctorBtn.UseVisualStyleBackColor = false;
+            searchDoctorBtn.Click += searchDoctorBtn_Click;
             // 
             // searchPatient
             // 

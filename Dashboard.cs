@@ -54,5 +54,11 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void searchDoctorBtn_Click(object sender, EventArgs e)
+        {
+            searchForm searchForm  = new searchForm();
+            searchForm.Show();
+        }
     }
 }
