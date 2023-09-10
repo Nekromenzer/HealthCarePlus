@@ -91,7 +91,9 @@ namespace HealthCarePlus
             doctorTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             doctorTable.Size = new Size(1193, 484);
             doctorTable.TabIndex = 0;
+            doctorTable.CellClick += doctorTable_CellClick;
             doctorTable.CellContentClick += doctorTable_CellContentClick;
+            doctorTable.SelectionChanged += doctorTable_SelectionChanged;
             // 
             // doctorId
             // 

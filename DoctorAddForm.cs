@@ -46,7 +46,8 @@ namespace HealthCarePlus
             email.Text = "";
             location.SelectedIndex = -1;
             expertise.SelectedIndex = -1;
-            otherDetails.Text = " ";
+            otherDetails.Text = "";
+            available.Checked = false;
         }
 
 
@@ -55,7 +56,37 @@ namespace HealthCarePlus
 
         }
 
+        private void doctorTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = doctorTable.Rows[e.RowIndex];
+                fullName.Text = row.Cells["doctorFullName"].Value.ToString();
+                phone.Text = row.Cells["doctorContactNumber"].Value.ToString();
+                email.Text = row.Cells["doctorEmail"].Value.ToString();
+                location.SelectedItem = row.Cells["doctorLocation"].Value.ToString();
+                expertise.SelectedItem = row.Cells["doctorExpertise"].Value.ToString();
+                available.Checked = row.Cells["doctorAvailability"].Value.ToString() == "Available";
+                otherDetails.Text = row.Cells["doctorOtherDetails"].Value.ToString();
+            }
+        }
 
+        private void doctorTable_SelectionChanged(object sender, EventArgs e)
+        {
+            if (doctorTable.SelectedRows.Count > 0)
+            {
+                submitBtn.Enabled = false;
+                updateBtn.Enabled = true;
+                deleteBtn.Enabled = true;
+                ClearFormFields();
+            }
+            else
+            {
+                submitBtn.Enabled = true;
+                updateBtn.Enabled = false;
+                deleteBtn.Enabled = false;
+            }
+        }
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
@@ -64,7 +95,7 @@ namespace HealthCarePlus
             string doctorEmail = email.Text;
             string? doctorLocation = location.SelectedItem.ToString();
             string? doctorExpertise = expertise.SelectedItem.ToString();
-            string doctorAvailable = available.Checked ? "available" : "not available";
+            string doctorAvailable = available.Checked ? "Available" : "Not Available";
             string doctorOtherDetails = otherDetails.Text;
 
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
@@ -92,6 +123,7 @@ namespace HealthCarePlus
         private void clearBtn_Click(object sender, EventArgs e)
         {
             ClearFormFields();
+            doctorTable.ClearSelection();
         }
 
         private bool DeleteDoctor(string primaryKeyValue)
