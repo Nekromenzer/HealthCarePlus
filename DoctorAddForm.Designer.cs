@@ -206,6 +206,7 @@ namespace HealthCarePlus
             clearBtn.Text = "clear";
             clearBtn.TextAlign = ContentAlignment.MiddleLeft;
             clearBtn.UseVisualStyleBackColor = false;
+            clearBtn.Click += clearBtn_Click;
             // 
             // deleteBtn
             // 
@@ -225,6 +226,7 @@ namespace HealthCarePlus
             deleteBtn.Text = "Delete";
             deleteBtn.TextAlign = ContentAlignment.MiddleLeft;
             deleteBtn.UseVisualStyleBackColor = false;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // updateBtn
             // 
@@ -331,7 +333,7 @@ namespace HealthCarePlus
             expertise.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             expertise.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             expertise.FormattingEnabled = true;
-            expertise.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            expertise.Items.AddRange(new object[] { "Cardiology", "Dermatology", "Gastroenterology", "Neurology", "Orthopedics", "Pediatrics", "Psychiatry", "Radiology", "Surgery", "Urology" });
             expertise.Location = new Point(68, 155);
             expertise.Name = "expertise";
             expertise.Size = new Size(279, 33);

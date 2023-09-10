@@ -46,6 +46,7 @@ namespace HealthCarePlus
             email.Text = "";
             location.SelectedIndex = -1;
             expertise.SelectedIndex = -1;
+            otherDetails.Text = " ";
         }
 
 
@@ -63,7 +64,7 @@ namespace HealthCarePlus
             string doctorEmail = email.Text;
             string? doctorLocation = location.SelectedItem.ToString();
             string? doctorExpertise = expertise.SelectedItem.ToString();
-            string doctorAvailable = available.Checked ? "available" : "not available" ;
+            string doctorAvailable = available.Checked ? "available" : "not available";
             string doctorOtherDetails = otherDetails.Text;
 
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
@@ -86,6 +87,60 @@ namespace HealthCarePlus
             MessageBox.Show("Doctor added successfully.");
             DisplayDoctorList();
             ClearFormFields();
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            ClearFormFields();
+        }
+
+        private bool DeleteDoctor(string primaryKeyValue)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+                    string deleteQuery = "DELETE FROM doctors WHERE DoctorID = @PrimaryKeyValue";
+                    MySqlCommand cmd = new MySqlCommand(deleteQuery, conn);
+                    cmd.Parameters.AddWithValue("@PrimaryKeyValue", primaryKeyValue);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            if (doctorTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = doctorTable.SelectedRows[0];
+                string? primaryKeyValue = selectedRow.Cells["DoctorID"].Value.ToString();
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this Doctor?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (DeleteDoctor(primaryKeyValue))
+                    {
+                        doctorTable.Rows.Remove(selectedRow);
+                        MessageBox.Show("doctor deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete doctor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a doctor to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
