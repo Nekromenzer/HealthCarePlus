@@ -25,10 +25,15 @@ namespace HealthCarePlus
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
                 conn.Open();
-                string query = "SELECT * FROM doctors";
+                string query = "SELECT * FROM doctors WHERE 1=1";
                 if (!string.IsNullOrWhiteSpace(fullName.Text))
                 {
                     query += " WHERE FullName LIKE @SearchText";
+                }
+
+                if (location.SelectedItem != null && location.SelectedItem.ToString() != "All Locations")
+                {
+                    query += " AND Location = @Location";
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -37,6 +42,12 @@ namespace HealthCarePlus
                 {
                     // Set the parameter value for the search text
                     cmd.Parameters.AddWithValue("@SearchText", "%" + fullName.Text + "%");
+                }
+
+                if (location.SelectedItem != null && location.SelectedItem.ToString() != "All Locations")
+                {
+                    // Set the parameter value for the selected location
+                    cmd.Parameters.AddWithValue("@Location", location.SelectedItem.ToString());
                 }
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
@@ -56,6 +67,11 @@ namespace HealthCarePlus
         }
 
         private void fullName_TextChanged(object sender, EventArgs e)
+        {
+            DisplayDoctorList();
+        }
+
+        private void location_SelectedIndexChanged(object sender, EventArgs e)
         {
             DisplayDoctorList();
         }
