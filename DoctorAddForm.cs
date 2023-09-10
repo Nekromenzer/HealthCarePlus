@@ -166,7 +166,7 @@ namespace HealthCarePlus
                 DisplayDoctorList();
                 ClearFormFields();
             }
-           
+
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
@@ -280,7 +280,7 @@ namespace HealthCarePlus
                         MessageBox.Show("Failed to update doctor information.");
                     }
                 }
-               
+
             }
             else
             {

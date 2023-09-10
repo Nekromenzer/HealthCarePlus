@@ -370,7 +370,7 @@ namespace HealthCarePlus
             label4.Name = "label4";
             label4.Size = new Size(75, 15);
             label4.TabIndex = 51;
-            label4.Text = "Other Details";
+            label4.Text = "Qualification";
             // 
             // otherDetails
             // 
