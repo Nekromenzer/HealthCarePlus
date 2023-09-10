@@ -26,7 +26,18 @@ namespace HealthCarePlus
             {
                 conn.Open();
                 string query = "SELECT * FROM doctors";
+                if (!string.IsNullOrWhiteSpace(fullName.Text))
+                {
+                    query += " WHERE FullName LIKE @SearchText";
+                }
+
                 MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                if (!string.IsNullOrWhiteSpace(fullName.Text))
+                {
+                    // Set the parameter value for the search text
+                    cmd.Parameters.AddWithValue("@SearchText", "%" + fullName.Text + "%");
+                }
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                 {
@@ -42,6 +53,11 @@ namespace HealthCarePlus
         private void doctorTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void fullName_TextChanged(object sender, EventArgs e)
+        {
+            DisplayDoctorList();
         }
     }
 }
