@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Protobuf.WellKnownTypes;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace HealthCarePlus
 {
@@ -18,6 +21,13 @@ namespace HealthCarePlus
         {
             InitializeComponent();
             DisplayDoctorList();
+            ClearSelectionWithDelay();
+        }
+
+        private async void ClearSelectionWithDelay()
+        {
+            await Task.Delay(1000);
+            doctorTable.ClearSelection();
         }
 
         private void DisplayDoctorList()
@@ -25,36 +35,29 @@ namespace HealthCarePlus
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
                 conn.Open();
-                string query = "SELECT * FROM doctors WHERE 1=1";
-                if (!string.IsNullOrWhiteSpace(fullName.Text))
+                string query = "SELECT * FROM doctors";
+
+                if (!string.IsNullOrWhiteSpace(searchInput.Text))
                 {
                     query += " WHERE FullName LIKE @SearchText";
-                }
-
-                if (location.SelectedItem != null && location.SelectedItem.ToString() != "All Locations")
-                {
-                    query += " AND Location = @Location";
+                    query += " OR Location LIKE @SearchText";
+                    query += " OR Expertise LIKE @SearchText";
+                    query += " OR Email LIKE @SearchText";
+                    query += " OR OtherDetails LIKE @SearchText";
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
-                if (!string.IsNullOrWhiteSpace(fullName.Text))
+                if (!string.IsNullOrWhiteSpace(searchInput.Text))
                 {
-                    // Set the parameter value for the search text
-                    cmd.Parameters.AddWithValue("@SearchText", "%" + fullName.Text + "%");
-                }
-
-                if (location.SelectedItem != null && location.SelectedItem.ToString() != "All Locations")
-                {
-                    // Set the parameter value for the selected location
-                    cmd.Parameters.AddWithValue("@Location", location.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@SearchText", "%" + searchInput.Text + "%");
                 }
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                 {
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
-                    // bind table
+                    // Bind the table
                     doctorTable.DataSource = dataTable;
                 }
             }
@@ -63,17 +66,12 @@ namespace HealthCarePlus
 
         private void doctorTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
-        private void fullName_TextChanged(object sender, EventArgs e)
+        private void searchInput_TextChanged_1(object sender, EventArgs e)
         {
             DisplayDoctorList();
-        }
-
-        private void location_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DisplayDoctorList();
+            ClearSelectionWithDelay();
         }
     }
 }
