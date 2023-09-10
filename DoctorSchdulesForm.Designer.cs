@@ -248,7 +248,6 @@ namespace HealthCarePlus
             location.Name = "location";
             location.Size = new Size(279, 33);
             location.TabIndex = 23;
-            location.SelectedIndexChanged += location_SelectedIndexChanged;
             // 
             // appointmentType
             // 

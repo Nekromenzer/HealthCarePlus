@@ -64,7 +64,9 @@ namespace HealthCarePlus
                 fullName.Text = row.Cells["doctorFullName"].Value.ToString();
                 phone.Text = row.Cells["doctorContactNumber"].Value.ToString();
                 email.Text = row.Cells["doctorEmail"].Value.ToString();
-                location.SelectedItem = row.Cells["doctorLocation"].Value.ToString();
+                string? locationCellValue = row.Cells["doctorLocation"].Value.ToString();
+                int locationIndex = location.FindString(locationCellValue);
+                location.SelectedIndex = locationIndex != -1 ? locationIndex : -1;
                 expertise.SelectedItem = row.Cells["doctorExpertise"].Value.ToString();
                 available.Checked = row.Cells["doctorAvailability"].Value.ToString() == "Available";
                 otherDetails.Text = row.Cells["doctorOtherDetails"].Value.ToString();
