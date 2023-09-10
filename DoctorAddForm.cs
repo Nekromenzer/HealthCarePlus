@@ -176,5 +176,70 @@ namespace HealthCarePlus
                 MessageBox.Show("Please select a doctor to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private bool UpdateDoctor(int doctorId, string fullName, string contactNumber, string email, string location, string expertise, string otherDetails ,string doctorAvailable)
+        {
+            // Implement the database update logic here
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+                    string updateQuery = "UPDATE Doctors SET FullName = @FullName, ContactNumber = @ContactNumber, Email = @Email, Location = @Location, Expertise = @Expertise, OtherDetails = @OtherDetails,Availability =@Availability WHERE DoctorID = @DoctorID";
+                    MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
+                    cmd.Parameters.AddWithValue("@DoctorID", doctorId);
+                    cmd.Parameters.AddWithValue("@FullName", fullName);
+                    cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Location", location);
+                    cmd.Parameters.AddWithValue("@Expertise", expertise);
+                    cmd.Parameters.AddWithValue("@OtherDetails", otherDetails);
+                    cmd.Parameters.AddWithValue("@Availability", doctorAvailable);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+        }
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            if (doctorTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = doctorTable.SelectedRows[0];
+                int doctorId = Convert.ToInt32(selectedRow.Cells["DoctorID"].Value);
+
+                // Retrieve updated information from input fields
+                string doctorName = fullName.Text;
+                string contactNumber = phone.Text;
+                string doctorEmail = email.Text;
+                string? doctorLocation = location.SelectedItem.ToString();
+                string? doctorExpertise = expertise.SelectedItem.ToString();
+                string doctorAvailable = available.Checked ? "Available" : "Not Available";
+                string doctorOtherDetails = otherDetails.Text;
+
+                // Update the doctor's information in the database
+                if (UpdateDoctor(doctorId, doctorName, contactNumber, doctorEmail, doctorLocation, doctorExpertise, doctorOtherDetails, doctorAvailable))
+                {
+                    // Success message
+                    MessageBox.Show("Doctor information updated successfully.");
+                    // Reload the DataGridView to reflect changes
+                    DisplayDoctorList();
+                    ClearFormFields();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update doctor information.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a doctor from the list to update.");
+            }
+        }
     }
 }

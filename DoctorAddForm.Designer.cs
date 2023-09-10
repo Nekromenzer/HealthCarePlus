@@ -248,6 +248,7 @@ namespace HealthCarePlus
             updateBtn.Text = "Update ";
             updateBtn.TextAlign = ContentAlignment.MiddleLeft;
             updateBtn.UseVisualStyleBackColor = false;
+            updateBtn.Click += updateBtn_Click;
             // 
             // submitBtn
             // 
