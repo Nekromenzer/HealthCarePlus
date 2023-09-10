@@ -178,8 +178,8 @@ namespace HealthCarePlus
             clearBtn.Cursor = Cursors.Hand;
             clearBtn.FlatAppearance.BorderSize = 0;
             clearBtn.FlatStyle = FlatStyle.Flat;
-            clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            clearBtn.ForeColor = SystemColors.Desktop;
+            clearBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            clearBtn.ForeColor = Color.White;
             clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
             clearBtn.ImageAlign = ContentAlignment.MiddleRight;
             clearBtn.Location = new Point(853, 150);
@@ -189,6 +189,7 @@ namespace HealthCarePlus
             clearBtn.Text = "clear search";
             clearBtn.TextAlign = ContentAlignment.MiddleLeft;
             clearBtn.UseVisualStyleBackColor = false;
+            clearBtn.Click += clearBtn_Click;
             // 
             // label1
             // 
