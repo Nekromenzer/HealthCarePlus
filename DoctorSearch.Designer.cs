@@ -169,6 +169,7 @@ namespace HealthCarePlus
             available.TabIndex = 51;
             available.Text = "available";
             available.UseVisualStyleBackColor = true;
+            available.CheckedChanged += available_CheckedChanged;
             // 
             // clearBtn
             // 
