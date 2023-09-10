@@ -27,8 +27,8 @@ namespace HealthCarePlus
             doctorExpertise.Text = expertise;
             doctorContactNumber.Text = contactNumber;
             doctorOtherDetails.Text = other;
-            doctorContactNumber.Text = contactNumber;
-            doctorOtherDetails.Text = other;
+            doctorEmailLabel.Text = email;
+            doctorAvailability.Text = avialability == "Availability" ? "✔️" : "🚫";
         }
 
         private void doctorNameLabel_Click(object sender, EventArgs e)
@@ -42,6 +42,11 @@ namespace HealthCarePlus
         }
 
         private void DoctorDetailsPopupForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void doctorOtherDetails_Click(object sender, EventArgs e)
         {
 
         }

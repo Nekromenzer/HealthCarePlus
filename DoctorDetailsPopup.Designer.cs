@@ -50,10 +50,10 @@
             // 
             doctorNameLabel.AutoSize = true;
             doctorNameLabel.BackColor = Color.Transparent;
-            doctorNameLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            doctorNameLabel.Location = new Point(276, 218);
+            doctorNameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            doctorNameLabel.Location = new Point(276, 219);
             doctorNameLabel.Name = "doctorNameLabel";
-            doctorNameLabel.Size = new Size(87, 25);
+            doctorNameLabel.Size = new Size(71, 21);
             doctorNameLabel.TabIndex = 0;
             doctorNameLabel.Text = "Jane doe";
             doctorNameLabel.Click += doctorNameLabel_Click;
@@ -103,10 +103,10 @@
             // 
             doctorEmailLabel.AutoSize = true;
             doctorEmailLabel.BackColor = Color.Transparent;
-            doctorEmailLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            doctorEmailLabel.Location = new Point(276, 258);
+            doctorEmailLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            doctorEmailLabel.Location = new Point(276, 259);
             doctorEmailLabel.Name = "doctorEmailLabel";
-            doctorEmailLabel.Size = new Size(185, 25);
+            doctorEmailLabel.Size = new Size(152, 21);
             doctorEmailLabel.TabIndex = 6;
             doctorEmailLabel.Text = "janedoe@gmail.com";
             // 
@@ -128,10 +128,10 @@
             // 
             doctorContactNumber.AutoSize = true;
             doctorContactNumber.BackColor = Color.Transparent;
-            doctorContactNumber.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            doctorContactNumber.Location = new Point(276, 297);
+            doctorContactNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            doctorContactNumber.Location = new Point(276, 298);
             doctorContactNumber.Name = "doctorContactNumber";
-            doctorContactNumber.Size = new Size(112, 25);
+            doctorContactNumber.Size = new Size(100, 21);
             doctorContactNumber.TabIndex = 8;
             doctorContactNumber.Text = "0112033300";
             // 
@@ -153,10 +153,10 @@
             // 
             doctorLocation.AutoSize = true;
             doctorLocation.BackColor = Color.Transparent;
-            doctorLocation.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            doctorLocation.Location = new Point(276, 336);
+            doctorLocation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            doctorLocation.Location = new Point(276, 337);
             doctorLocation.Name = "doctorLocation";
-            doctorLocation.Size = new Size(76, 25);
+            doctorLocation.Size = new Size(63, 21);
             doctorLocation.TabIndex = 10;
             doctorLocation.Text = "London";
             // 
@@ -178,10 +178,10 @@
             // 
             doctorAvailability.AutoSize = true;
             doctorAvailability.BackColor = Color.Transparent;
-            doctorAvailability.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            doctorAvailability.Location = new Point(276, 376);
+            doctorAvailability.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            doctorAvailability.Location = new Point(276, 377);
             doctorAvailability.Name = "doctorAvailability";
-            doctorAvailability.Size = new Size(89, 25);
+            doctorAvailability.Size = new Size(73, 21);
             doctorAvailability.TabIndex = 12;
             doctorAvailability.Text = "Available";
             // 
@@ -203,29 +203,30 @@
             // 
             doctorExpertise.AutoSize = true;
             doctorExpertise.BackColor = Color.Transparent;
-            doctorExpertise.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            doctorExpertise.Location = new Point(276, 418);
+            doctorExpertise.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            doctorExpertise.Location = new Point(276, 419);
             doctorExpertise.Name = "doctorExpertise";
-            doctorExpertise.Size = new Size(97, 25);
+            doctorExpertise.Size = new Size(80, 21);
             doctorExpertise.TabIndex = 14;
             doctorExpertise.Text = "Cadiology";
             // 
             // doctorOtherDetails
             // 
-            doctorOtherDetails.BackColor = Color.White;
+            doctorOtherDetails.BackColor = Color.Transparent;
             doctorOtherDetails.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             doctorOtherDetails.Location = new Point(88, 488);
             doctorOtherDetails.Name = "doctorOtherDetails";
             doctorOtherDetails.Size = new Size(359, 137);
             doctorOtherDetails.TabIndex = 16;
             doctorOtherDetails.Text = "Specializes in heart-related issues.";
+            doctorOtherDetails.Click += doctorOtherDetails_Click;
             // 
             // DoctorDetailsPopupForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(521, 664);
+            ClientSize = new Size(525, 664);
             Controls.Add(doctorOtherDetails);
             Controls.Add(label5);
             Controls.Add(doctorExpertise);
