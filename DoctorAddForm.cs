@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,6 +20,13 @@ namespace HealthCarePlus
         {
             InitializeComponent();
             DisplayDoctorList();
+            ClearSelectionWithDelay();
+        }
+
+        private async void ClearSelectionWithDelay()
+        {
+            await Task.Delay(1000);
+            doctorTable.ClearSelection();
         }
 
         private void DisplayDoctorList()
@@ -90,6 +98,40 @@ namespace HealthCarePlus
             }
         }
 
+        private bool ValidateInputs()
+        {
+            if (string.IsNullOrWhiteSpace(fullName.Text) ||
+                string.IsNullOrWhiteSpace(email.Text) ||
+                string.IsNullOrWhiteSpace(location.SelectedItem.ToString()) ||
+                string.IsNullOrWhiteSpace(expertise.SelectedItem.ToString()))
+            {
+                MessageBox.Show("All fields are required.");
+                return false;
+            }
+
+            if (!IsValidSriLankanPhoneNumber(phone.Text))
+            {
+                MessageBox.Show("Invalid phone number");
+            }
+
+            if (!IsValidEmail(email.Text))
+            {
+                MessageBox.Show("Invalid email address.");
+                return false;
+            }
+            return true;
+        }
+
+        static bool IsValidSriLankanPhoneNumber(string phoneNumber)
+        {
+            string pattern = @"^0\d{1,2} \d{7,8}$";
+            return Regex.IsMatch(phoneNumber, pattern);
+        }
+        private bool IsValidEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+            return System.Text.RegularExpressions.Regex.IsMatch(email, pattern);
+        }
         private void submitBtn_Click(object sender, EventArgs e)
         {
             string doctorName = fullName.Text;
@@ -100,26 +142,31 @@ namespace HealthCarePlus
             string doctorAvailable = available.Checked ? "Available" : "Not Available";
             string doctorOtherDetails = otherDetails.Text;
 
-            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            if (ValidateInputs())
+
             {
-                conn.Open();
+                using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+                {
+                    conn.Open();
 
-                string insertQuery = "INSERT INTO doctors (FullName, ContactNumber, Email, Location, Expertise,Availability,OtherDetails) " +
-                                     "VALUES (@FullName, @ContactNumber, @Email, @Location, @Expertise,@Availability,@OtherDetails)";
+                    string insertQuery = "INSERT INTO doctors (FullName, ContactNumber, Email, Location, Expertise,Availability,OtherDetails) " +
+                                         "VALUES (@FullName, @ContactNumber, @Email, @Location, @Expertise,@Availability,@OtherDetails)";
 
-                MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
-                cmd.Parameters.AddWithValue("@FullName", doctorName);
-                cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
-                cmd.Parameters.AddWithValue("@Email", doctorEmail);
-                cmd.Parameters.AddWithValue("@Location", doctorLocation);
-                cmd.Parameters.AddWithValue("@Expertise", doctorExpertise);
-                cmd.Parameters.AddWithValue("@Availability", doctorAvailable);
-                cmd.Parameters.AddWithValue("@OtherDetails", doctorOtherDetails);
-                cmd.ExecuteNonQuery();
+                    MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
+                    cmd.Parameters.AddWithValue("@FullName", doctorName);
+                    cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
+                    cmd.Parameters.AddWithValue("@Email", doctorEmail);
+                    cmd.Parameters.AddWithValue("@Location", doctorLocation);
+                    cmd.Parameters.AddWithValue("@Expertise", doctorExpertise);
+                    cmd.Parameters.AddWithValue("@Availability", doctorAvailable);
+                    cmd.Parameters.AddWithValue("@OtherDetails", doctorOtherDetails);
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show("Doctor added successfully.");
+                DisplayDoctorList();
+                ClearFormFields();
             }
-            MessageBox.Show("Doctor added successfully.");
-            DisplayDoctorList();
-            ClearFormFields();
+           
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
@@ -179,7 +226,6 @@ namespace HealthCarePlus
 
         private bool UpdateDoctor(int doctorId, string fullName, string contactNumber, string email, string location, string expertise, string otherDetails, string doctorAvailable)
         {
-            // Implement the database update logic here
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
                 try
@@ -213,7 +259,6 @@ namespace HealthCarePlus
                 DataGridViewRow selectedRow = doctorTable.SelectedRows[0];
                 int doctorId = Convert.ToInt32(selectedRow.Cells["DoctorID"].Value);
 
-                // Retrieve updated information from input fields
                 string doctorName = fullName.Text;
                 string contactNumber = phone.Text;
                 string doctorEmail = email.Text;
@@ -222,19 +267,20 @@ namespace HealthCarePlus
                 string doctorAvailable = available.Checked ? "Available" : "Not Available";
                 string doctorOtherDetails = otherDetails.Text;
 
-                // Update the doctor's information in the database
-                if (UpdateDoctor(doctorId, doctorName, contactNumber, doctorEmail, doctorLocation, doctorExpertise, doctorOtherDetails, doctorAvailable))
+                if (ValidateInputs())
                 {
-                    // Success message
-                    MessageBox.Show("Doctor information updated successfully.");
-                    // Reload the DataGridView to reflect changes
-                    DisplayDoctorList();
-                    ClearFormFields();
+                    if (UpdateDoctor(doctorId, doctorName, contactNumber, doctorEmail, doctorLocation, doctorExpertise, doctorOtherDetails, doctorAvailable))
+                    {
+                        MessageBox.Show("Doctor information updated successfully.");
+                        DisplayDoctorList();
+                        ClearFormFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update doctor information.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Failed to update doctor information.");
-                }
+               
             }
             else
             {
