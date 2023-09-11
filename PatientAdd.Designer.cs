@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientAddForm));
             patientTable = new DataGridView();
             submitBtn = new Button();
@@ -44,14 +44,20 @@
             nic = new DataGridViewTextBoxColumn();
             address = new DataGridViewTextBoxColumn();
             noteLabel = new Label();
-            fullName = new TextBox();
+            fullNameInput = new TextBox();
             label2 = new Label();
-            phone = new TextBox();
+            phoneInput = new TextBox();
             DateLabel = new Label();
-            birthDay = new DateTimePicker();
+            dobInput = new DateTimePicker();
             label3 = new Label();
-            textBox1 = new TextBox();
+            nicInput = new TextBox();
+            label4 = new Label();
+            addressInput = new TextBox();
+            genderInput = new GroupBox();
+            male = new RadioButton();
+            female = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)patientTable).BeginInit();
+            genderInput.SuspendLayout();
             SuspendLayout();
             // 
             // patientTable
@@ -64,14 +70,14 @@
             patientTable.BackgroundColor = SystemColors.Control;
             patientTable.BorderStyle = BorderStyle.None;
             patientTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             patientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             patientTable.Columns.AddRange(new DataGridViewColumn[] { id, name, dob, gender, contact, nic, address });
             patientTable.EnableHeadersVisualStyles = false;
@@ -245,17 +251,17 @@
             noteLabel.TabIndex = 44;
             noteLabel.Text = "Full Name";
             // 
-            // fullName
+            // fullNameInput
             // 
-            fullName.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
-            fullName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            fullName.BorderStyle = BorderStyle.FixedSingle;
-            fullName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            fullName.Location = new Point(68, 101);
-            fullName.Name = "fullName";
-            fullName.Size = new Size(279, 33);
-            fullName.TabIndex = 43;
-            fullName.TextChanged += fullName_TextChanged;
+            fullNameInput.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            fullNameInput.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            fullNameInput.BorderStyle = BorderStyle.FixedSingle;
+            fullNameInput.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            fullNameInput.Location = new Point(68, 101);
+            fullNameInput.Name = "fullNameInput";
+            fullNameInput.Size = new Size(279, 33);
+            fullNameInput.TabIndex = 43;
+            fullNameInput.TextChanged += fullName_TextChanged;
             // 
             // label2
             // 
@@ -266,18 +272,18 @@
             label2.TabIndex = 46;
             label2.Text = "Phone";
             // 
-            // phone
+            // phoneInput
             // 
-            phone.BackColor = SystemColors.Window;
-            phone.BorderStyle = BorderStyle.FixedSingle;
-            phone.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            phone.Location = new Point(373, 100);
-            phone.Margin = new Padding(6);
-            phone.MinimumSize = new Size(30, 33);
-            phone.Name = "phone";
-            phone.Size = new Size(279, 33);
-            phone.TabIndex = 45;
-            phone.TextChanged += phone_TextChanged;
+            phoneInput.BackColor = SystemColors.Window;
+            phoneInput.BorderStyle = BorderStyle.FixedSingle;
+            phoneInput.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            phoneInput.Location = new Point(373, 100);
+            phoneInput.Margin = new Padding(6);
+            phoneInput.MinimumSize = new Size(30, 33);
+            phoneInput.Name = "phoneInput";
+            phoneInput.Size = new Size(279, 33);
+            phoneInput.TabIndex = 45;
+            phoneInput.TextChanged += phone_TextChanged;
             // 
             // DateLabel
             // 
@@ -288,36 +294,94 @@
             DateLabel.TabIndex = 48;
             DateLabel.Text = "Date of Birth";
             // 
-            // birthDay
+            // dobInput
             // 
-            birthDay.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            birthDay.Format = DateTimePickerFormat.Short;
-            birthDay.Location = new Point(676, 99);
-            birthDay.MinDate = new DateTime(2023, 8, 31, 0, 0, 0, 0);
-            birthDay.Name = "birthDay";
-            birthDay.Size = new Size(279, 33);
-            birthDay.TabIndex = 47;
+            dobInput.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dobInput.Format = DateTimePickerFormat.Short;
+            dobInput.Location = new Point(676, 99);
+            dobInput.MinDate = new DateTime(2023, 8, 31, 0, 0, 0, 0);
+            dobInput.Name = "dobInput";
+            dobInput.Size = new Size(279, 33);
+            dobInput.TabIndex = 47;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(982, 81);
             label3.Name = "label3";
-            label3.Size = new Size(41, 15);
+            label3.Size = new Size(27, 15);
             label3.TabIndex = 50;
-            label3.Text = "Phone";
+            label3.Text = "NIC";
             // 
-            // textBox1
+            // nicInput
             // 
-            textBox1.BackColor = SystemColors.Window;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(982, 99);
-            textBox1.Margin = new Padding(6);
-            textBox1.MinimumSize = new Size(30, 33);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(279, 33);
-            textBox1.TabIndex = 49;
+            nicInput.BackColor = SystemColors.Window;
+            nicInput.BorderStyle = BorderStyle.FixedSingle;
+            nicInput.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            nicInput.Location = new Point(982, 99);
+            nicInput.Margin = new Padding(6);
+            nicInput.MinimumSize = new Size(30, 33);
+            nicInput.Name = "nicInput";
+            nicInput.Size = new Size(279, 33);
+            nicInput.TabIndex = 49;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(68, 144);
+            label4.Name = "label4";
+            label4.Size = new Size(49, 15);
+            label4.TabIndex = 52;
+            label4.Text = "Address";
+            // 
+            // addressInput
+            // 
+            addressInput.BackColor = SystemColors.Window;
+            addressInput.BorderStyle = BorderStyle.FixedSingle;
+            addressInput.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            addressInput.Location = new Point(68, 162);
+            addressInput.Margin = new Padding(6);
+            addressInput.MinimumSize = new Size(30, 33);
+            addressInput.Name = "addressInput";
+            addressInput.Size = new Size(584, 33);
+            addressInput.TabIndex = 51;
+            // 
+            // genderInput
+            // 
+            genderInput.BackColor = Color.Transparent;
+            genderInput.Controls.Add(female);
+            genderInput.Controls.Add(male);
+            genderInput.Location = new Point(676, 143);
+            genderInput.Name = "genderInput";
+            genderInput.Size = new Size(200, 52);
+            genderInput.TabIndex = 53;
+            genderInput.TabStop = false;
+            genderInput.Text = "Gender";
+            genderInput.Enter += genderInput_Enter;
+            // 
+            // male
+            // 
+            male.AutoSize = true;
+            male.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            male.Location = new Point(40, 14);
+            male.Name = "male";
+            male.Size = new Size(62, 25);
+            male.TabIndex = 0;
+            male.TabStop = true;
+            male.Text = "Male";
+            male.UseVisualStyleBackColor = true;
+            // 
+            // female
+            // 
+            female.AutoSize = true;
+            female.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            female.Location = new Point(121, 14);
+            female.Name = "female";
+            female.Size = new Size(78, 25);
+            female.TabIndex = 1;
+            female.TabStop = true;
+            female.Text = "Female";
+            female.UseVisualStyleBackColor = true;
             // 
             // PatientAddForm
             // 
@@ -325,14 +389,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(genderInput);
+            Controls.Add(label4);
+            Controls.Add(addressInput);
             Controls.Add(label3);
-            Controls.Add(textBox1);
+            Controls.Add(nicInput);
             Controls.Add(DateLabel);
-            Controls.Add(birthDay);
+            Controls.Add(dobInput);
             Controls.Add(label2);
-            Controls.Add(phone);
+            Controls.Add(phoneInput);
             Controls.Add(noteLabel);
-            Controls.Add(fullName);
+            Controls.Add(fullNameInput);
             Controls.Add(label1);
             Controls.Add(clearBtn);
             Controls.Add(deleteBtn);
@@ -345,6 +412,8 @@
             Text = "Add Patient";
             Load += PatientAddForm_Load;
             ((System.ComponentModel.ISupportInitialize)patientTable).EndInit();
+            genderInput.ResumeLayout(false);
+            genderInput.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -365,12 +434,17 @@
         private DataGridViewTextBoxColumn nic;
         private DataGridViewTextBoxColumn address;
         private Label noteLabel;
-        private TextBox fullName;
+        private TextBox fullNameInput;
         private Label label2;
-        private TextBox phone;
+        private TextBox phoneInput;
         private Label DateLabel;
-        private DateTimePicker birthDay;
+        private DateTimePicker dobInput;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox nicInput;
+        private Label label4;
+        private TextBox addressInput;
+        private GroupBox genderInput;
+        private RadioButton female;
+        private RadioButton male;
     }
 }

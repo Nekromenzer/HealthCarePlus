@@ -73,5 +73,10 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void genderInput_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
