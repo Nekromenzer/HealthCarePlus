@@ -68,5 +68,10 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void phone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
