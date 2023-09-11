@@ -412,6 +412,7 @@
             Controls.Add(submitBtn);
             Controls.Add(patientTable);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "PatientAddForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Patient";

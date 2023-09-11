@@ -132,6 +132,7 @@
             Controls.Add(emailLabel);
             Controls.Add(email);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";

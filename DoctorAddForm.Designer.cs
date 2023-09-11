@@ -409,6 +409,7 @@ namespace HealthCarePlus
             Controls.Add(label1);
             Controls.Add(doctorTable);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "DoctorAddForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Doctor";

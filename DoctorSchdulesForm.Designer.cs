@@ -463,6 +463,7 @@ namespace HealthCarePlus
             Controls.Add(doctorId);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "DoctorSchdulesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Doctor Schedules";

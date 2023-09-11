@@ -218,6 +218,7 @@ namespace HealthCarePlus
             Controls.Add(searchInput);
             Controls.Add(doctorTable);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "searchForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Search";

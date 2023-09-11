@@ -232,6 +232,7 @@
             Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "Register";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Register";

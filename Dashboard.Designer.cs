@@ -324,6 +324,7 @@
             Controls.Add(manageDoctorBtn);
             Controls.Add(addDoctorSchedulesBtn);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "Dashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dashboard";

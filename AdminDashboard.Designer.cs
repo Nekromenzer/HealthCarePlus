@@ -37,6 +37,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1325, 834);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "AdminDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Dashboard";
