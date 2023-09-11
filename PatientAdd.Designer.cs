@@ -89,6 +89,7 @@
             patientTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             patientTable.Size = new Size(1193, 484);
             patientTable.TabIndex = 0;
+            patientTable.CellContentClick += patientTable_CellContentClick;
             // 
             // id
             // 

@@ -128,6 +128,30 @@ namespace HealthCarePlus
             ClearInputFields();
         }
 
+        private void patientTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = patientTable.Rows[e.RowIndex];
+
+                fullNameInput.Text = row.Cells["name"].Value.ToString();
+                phoneInput.Text = row.Cells["contact"].Value.ToString();
+                dobInput.Value = Convert.ToDateTime(row.Cells["dob"].Value);
+                nicInput.Text = row.Cells["nic"].Value.ToString();
+                addressInput.Text = row.Cells["address"].Value.ToString();
+                if (row.Cells["gender"].Value.ToString() == "Male")
+                {
+                    male.Checked = true;
+                    female.Checked = false;
+                }
+                else
+                {
+                    female.Checked = true;
+                    male.Checked = false;
+                }
+                // genderInput.SelectedItem = row.Cells["GenderColumn"].Value.ToString(); // Assuming ComboBox
+            }
+        }
         private void fullName_TextChanged(object sender, EventArgs e)
         {
 
