@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientAddForm));
             patientTable = new DataGridView();
             submitBtn = new Button();
@@ -47,6 +47,10 @@
             fullName = new TextBox();
             label2 = new Label();
             phone = new TextBox();
+            DateLabel = new Label();
+            birthDay = new DateTimePicker();
+            label3 = new Label();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)patientTable).BeginInit();
             SuspendLayout();
             // 
@@ -60,14 +64,14 @@
             patientTable.BackgroundColor = SystemColors.Control;
             patientTable.BorderStyle = BorderStyle.None;
             patientTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             patientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             patientTable.Columns.AddRange(new DataGridViewColumn[] { id, name, dob, gender, contact, nic, address });
             patientTable.EnableHeadersVisualStyles = false;
@@ -90,7 +94,7 @@
             submitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             submitBtn.Image = (Image)resources.GetObject("submitBtn.Image");
             submitBtn.ImageAlign = ContentAlignment.MiddleRight;
-            submitBtn.Location = new Point(68, 222);
+            submitBtn.Location = new Point(68, 236);
             submitBtn.Name = "submitBtn";
             submitBtn.Size = new Size(167, 37);
             submitBtn.TabIndex = 36;
@@ -110,7 +114,7 @@
             clearBtn.ForeColor = SystemColors.Desktop;
             clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
             clearBtn.ImageAlign = ContentAlignment.MiddleRight;
-            clearBtn.Location = new Point(759, 222);
+            clearBtn.Location = new Point(759, 236);
             clearBtn.Name = "clearBtn";
             clearBtn.Size = new Size(167, 37);
             clearBtn.TabIndex = 41;
@@ -130,7 +134,7 @@
             deleteBtn.ForeColor = SystemColors.ButtonHighlight;
             deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
             deleteBtn.ImageAlign = ContentAlignment.MiddleRight;
-            deleteBtn.Location = new Point(473, 222);
+            deleteBtn.Location = new Point(473, 236);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(167, 37);
             deleteBtn.TabIndex = 40;
@@ -150,7 +154,7 @@
             updateBtn.ForeColor = SystemColors.ActiveCaptionText;
             updateBtn.Image = (Image)resources.GetObject("updateBtn.Image");
             updateBtn.ImageAlign = ContentAlignment.MiddleRight;
-            updateBtn.Location = new Point(267, 222);
+            updateBtn.Location = new Point(267, 236);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(167, 37);
             updateBtn.TabIndex = 39;
@@ -256,7 +260,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(375, 83);
+            label2.Location = new Point(373, 82);
             label2.Name = "label2";
             label2.Size = new Size(41, 15);
             label2.TabIndex = 46;
@@ -267,13 +271,53 @@
             phone.BackColor = SystemColors.Window;
             phone.BorderStyle = BorderStyle.FixedSingle;
             phone.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            phone.Location = new Point(375, 101);
+            phone.Location = new Point(373, 100);
             phone.Margin = new Padding(6);
-            phone.MinimumSize = new Size(30, 30);
+            phone.MinimumSize = new Size(30, 33);
             phone.Name = "phone";
-            phone.Size = new Size(279, 31);
+            phone.Size = new Size(279, 33);
             phone.TabIndex = 45;
             phone.TextChanged += phone_TextChanged;
+            // 
+            // DateLabel
+            // 
+            DateLabel.AutoSize = true;
+            DateLabel.Location = new Point(676, 81);
+            DateLabel.Name = "DateLabel";
+            DateLabel.Size = new Size(73, 15);
+            DateLabel.TabIndex = 48;
+            DateLabel.Text = "Date of Birth";
+            // 
+            // birthDay
+            // 
+            birthDay.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            birthDay.Format = DateTimePickerFormat.Short;
+            birthDay.Location = new Point(676, 99);
+            birthDay.MinDate = new DateTime(2023, 8, 31, 0, 0, 0, 0);
+            birthDay.Name = "birthDay";
+            birthDay.Size = new Size(279, 33);
+            birthDay.TabIndex = 47;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(982, 81);
+            label3.Name = "label3";
+            label3.Size = new Size(41, 15);
+            label3.TabIndex = 50;
+            label3.Text = "Phone";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.Window;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(982, 99);
+            textBox1.Margin = new Padding(6);
+            textBox1.MinimumSize = new Size(30, 33);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(279, 33);
+            textBox1.TabIndex = 49;
             // 
             // PatientAddForm
             // 
@@ -281,6 +325,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(label3);
+            Controls.Add(textBox1);
+            Controls.Add(DateLabel);
+            Controls.Add(birthDay);
             Controls.Add(label2);
             Controls.Add(phone);
             Controls.Add(noteLabel);
@@ -320,5 +368,9 @@
         private TextBox fullName;
         private Label label2;
         private TextBox phone;
+        private Label DateLabel;
+        private DateTimePicker birthDay;
+        private Label label3;
+        private TextBox textBox1;
     }
 }
