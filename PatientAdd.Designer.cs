@@ -28,14 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientAddForm));
             patientTable = new DataGridView();
-            submitBtn = new Button();
-            clearBtn = new Button();
-            deleteBtn = new Button();
-            updateBtn = new Button();
-            label1 = new Label();
             id = new DataGridViewTextBoxColumn();
             name = new DataGridViewTextBoxColumn();
             dob = new DataGridViewTextBoxColumn();
@@ -43,6 +38,11 @@
             contact = new DataGridViewTextBoxColumn();
             nic = new DataGridViewTextBoxColumn();
             address = new DataGridViewTextBoxColumn();
+            submitBtn = new Button();
+            clearBtn = new Button();
+            deleteBtn = new Button();
+            updateBtn = new Button();
+            label1 = new Label();
             noteLabel = new Label();
             fullNameInput = new TextBox();
             label2 = new Label();
@@ -54,8 +54,8 @@
             label4 = new Label();
             addressInput = new TextBox();
             genderInput = new GroupBox();
-            male = new RadioButton();
             female = new RadioButton();
+            male = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)patientTable).BeginInit();
             genderInput.SuspendLayout();
             SuspendLayout();
@@ -70,14 +70,14 @@
             patientTable.BackgroundColor = SystemColors.Control;
             patientTable.BorderStyle = BorderStyle.None;
             patientTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             patientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             patientTable.Columns.AddRange(new DataGridViewColumn[] { id, name, dob, gender, contact, nic, address });
             patientTable.EnableHeadersVisualStyles = false;
@@ -89,6 +89,68 @@
             patientTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             patientTable.Size = new Size(1193, 484);
             patientTable.TabIndex = 0;
+            // 
+            // id
+            // 
+            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            id.DataPropertyName = "PatientID";
+            id.HeaderText = "ID";
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Width = 42;
+            // 
+            // name
+            // 
+            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            name.DataPropertyName = "FullName";
+            name.HeaderText = "Full Name";
+            name.Name = "name";
+            name.ReadOnly = true;
+            name.Width = 85;
+            // 
+            // dob
+            // 
+            dob.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dob.DataPropertyName = "DateOfBirth";
+            dob.HeaderText = "DOB";
+            dob.Name = "dob";
+            dob.ReadOnly = true;
+            dob.Width = 55;
+            // 
+            // gender
+            // 
+            gender.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            gender.DataPropertyName = "Gender";
+            gender.HeaderText = "Gender";
+            gender.Name = "gender";
+            gender.ReadOnly = true;
+            gender.Width = 69;
+            // 
+            // contact
+            // 
+            contact.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            contact.DataPropertyName = "ContactNumber";
+            contact.HeaderText = "Contact";
+            contact.Name = "contact";
+            contact.ReadOnly = true;
+            contact.Width = 73;
+            // 
+            // nic
+            // 
+            nic.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            nic.DataPropertyName = "NIC";
+            nic.HeaderText = "NIC";
+            nic.Name = "nic";
+            nic.ReadOnly = true;
+            nic.Width = 51;
+            // 
+            // address
+            // 
+            address.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            address.DataPropertyName = "Address";
+            address.HeaderText = "Address";
+            address.Name = "address";
+            address.ReadOnly = true;
             // 
             // submitBtn
             // 
@@ -180,68 +242,6 @@
             label1.TabIndex = 42;
             label1.Text = "Add Patient";
             // 
-            // id
-            // 
-            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            id.DataPropertyName = "PatientID";
-            id.HeaderText = "ID";
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Width = 42;
-            // 
-            // name
-            // 
-            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            name.DataPropertyName = "FullName";
-            name.HeaderText = "Full Name";
-            name.Name = "name";
-            name.ReadOnly = true;
-            name.Width = 85;
-            // 
-            // dob
-            // 
-            dob.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dob.DataPropertyName = "DateOfBirth";
-            dob.HeaderText = "DOB";
-            dob.Name = "dob";
-            dob.ReadOnly = true;
-            dob.Width = 55;
-            // 
-            // gender
-            // 
-            gender.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            gender.DataPropertyName = "Gender";
-            gender.HeaderText = "Gender";
-            gender.Name = "gender";
-            gender.ReadOnly = true;
-            gender.Width = 69;
-            // 
-            // contact
-            // 
-            contact.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            contact.DataPropertyName = "ContactNumber";
-            contact.HeaderText = "Contact";
-            contact.Name = "contact";
-            contact.ReadOnly = true;
-            contact.Width = 73;
-            // 
-            // nic
-            // 
-            nic.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            nic.DataPropertyName = "NIC";
-            nic.HeaderText = "NIC";
-            nic.Name = "nic";
-            nic.ReadOnly = true;
-            nic.Width = 51;
-            // 
-            // address
-            // 
-            address.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            address.DataPropertyName = "Address";
-            address.HeaderText = "Address";
-            address.Name = "address";
-            address.ReadOnly = true;
-            // 
             // noteLabel
             // 
             noteLabel.AutoSize = true;
@@ -299,10 +299,12 @@
             dobInput.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             dobInput.Format = DateTimePickerFormat.Short;
             dobInput.Location = new Point(676, 99);
-            dobInput.MinDate = new DateTime(2023, 8, 31, 0, 0, 0, 0);
+            dobInput.MaxDate = new DateTime(2023, 9, 11, 0, 0, 0, 0);
+            dobInput.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             dobInput.Name = "dobInput";
             dobInput.Size = new Size(279, 33);
             dobInput.TabIndex = 47;
+            dobInput.Value = new DateTime(2023, 9, 11, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -359,18 +361,6 @@
             genderInput.Text = "Gender";
             genderInput.Enter += genderInput_Enter;
             // 
-            // male
-            // 
-            male.AutoSize = true;
-            male.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            male.Location = new Point(40, 14);
-            male.Name = "male";
-            male.Size = new Size(62, 25);
-            male.TabIndex = 0;
-            male.TabStop = true;
-            male.Text = "Male";
-            male.UseVisualStyleBackColor = true;
-            // 
             // female
             // 
             female.AutoSize = true;
@@ -382,6 +372,18 @@
             female.TabStop = true;
             female.Text = "Female";
             female.UseVisualStyleBackColor = true;
+            // 
+            // male
+            // 
+            male.AutoSize = true;
+            male.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            male.Location = new Point(40, 14);
+            male.Name = "male";
+            male.Size = new Size(62, 25);
+            male.TabIndex = 0;
+            male.TabStop = true;
+            male.Text = "Male";
+            male.UseVisualStyleBackColor = true;
             // 
             // PatientAddForm
             // 

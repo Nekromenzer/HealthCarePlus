@@ -46,7 +46,44 @@ namespace HealthCarePlus
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
+            string fullName = fullNameInput.Text;
+            string phoneNumber = phoneInput.Text;
+            string dateOfBirth = dobInput.Value.ToString("yyyy-MM-dd");
+            string nicNumber = nicInput.Text;
+            string patientAddress = addressInput.Text;
+            string gender = genderInput.Text;
 
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+                    string insertQuery = "INSERT INTO Patients (FullName, DateOfBirth, Gender, ContactNumber, Address, NIC) " +
+                                         "VALUES (@FullName, @DateOfBirth, @Gender, @ContactNumber, @Address, @NIC)";
+                    MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
+                    cmd.Parameters.AddWithValue("@FullName", fullName);
+                    cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
+                    cmd.Parameters.AddWithValue("@Gender", gender);
+                    cmd.Parameters.AddWithValue("@ContactNumber", phoneNumber);
+                    cmd.Parameters.AddWithValue("@Address", patientAddress);
+                    cmd.Parameters.AddWithValue("@NIC", nicNumber);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Patient added successfully.");
+                        ClearInputFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add patient.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -61,7 +98,7 @@ namespace HealthCarePlus
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-
+            ClearInputFields();
         }
 
         private void fullName_TextChanged(object sender, EventArgs e)
@@ -77,6 +114,17 @@ namespace HealthCarePlus
         private void genderInput_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void ClearInputFields()
+        {
+            fullNameInput.Text = "";
+            phoneInput.Text = "";
+            dobInput.Value = DateTime.Now;
+            nicInput.Text = "";
+            addressInput.Text = "";
+            genderInput.Text = "";
+            fullNameInput.Focus();
         }
     }
 }
