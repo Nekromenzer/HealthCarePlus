@@ -184,6 +184,7 @@
             managePatientBtn.Text = "Manage Patient";
             managePatientBtn.TextAlign = ContentAlignment.MiddleLeft;
             managePatientBtn.UseVisualStyleBackColor = false;
+            managePatientBtn.Click += managePatientBtn_Click;
             // 
             // addAppointmentBtn
             // 

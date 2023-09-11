@@ -60,5 +60,11 @@ namespace HealthCarePlus
             searchForm DoctorSearchForm = new searchForm();
             DoctorSearchForm.Show();
         }
+
+        private void managePatientBtn_Click(object sender, EventArgs e)
+        {
+            PatientAddForm patientAddForm = new PatientAddForm();
+            patientAddForm.Show();
+        }
     }
 }

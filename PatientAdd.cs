@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HealthCarePlus
 {
-   
+
     public partial class PatientAddForm : Form
     {
         private string mysqlCon = "Data source=127.0.0.1; user=root; database=hospital; password= ";
