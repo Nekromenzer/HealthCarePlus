@@ -209,14 +209,70 @@ namespace HealthCarePlus
             }
         }
 
+        private bool DeletePatient(string primaryKeyValue)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string deleteQuery = "DELETE FROM patients WHERE PatientID = @PrimaryKeyValue";
+
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(deleteQuery, conn);
+                    cmd.Parameters.AddWithValue("@PrimaryKeyValue", primaryKeyValue);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         private void deleteBtn_Click(object sender, EventArgs e)
         {
+            if (patientTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = patientTable.SelectedRows[0];
 
+                // Check if the "id" cell value is not null and not empty
+                string primaryKeyValue = selectedRow.Cells["id"].Value?.ToString();
+
+                if (!string.IsNullOrEmpty(primaryKeyValue))
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this Patient?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        if (DeletePatient(primaryKeyValue))
+                        {
+                            patientTable.Rows.Remove(selectedRow);
+                            MessageBox.Show("Patient deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete patient.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selected patient does not have a valid ID.", "Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
             ClearInputFields();
+            patientTable.ClearSelection();
         }
 
         private void patientTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
