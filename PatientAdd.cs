@@ -56,8 +56,33 @@ namespace HealthCarePlus
         private bool IsSriLankanNICValid(string nic)
         {
             string nicPattern = @"^\d{9}[VvXx]$";
-            return Regex.IsMatch(nic, nicPattern);
+            if (Regex.IsMatch(nic, nicPattern))
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlCon))
+                {
+                    connection.Open();
+
+                    string checkDuplicateQuery = "SELECT COUNT(*) FROM Patients WHERE NIC = @NIC";
+                    MySqlCommand cmd = new MySqlCommand(checkDuplicateQuery, connection);
+                    cmd.Parameters.AddWithValue("@NIC", nic);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("NIC already exists. Please enter a unique NIC.");
+                        return false;
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Invalid NIC format. Please enter a valid NIC.");
+                return false;
+            }
         }
+
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
@@ -115,7 +140,73 @@ namespace HealthCarePlus
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
+            if (patientTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = patientTable.SelectedRows[0];
 
+                int patientID = Convert.ToInt32(selectedRow.Cells["PatientID"].Value);
+
+                string fullName = fullNameInput.Text;
+                string phoneNumber = phoneInput.Text;
+                DateTime dateOfBirth = dobInput.Value;
+                string nicNumber = nicInput.Text;
+                string address = addressInput.Text;
+
+                string gender = "Male";
+                if (male.Checked)
+                {
+                    gender = "Male";
+                }
+                else if (female.Checked)
+                {
+                    gender = "Female";
+                }
+
+                if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(phoneNumber) || string.IsNullOrWhiteSpace(address) || string.IsNullOrWhiteSpace(nicNumber) || string.IsNullOrWhiteSpace(patientGender))
+                {
+                    MessageBox.Show("Please fill in all required fields.");
+                    return;
+                }
+
+                if (!IsSriLankanNICValid(nicNumber))
+                {
+                    MessageBox.Show("Invalid NIC number. Please enter a valid Sri Lankan NIC number.");
+                    return;
+                }
+
+                using (MySqlConnection connection = new MySqlConnection(mysqlCon))
+                {
+                    connection.Open();
+
+                    string updateQuery = "UPDATE Patients SET FullName = @FullName, DateOfBirth = @DateOfBirth, Gender = @Gender, " +
+                                         "ContactNumber = @ContactNumber, Address = @Address, NIC = @NIC WHERE PatientID = @PatientID";
+
+                    MySqlCommand cmd = new MySqlCommand(updateQuery, connection);
+                    cmd.Parameters.AddWithValue("@PatientID", patientID);
+                    cmd.Parameters.AddWithValue("@FullName", fullName);
+                    cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
+                    cmd.Parameters.AddWithValue("@Gender", gender);
+                    cmd.Parameters.AddWithValue("@ContactNumber", phoneNumber);
+                    cmd.Parameters.AddWithValue("@Address", address);
+                    cmd.Parameters.AddWithValue("@NIC", nicNumber);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Patient record updated successfully.");
+                        DisplayPatientList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update patient record.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient record to update.");
+            }
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
