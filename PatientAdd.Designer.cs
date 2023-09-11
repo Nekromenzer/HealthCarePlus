@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientAddForm));
-            this.SuspendLayout();
+            SuspendLayout();
             // 
             // PatientAddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
-            this.ClientSize = new System.Drawing.Size(1325, 834);
-            this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-            this.Name = "PatientAddForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Patient Add";
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(1325, 834);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "PatientAddForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Patient Add";
+            ResumeLayout(false);
         }
 
         #endregion
