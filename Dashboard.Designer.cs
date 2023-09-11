@@ -241,6 +241,7 @@
             roomSearchBtn.Text = "Room/Theater";
             roomSearchBtn.TextAlign = ContentAlignment.MiddleLeft;
             roomSearchBtn.UseVisualStyleBackColor = false;
+            roomSearchBtn.Click += roomSearchBtn_Click;
             // 
             // pictureBox3
             // 

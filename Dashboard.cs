@@ -66,5 +66,11 @@ namespace HealthCarePlus
             PatientAddForm patientAddForm = new PatientAddForm();
             patientAddForm.Show();
         }
+
+        private void roomSearchBtn_Click(object sender, EventArgs e)
+        {
+            RoomTheaterForm roomTheaterForm = new RoomTheaterForm();
+            roomTheaterForm.Show();
+        }
     }
 }
