@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -45,6 +46,12 @@ namespace HealthCarePlus
 
         }
 
+        private bool IsSriLankanNICValid(string nic)
+        {
+            string nicPattern = @"^\d{9}[VvXx]$";
+            return Regex.IsMatch(nic, nicPattern);
+        }
+
         private void submitBtn_Click(object sender, EventArgs e)
         {
             string fullName = fullNameInput.Text;
@@ -52,6 +59,18 @@ namespace HealthCarePlus
             string dateOfBirth = dobInput.Value.ToString("yyyy-MM-dd");
             string nicNumber = nicInput.Text;
             string patientAddress = addressInput.Text;
+
+            if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(phoneNumber) || string.IsNullOrWhiteSpace(patientAddress) || string.IsNullOrWhiteSpace(nicNumber) || string.IsNullOrWhiteSpace(patientGender))
+            {
+                MessageBox.Show("Please fill in all required fields.");
+                return;
+            }
+
+            if (!IsSriLankanNICValid(nicNumber))
+            {
+                MessageBox.Show("Invalid NIC number. Please enter a valid Sri Lankan NIC number.");
+                return;
+            }
 
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
