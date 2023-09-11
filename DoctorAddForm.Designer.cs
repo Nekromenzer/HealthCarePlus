@@ -332,7 +332,7 @@ namespace HealthCarePlus
             // 
             // expertise
             // 
-            expertise.AutoCompleteCustomSource.AddRange(new string[] { "Cardiology", "Dermatology", "Gastroenterology", "Neurology", "Orthopedics", "Pediatrics", "Psychiatry", "Radiology", "Surgery", "Urology" });
+            expertise.AutoCompleteCustomSource.AddRange(new string[] { "General Practitioner (GP)", "Cardiologist", "Dermatologist", "Pediatrician", "Orthopedic Surgeon", "Gynecologist", "Urologist", "Ophthalmologist", "Neurologist", "Psychiatrist", "Oncologist", "Radiologist", "Anesthesiologist", "Dentist", "Ear, Nose, and Throat (ENT) Specialist", "Pulmonologist", "Rheumatologist", "Gastroenterologist", "Endocrinologist", "Nephrologist" });
             expertise.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             expertise.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             expertise.FormattingEnabled = true;
