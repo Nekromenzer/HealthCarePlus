@@ -21,6 +21,7 @@ namespace HealthCarePlus
         {
             InitializeComponent();
             DisplayPatientList();
+            ClearSelectionWithDelay();
         }
 
         private void DisplayPatientList()
@@ -44,6 +45,12 @@ namespace HealthCarePlus
         private void PatientAddForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private async void ClearSelectionWithDelay()
+        {
+            await Task.Delay(1000);
+            patientTable.ClearSelection();
         }
 
         private bool IsSriLankanNICValid(string nic)
