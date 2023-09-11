@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientAddForm));
             patientTable = new DataGridView();
             id = new DataGridViewTextBoxColumn();
@@ -38,6 +38,10 @@
             contact = new DataGridViewTextBoxColumn();
             address = new DataGridViewTextBoxColumn();
             nic = new DataGridViewTextBoxColumn();
+            submitBtn = new Button();
+            clearBtn = new Button();
+            deleteBtn = new Button();
+            updateBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)patientTable).BeginInit();
             SuspendLayout();
             // 
@@ -51,14 +55,14 @@
             patientTable.BackgroundColor = SystemColors.Control;
             patientTable.BorderStyle = BorderStyle.None;
             patientTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             patientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             patientTable.Columns.AddRange(new DataGridViewColumn[] { id, name, dob, gender, contact, address, nic });
             patientTable.EnableHeadersVisualStyles = false;
@@ -133,12 +137,95 @@
             nic.ReadOnly = true;
             nic.Width = 51;
             // 
+            // submitBtn
+            // 
+            submitBtn.BackColor = Color.MediumSeaGreen;
+            submitBtn.BackgroundImageLayout = ImageLayout.None;
+            submitBtn.Cursor = Cursors.Hand;
+            submitBtn.FlatAppearance.BorderSize = 0;
+            submitBtn.FlatStyle = FlatStyle.Flat;
+            submitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            submitBtn.Image = (Image)resources.GetObject("submitBtn.Image");
+            submitBtn.ImageAlign = ContentAlignment.MiddleRight;
+            submitBtn.Location = new Point(68, 204);
+            submitBtn.Name = "submitBtn";
+            submitBtn.Size = new Size(167, 37);
+            submitBtn.TabIndex = 36;
+            submitBtn.Text = "Add patient";
+            submitBtn.TextAlign = ContentAlignment.MiddleLeft;
+            submitBtn.UseVisualStyleBackColor = false;
+            submitBtn.Click += submitBtn_Click;
+            // 
+            // clearBtn
+            // 
+            clearBtn.BackColor = Color.White;
+            clearBtn.BackgroundImageLayout = ImageLayout.None;
+            clearBtn.Cursor = Cursors.Hand;
+            clearBtn.FlatAppearance.BorderSize = 0;
+            clearBtn.FlatStyle = FlatStyle.Flat;
+            clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            clearBtn.ForeColor = SystemColors.Desktop;
+            clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
+            clearBtn.ImageAlign = ContentAlignment.MiddleRight;
+            clearBtn.Location = new Point(759, 204);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(167, 37);
+            clearBtn.TabIndex = 41;
+            clearBtn.Text = "clear";
+            clearBtn.TextAlign = ContentAlignment.MiddleLeft;
+            clearBtn.UseVisualStyleBackColor = false;
+            clearBtn.Click += clearBtn_Click;
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.BackColor = Color.IndianRed;
+            deleteBtn.BackgroundImageLayout = ImageLayout.None;
+            deleteBtn.Cursor = Cursors.Hand;
+            deleteBtn.FlatAppearance.BorderSize = 0;
+            deleteBtn.FlatStyle = FlatStyle.Flat;
+            deleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            deleteBtn.ForeColor = SystemColors.ButtonHighlight;
+            deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
+            deleteBtn.ImageAlign = ContentAlignment.MiddleRight;
+            deleteBtn.Location = new Point(473, 204);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(167, 37);
+            deleteBtn.TabIndex = 40;
+            deleteBtn.Text = "Delete";
+            deleteBtn.TextAlign = ContentAlignment.MiddleLeft;
+            deleteBtn.UseVisualStyleBackColor = false;
+            deleteBtn.Click += deleteBtn_Click;
+            // 
+            // updateBtn
+            // 
+            updateBtn.BackColor = Color.Gold;
+            updateBtn.BackgroundImageLayout = ImageLayout.None;
+            updateBtn.Cursor = Cursors.Hand;
+            updateBtn.FlatAppearance.BorderSize = 0;
+            updateBtn.FlatStyle = FlatStyle.Flat;
+            updateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            updateBtn.ForeColor = SystemColors.ActiveCaptionText;
+            updateBtn.Image = (Image)resources.GetObject("updateBtn.Image");
+            updateBtn.ImageAlign = ContentAlignment.MiddleRight;
+            updateBtn.Location = new Point(267, 204);
+            updateBtn.Name = "updateBtn";
+            updateBtn.Size = new Size(167, 37);
+            updateBtn.TabIndex = 39;
+            updateBtn.Text = "Update ";
+            updateBtn.TextAlign = ContentAlignment.MiddleLeft;
+            updateBtn.UseVisualStyleBackColor = false;
+            updateBtn.Click += updateBtn_Click;
+            // 
             // PatientAddForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(clearBtn);
+            Controls.Add(deleteBtn);
+            Controls.Add(updateBtn);
+            Controls.Add(submitBtn);
             Controls.Add(patientTable);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PatientAddForm";
@@ -159,5 +246,9 @@
         private DataGridViewTextBoxColumn address;
         private DataGridViewTextBoxColumn nic;
         private DataGridViewTextBoxColumn gender;
+        private Button submitBtn;
+        private Button clearBtn;
+        private Button deleteBtn;
+        private Button updateBtn;
     }
 }
