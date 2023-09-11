@@ -29,7 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientAddForm));
+            patientTable = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)patientTable).BeginInit();
             SuspendLayout();
+            // 
+            // patientTable
+            // 
+            patientTable.AllowUserToAddRows = false;
+            patientTable.AllowUserToDeleteRows = false;
+            patientTable.AllowUserToResizeColumns = false;
+            patientTable.AllowUserToResizeRows = false;
+            patientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            patientTable.Location = new Point(62, 303);
+            patientTable.Name = "patientTable";
+            patientTable.ReadOnly = true;
+            patientTable.RowTemplate.Height = 25;
+            patientTable.Size = new Size(1193, 484);
+            patientTable.TabIndex = 0;
             // 
             // PatientAddForm
             // 
@@ -37,13 +53,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(patientTable);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PatientAddForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Patient Add";
+            ((System.ComponentModel.ISupportInitialize)patientTable).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView patientTable;
     }
 }
