@@ -299,12 +299,12 @@
             dobInput.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             dobInput.Format = DateTimePickerFormat.Short;
             dobInput.Location = new Point(676, 99);
-            dobInput.MaxDate = new DateTime(2023, 9, 11, 0, 0, 0, 0);
+            dobInput.MaxDate = new DateTime(2023, 9, 1, 0, 0, 0, 0);
             dobInput.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             dobInput.Name = "dobInput";
             dobInput.Size = new Size(279, 33);
             dobInput.TabIndex = 47;
-            dobInput.Value = new DateTime(2023, 9, 11, 0, 0, 0, 0);
+            dobInput.Value = new DateTime(2023, 9, 1, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -372,6 +372,7 @@
             female.TabStop = true;
             female.Text = "Female";
             female.UseVisualStyleBackColor = true;
+            female.CheckedChanged += female_CheckedChanged;
             // 
             // male
             // 
@@ -384,6 +385,7 @@
             male.TabStop = true;
             male.Text = "Male";
             male.UseVisualStyleBackColor = true;
+            male.CheckedChanged += male_CheckedChanged;
             // 
             // PatientAddForm
             // 

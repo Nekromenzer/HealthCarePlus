@@ -28,7 +28,7 @@ namespace HealthCarePlus
             doctorContactNumber.Text = contactNumber;
             doctorOtherDetails.Text = other;
             doctorEmailLabel.Text = email;
-            doctorAvailability.Text = avialability == "Availability" ? "✔️" : "🚫";
+            doctorAvailability.Text = avialability;
         }
 
         private void doctorNameLabel_Click(object sender, EventArgs e)

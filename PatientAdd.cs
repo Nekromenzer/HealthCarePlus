@@ -15,6 +15,7 @@ namespace HealthCarePlus
     public partial class PatientAddForm : Form
     {
         private string mysqlCon = "Data source=127.0.0.1; user=root; database=hospital; password= ";
+        string patientGender;
         public PatientAddForm()
         {
             InitializeComponent();
@@ -51,7 +52,6 @@ namespace HealthCarePlus
             string dateOfBirth = dobInput.Value.ToString("yyyy-MM-dd");
             string nicNumber = nicInput.Text;
             string patientAddress = addressInput.Text;
-            string gender = genderInput.Text;
 
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
@@ -63,7 +63,7 @@ namespace HealthCarePlus
                     MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
                     cmd.Parameters.AddWithValue("@FullName", fullName);
                     cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-                    cmd.Parameters.AddWithValue("@Gender", gender);
+                    cmd.Parameters.AddWithValue("@Gender", patientGender);
                     cmd.Parameters.AddWithValue("@ContactNumber", phoneNumber);
                     cmd.Parameters.AddWithValue("@Address", patientAddress);
                     cmd.Parameters.AddWithValue("@NIC", nicNumber);
@@ -73,6 +73,7 @@ namespace HealthCarePlus
                     {
                         MessageBox.Show("Patient added successfully.");
                         ClearInputFields();
+                        DisplayPatientList();
                     }
                     else
                     {
@@ -120,11 +121,20 @@ namespace HealthCarePlus
         {
             fullNameInput.Text = "";
             phoneInput.Text = "";
-            dobInput.Value = DateTime.Now;
             nicInput.Text = "";
             addressInput.Text = "";
-            genderInput.Text = "";
+            patientGender = "";
             fullNameInput.Focus();
+        }
+
+        private void male_CheckedChanged(object sender, EventArgs e)
+        {
+            patientGender = "Male";
+        }
+
+        private void female_CheckedChanged(object sender, EventArgs e)
+        {
+            patientGender = "Female";
         }
     }
 }

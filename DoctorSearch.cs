@@ -75,10 +75,8 @@ namespace HealthCarePlus
         {
             if (e.RowIndex >= 0)
             {
-                // Get the selected row
                 DataGridViewRow row = doctorTable.Rows[e.RowIndex];
 
-                // Extract the doctor's details from the selected row
                 string? doctorName = row.Cells["doctorFullName"].Value.ToString();
                 string? location = row.Cells["doctorLocation"].Value.ToString();
                 string? expertise = row.Cells["doctorExpertise"].Value.ToString();
@@ -86,12 +84,9 @@ namespace HealthCarePlus
                 string? email = row.Cells["doctorEmail"].Value.ToString();
                 string? avialability = row.Cells["doctorAvailability"].Value.ToString();
                 string? other = row.Cells["doctorOtherDetails"].Value.ToString();
-                // Add more details as needed...
 
-                // Create and show the popup form with the details
                 using (DoctorDetailsPopupForm popupForm = new DoctorDetailsPopupForm())
                 {
-                    // Populate the labels or text boxes in the popup form with the extracted details
                     popupForm.SetDoctorDetails(doctorName, location, expertise, contactNumber, email, avialability, other);
 
                     // Show the popup form
