@@ -63,5 +63,10 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void fullName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
