@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientAddForm));
             patientTable = new DataGridView();
             id = new DataGridViewTextBoxColumn();
@@ -42,6 +42,7 @@
             clearBtn = new Button();
             deleteBtn = new Button();
             updateBtn = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)patientTable).BeginInit();
             SuspendLayout();
             // 
@@ -55,14 +56,14 @@
             patientTable.BackgroundColor = SystemColors.Control;
             patientTable.BorderStyle = BorderStyle.None;
             patientTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             patientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             patientTable.Columns.AddRange(new DataGridViewColumn[] { id, name, dob, gender, contact, address, nic });
             patientTable.EnableHeadersVisualStyles = false;
@@ -216,12 +217,24 @@
             updateBtn.UseVisualStyleBackColor = false;
             updateBtn.Click += updateBtn_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Calibri", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.DodgerBlue;
+            label1.Location = new Point(68, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(158, 36);
+            label1.TabIndex = 42;
+            label1.Text = "Add Patient";
+            // 
             // PatientAddForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(label1);
             Controls.Add(clearBtn);
             Controls.Add(deleteBtn);
             Controls.Add(updateBtn);
@@ -230,10 +243,11 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PatientAddForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Patient Add";
+            Text = "Add Patient";
             Load += PatientAddForm_Load;
             ((System.ComponentModel.ISupportInitialize)patientTable).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -250,5 +264,6 @@
         private Button clearBtn;
         private Button deleteBtn;
         private Button updateBtn;
+        private Label label1;
     }
 }
