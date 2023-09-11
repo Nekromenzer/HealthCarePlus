@@ -18,9 +18,10 @@ namespace HealthCarePlus
         public PatientAddForm()
         {
             InitializeComponent();
+            DisplayPatientList();
         }
 
-        private void DisplayDoctorList()
+        private void DisplayPatientList()
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {

@@ -44,34 +44,35 @@
             // patientTable
             // 
             patientTable.AllowUserToAddRows = false;
-            patientTable.AllowUserToDeleteRows = false;
+            patientTable.AllowUserToOrderColumns = true;
             patientTable.AllowUserToResizeColumns = false;
-            patientTable.AllowUserToResizeRows = false;
-            patientTable.BackgroundColor = Color.WhiteSmoke;
+            patientTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            patientTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            patientTable.BackgroundColor = SystemColors.Control;
             patientTable.BorderStyle = BorderStyle.None;
             patientTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.IndianRed;
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             patientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             patientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             patientTable.Columns.AddRange(new DataGridViewColumn[] { id, name, dob, contact, address, nic, gender });
-            patientTable.Location = new Point(62, 303);
+            patientTable.EnableHeadersVisualStyles = false;
+            patientTable.Location = new Point(68, 304);
             patientTable.Name = "patientTable";
-            patientTable.ReadOnly = true;
+            patientTable.RowHeadersVisible = false;
             patientTable.RowTemplate.Height = 25;
             patientTable.ScrollBars = ScrollBars.Vertical;
             patientTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            patientTable.ShowCellErrors = false;
-            patientTable.ShowCellToolTips = false;
-            patientTable.ShowEditingIcon = false;
-            patientTable.ShowRowErrors = false;
             patientTable.Size = new Size(1193, 484);
             patientTable.TabIndex = 0;
+            //patientTable.CellClick += patientTable_CellClick;
+            //patientTable.CellContentClick += patientTable_CellContentClick;
+            //patientTable.SelectionChanged += patientTable_SelectionChanged;
             // 
             // id
             // 
