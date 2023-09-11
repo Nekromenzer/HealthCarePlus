@@ -31,7 +31,7 @@ namespace HealthCarePlus
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DoctorSchdulesForm));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             doctorId = new TextBox();
             doctorIdLabel = new Label();
             date = new DateTimePicker();
@@ -263,6 +263,8 @@ namespace HealthCarePlus
             // 
             // doctoSchdulesTable
             // 
+            doctoSchdulesTable.AllowUserToAddRows = false;
+            doctoSchdulesTable.AllowUserToDeleteRows = false;
             doctoSchdulesTable.AllowUserToOrderColumns = true;
             doctoSchdulesTable.AllowUserToResizeColumns = false;
             doctoSchdulesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -270,14 +272,14 @@ namespace HealthCarePlus
             doctoSchdulesTable.BackgroundColor = SystemColors.Control;
             doctoSchdulesTable.BorderStyle = BorderStyle.None;
             doctoSchdulesTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            doctoSchdulesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            doctoSchdulesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             doctoSchdulesTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             doctoSchdulesTable.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, dataGridViewTextBoxColumn1, PatientID, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, ScheduleDate, dataGridViewTextBoxColumn5, Notes });
             doctoSchdulesTable.GridColor = SystemColors.Control;
@@ -287,6 +289,10 @@ namespace HealthCarePlus
             doctoSchdulesTable.RowTemplate.Height = 25;
             doctoSchdulesTable.RowTemplate.Resizable = DataGridViewTriState.True;
             doctoSchdulesTable.ScrollBars = ScrollBars.Vertical;
+            doctoSchdulesTable.ShowCellErrors = false;
+            doctoSchdulesTable.ShowCellToolTips = false;
+            doctoSchdulesTable.ShowEditingIcon = false;
+            doctoSchdulesTable.ShowRowErrors = false;
             doctoSchdulesTable.Size = new Size(1180, 484);
             doctoSchdulesTable.TabIndex = 25;
             doctoSchdulesTable.CellClick += doctoSchdulesTable_CellClick;
