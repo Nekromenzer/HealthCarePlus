@@ -42,7 +42,7 @@
             Name = "RoomTheaterForm";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Room/Theater";
+            Text = "Rooms / Theater";
             Load += Form1_Load;
             ResumeLayout(false);
         }

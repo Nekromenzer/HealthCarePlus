@@ -68,7 +68,7 @@ namespace HealthCarePlus
             // 
             // doctorId
             // 
-            doctorId.AutoCompleteMode = AutoCompleteMode.Suggest;
+            doctorId.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             doctorId.AutoCompleteSource = AutoCompleteSource.CustomSource;
             doctorId.BorderStyle = BorderStyle.FixedSingle;
             doctorId.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -169,7 +169,7 @@ namespace HealthCarePlus
             // 
             // patients
             // 
-            patients.AutoCompleteMode = AutoCompleteMode.Suggest;
+            patients.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             patients.AutoCompleteSource = AutoCompleteSource.CustomSource;
             patients.BorderStyle = BorderStyle.FixedSingle;
             patients.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
