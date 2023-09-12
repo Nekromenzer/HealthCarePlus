@@ -72,5 +72,11 @@ namespace HealthCarePlus
             RoomTheaterForm roomTheaterForm = new RoomTheaterForm();
             roomTheaterForm.Show();
         }
+
+        private void logoutBtn_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            loginForm.Show();
+        }
     }
 }

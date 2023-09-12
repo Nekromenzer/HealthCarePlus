@@ -222,6 +222,7 @@
             logoutBtn.Text = "Logout";
             logoutBtn.TextAlign = ContentAlignment.MiddleLeft;
             logoutBtn.UseVisualStyleBackColor = false;
+            logoutBtn.Click += logoutBtn_Click;
             // 
             // roomSearchBtn
             // 
