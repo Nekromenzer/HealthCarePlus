@@ -141,7 +141,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Calibri", 48F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(690, 61);
+            label2.Location = new Point(714, 47);
             label2.Name = "label2";
             label2.Size = new Size(446, 78);
             label2.TabIndex = 15;
@@ -154,11 +154,12 @@
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
             pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
-            pictureBox1.Location = new Point(1142, 71);
+            pictureBox1.Location = new Point(1153, 60);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(105, 56);
             pictureBox1.TabIndex = 16;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // Login
             // 
