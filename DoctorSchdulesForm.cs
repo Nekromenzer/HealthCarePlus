@@ -30,7 +30,7 @@ namespace HealthCarePlus
             }
         }
 
-        private int GetPatientIdByName(string patientName)
+        /*pprivate int GetPatientIdByName(string patientName)
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
@@ -47,7 +47,7 @@ namespace HealthCarePlus
             }
         }
 
-        private string GetPatientNameById(int patientId)
+        /*private string GetPatientNameById(int patientId)
         {
             string? patientName = string.Empty;
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
@@ -64,7 +64,7 @@ namespace HealthCarePlus
                 }
             }
             return patientName;
-        }
+        }*/
 
         private string GetDoctorNameById(int doctorId)
         {
@@ -102,14 +102,14 @@ namespace HealthCarePlus
             conn.Close();
         }
 
-        private void patients_TextChanged(object sender, EventArgs e)
+        private void rooms_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(mysqlCon))
                 {
                     conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("SELECT PatientID, FullName FROM patients", conn);
+                    MySqlCommand cmd = new MySqlCommand("SELECT RoomType, RoomNumber FROM rooms", conn);
                     AutoCompleteStringCollection str_coll = new AutoCompleteStringCollection();
                     using (MySqlDataReader myreader = cmd.ExecuteReader())
                     {
@@ -118,14 +118,13 @@ namespace HealthCarePlus
                             str_coll.Add(myreader.GetString(1));
                         }
                     }
-                    patients.AutoCompleteCustomSource = str_coll;
-                    patients.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    patients.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    rooms.AutoCompleteCustomSource = str_coll;
+                    rooms.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    rooms.AutoCompleteMode = AutoCompleteMode.Suggest;
                 }
             }
             catch (Exception ex)
             {
-                // Handle the exception here, e.g., log it or display an error message
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
@@ -133,7 +132,7 @@ namespace HealthCarePlus
         private void ClearFields()
         {
             doctorId.Text = "";
-            patients.Text = "";
+            rooms.Text = "";
             startTime.Value = DateTime.Now;
             endTime.Value = DateTime.Now;
             appointmentType.SelectedIndex = -1;
@@ -141,17 +140,17 @@ namespace HealthCarePlus
             date.Value = DateTime.Now;
             price.Text = "";
         }
-        private bool UpdateDoctorSchedule(string primaryKeyValue, int doctorId, int patientId, DateTime startTime, DateTime endTime, string appointmentType, string location, DateTime scheduleDate, string enteredPrice)
+        private bool UpdateDoctorSchedule(string primaryKeyValue, int doctorId, string RoomNumber, DateTime startTime, DateTime endTime, string appointmentType, string location, DateTime scheduleDate, string enteredPrice)
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
                 try
                 {
                     conn.Open();
-                    string updateQuery = "UPDATE doctorschedules SET DoctorID = @DoctorID, PatientID = @PatientID, StartTime = @StartTime, EndTime = @EndTime, AppointmentType = @AppointmentType, Location = @Location, ScheduleDate = @ScheduleDate, Price = @Price WHERE ScheduleID = @PrimaryKeyValue";
+                    string updateQuery = "UPDATE doctorschedules SET DoctorID = @DoctorID, RoomNumber = @RoomNumber, StartTime = @StartTime, EndTime = @EndTime, AppointmentType = @AppointmentType, Location = @Location, ScheduleDate = @ScheduleDate, Price = @Price WHERE ScheduleID = @PrimaryKeyValue";
                     MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
                     cmd.Parameters.AddWithValue("@DoctorID", doctorId);
-                    cmd.Parameters.AddWithValue("@PatientID", patientId);
+                    cmd.Parameters.AddWithValue("@RoomNumber", RoomNumber);
                     cmd.Parameters.AddWithValue("@StartTime", startTime);
                     cmd.Parameters.AddWithValue("@EndTime", endTime);
                     cmd.Parameters.AddWithValue("@AppointmentType", appointmentType);
@@ -185,7 +184,7 @@ namespace HealthCarePlus
         private void submitBtn_Click(object sender, EventArgs e)
         {
             string selectedDoctorName = doctorId.Text;
-            string selectedPatientName = patients.Text;
+            string selectedRoom = rooms.Text;
             DateTime selectedStartTime = startTime.Value;
             DateTime selectedEndTime = endTime.Value;
             string? selectedAppointmentType = appointmentType.SelectedItem.ToString();
@@ -194,16 +193,16 @@ namespace HealthCarePlus
             string enteredPrice = price.Text;
 
             int doctorIdSelected = GetDoctorIdByName(selectedDoctorName);
-            int patientId = GetPatientIdByName(selectedPatientName);
+            //int patientId = GetPatientIdByName(selectedPatientName);
 
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
                 conn.Open();
-                string insertQuery = "INSERT INTO doctorschedules (DoctorID, PatientID, StartTime, EndTime, AppointmentType, Location, ScheduleDate, Price) " +
-                                     "VALUES (@DoctorID, @PatientID, @StartTime, @EndTime, @AppointmentType, @Location, @ScheduleDate, @Price)";
+                string insertQuery = "INSERT INTO doctorschedules (DoctorID, RoomNumber, StartTime, EndTime, AppointmentType, Location, ScheduleDate, Price) " +
+                                     "VALUES (@DoctorID, @RoomNumber, @StartTime, @EndTime, @AppointmentType, @Location, @ScheduleDate, @Price)";
                 MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
                 cmd.Parameters.AddWithValue("@DoctorID", doctorIdSelected);
-                cmd.Parameters.AddWithValue("@PatientID", patientId);
+                cmd.Parameters.AddWithValue("@RoomNumber", selectedRoom);
                 cmd.Parameters.AddWithValue("@StartTime", selectedStartTime);
                 cmd.Parameters.AddWithValue("@EndTime", selectedEndTime);
                 cmd.Parameters.AddWithValue("@AppointmentType", selectedAppointmentType);
@@ -232,21 +231,16 @@ namespace HealthCarePlus
             {
                 // Get the selected row
                 DataGridViewRow selectedRow = doctoSchdulesTable.SelectedRows[0];
-
                 string selectedDoctorName = doctorId.Text;
-                string selectedPatientName = patients.Text;
+                string selectedRoom = rooms.Text;
                 DateTime selectedStartTime = startTime.Value;
                 DateTime selectedEndTime = endTime.Value;
                 string? selectedAppointmentType = appointmentType.SelectedItem.ToString();
                 string? selectedLocation = location.SelectedItem.ToString();
                 DateTime selectedDate = date.Value;
                 string enteredPrice = price.Text;
-
                 int doctorIdSelected = GetDoctorIdByName(selectedDoctorName);
-                int patientId = GetPatientIdByName(selectedPatientName);
-
-                // Update the row in the database
-                if (UpdateDoctorSchedule(selectedRow.Cells["ScheduleID"].Value.ToString(), doctorIdSelected, patientId, selectedStartTime, selectedEndTime, selectedAppointmentType, selectedLocation, selectedDate, enteredPrice))
+                if (UpdateDoctorSchedule(selectedRow.Cells["ScheduleID"].Value.ToString(), doctorIdSelected, selectedRoom, selectedStartTime, selectedEndTime, selectedAppointmentType, selectedLocation, selectedDate, enteredPrice))
                 {
                     // Update successful, refresh
                     DisplayDoctorSchedules();
@@ -296,14 +290,14 @@ namespace HealthCarePlus
         }
         private void doctoSchdulesTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (doctoSchdulesTable.Columns[e.ColumnIndex].Name == "PatientID")
-            {
-                if (e.Value != null)
-                {
-                    string patientName = GetPatientNameById(Convert.ToInt32(e.Value));
-                    e.Value = patientName;
-                }
-            }
+            //if (doctoSchdulesTable.Columns[e.ColumnIndex].Name == "PatientID")
+            //{
+            //    if (e.Value != null)
+            //    {
+            //        string patientName = GetPatientNameById(Convert.ToInt32(e.Value));
+            //       e.Value = patientName;
+            //    }
+            // }
 
             if (doctoSchdulesTable.Columns[e.ColumnIndex].Name == "dataGridViewTextBoxColumn1")
             {
@@ -367,7 +361,7 @@ namespace HealthCarePlus
                     DataGridViewRow row = doctoSchdulesTable.Rows[e.RowIndex];
 
                     doctorId.Text = GetDoctorNameById(Convert.ToInt32(row.Cells["dataGridViewTextBoxColumn1"].Value.ToString()));
-                    patients.Text = GetPatientNameById(Convert.ToInt32(row.Cells["PatientID"].Value.ToString()));
+                    rooms.Text = row.Cells["RoomNumber"].Value.ToString();
                     if (row.Cells["dataGridViewTextBoxColumn3"].Value != null)
                     {
                         if (TimeSpan.TryParse(row.Cells["dataGridViewTextBoxColumn3"].Value.ToString(), out TimeSpan startTimeValue))

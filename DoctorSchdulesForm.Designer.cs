@@ -31,6 +31,7 @@ namespace HealthCarePlus
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DoctorSchdulesForm));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             doctorId = new TextBox();
             doctorIdLabel = new Label();
@@ -41,8 +42,8 @@ namespace HealthCarePlus
             EndTimeLabel = new Label();
             endTime = new DateTimePicker();
             AppointmentLabel = new Label();
-            patientsLabel = new Label();
-            patients = new TextBox();
+            RoomLabel = new Label();
+            rooms = new TextBox();
             locationLabel = new Label();
             priceLabel = new Label();
             price = new TextBox();
@@ -56,7 +57,7 @@ namespace HealthCarePlus
             clearBtn = new Button();
             ScheduleID = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            PatientID = new DataGridViewTextBoxColumn();
+            RoomNumber = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
@@ -168,29 +169,28 @@ namespace HealthCarePlus
             AppointmentLabel.TabIndex = 11;
             AppointmentLabel.Text = "Appointment Type";
             // 
-            // patientsLabel
+            // RoomLabel
             // 
-            patientsLabel.AutoSize = true;
-            patientsLabel.BackColor = Color.Transparent;
-            patientsLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            patientsLabel.Location = new Point(376, 84);
-            patientsLabel.Name = "patientsLabel";
-            patientsLabel.Size = new Size(57, 17);
-            patientsLabel.TabIndex = 13;
-            patientsLabel.Text = "Patients";
+            RoomLabel.AutoSize = true;
+            RoomLabel.BackColor = Color.Transparent;
+            RoomLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            RoomLabel.Location = new Point(376, 84);
+            RoomLabel.Name = "RoomLabel";
+            RoomLabel.Size = new Size(98, 17);
+            RoomLabel.TabIndex = 13;
+            RoomLabel.Text = "Room Number";
             // 
-            // patients
+            // rooms
             // 
-            patients.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            patients.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            patients.BorderStyle = BorderStyle.FixedSingle;
-            patients.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            patients.Location = new Point(376, 106);
-            patients.Name = "patients";
-            patients.PlaceholderText = "Jane doe";
-            patients.Size = new Size(279, 33);
-            patients.TabIndex = 12;
-            patients.TextChanged += patients_TextChanged;
+            rooms.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            rooms.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            rooms.BorderStyle = BorderStyle.FixedSingle;
+            rooms.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            rooms.Location = new Point(376, 106);
+            rooms.Name = "rooms";
+            rooms.Size = new Size(279, 33);
+            rooms.TabIndex = 12;
+            rooms.TextChanged += rooms_TextChanged;
             // 
             // locationLabel
             // 
@@ -286,6 +286,8 @@ namespace HealthCarePlus
             doctoSchdulesTable.AllowUserToDeleteRows = false;
             doctoSchdulesTable.AllowUserToOrderColumns = true;
             doctoSchdulesTable.AllowUserToResizeColumns = false;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            doctoSchdulesTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             doctoSchdulesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             doctoSchdulesTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             doctoSchdulesTable.BackgroundColor = SystemColors.Control;
@@ -300,7 +302,7 @@ namespace HealthCarePlus
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             doctoSchdulesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             doctoSchdulesTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            doctoSchdulesTable.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, dataGridViewTextBoxColumn1, PatientID, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, ScheduleDate, dataGridViewTextBoxColumn5, PriceHeader });
+            doctoSchdulesTable.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, dataGridViewTextBoxColumn1, RoomNumber, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, ScheduleDate, dataGridViewTextBoxColumn5, PriceHeader });
             doctoSchdulesTable.GridColor = SystemColors.Control;
             doctoSchdulesTable.Location = new Point(77, 315);
             doctoSchdulesTable.Name = "doctoSchdulesTable";
@@ -396,13 +398,13 @@ namespace HealthCarePlus
             dataGridViewTextBoxColumn1.HeaderText = "Doctor Name";
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // PatientID
+            // RoomNumber
             // 
-            PatientID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            PatientID.DataPropertyName = "PatientID";
-            PatientID.FillWeight = 59.7015038F;
-            PatientID.HeaderText = "Patient Name";
-            PatientID.Name = "PatientID";
+            RoomNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            RoomNumber.DataPropertyName = "RoomNumber";
+            RoomNumber.FillWeight = 59.7015038F;
+            RoomNumber.HeaderText = "Room Number";
+            RoomNumber.Name = "RoomNumber";
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -469,8 +471,8 @@ namespace HealthCarePlus
             Controls.Add(priceLabel);
             Controls.Add(price);
             Controls.Add(locationLabel);
-            Controls.Add(patientsLabel);
-            Controls.Add(patients);
+            Controls.Add(RoomLabel);
+            Controls.Add(rooms);
             Controls.Add(AppointmentLabel);
             Controls.Add(EndTimeLabel);
             Controls.Add(endTime);
@@ -504,8 +506,8 @@ namespace HealthCarePlus
         private Label EndTimeLabel;
         private DateTimePicker endTime;
         private Label AppointmentLabel;
-        private Label patientsLabel;
-        private TextBox patients;
+        private Label RoomLabel;
+        private TextBox rooms;
         private Label locationLabel;
         private Label priceLabel;
         private TextBox price;
@@ -520,7 +522,7 @@ namespace HealthCarePlus
         private Button clearBtn;
         private DataGridViewTextBoxColumn ScheduleID;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn PatientID;
+        private DataGridViewTextBoxColumn RoomNumber;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
