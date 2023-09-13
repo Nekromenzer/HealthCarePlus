@@ -11,6 +11,13 @@ namespace HealthCarePlus
         {
             InitializeComponent();
             DisplayDoctorSchedules();
+            ClearSelectionWithDelay();
+        }
+
+        private async void ClearSelectionWithDelay()
+        {
+            await Task.Delay(1000);
+            doctoSchdulesTable.ClearSelection();
         }
 
         private int GetDoctorIdByName(string doctorName)
