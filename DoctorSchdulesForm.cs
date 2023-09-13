@@ -451,5 +451,10 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void DoctorSchdulesForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

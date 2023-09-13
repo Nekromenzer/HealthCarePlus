@@ -21,5 +21,10 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void roomsTab_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

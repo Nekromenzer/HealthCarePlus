@@ -82,9 +82,11 @@ namespace HealthCarePlus
             // doctorIdLabel
             // 
             doctorIdLabel.AutoSize = true;
-            doctorIdLabel.Location = new Point(77, 87);
+            doctorIdLabel.BackColor = Color.Transparent;
+            doctorIdLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            doctorIdLabel.Location = new Point(77, 83);
             doctorIdLabel.Name = "doctorIdLabel";
-            doctorIdLabel.Size = new Size(43, 15);
+            doctorIdLabel.Size = new Size(55, 19);
             doctorIdLabel.TabIndex = 1;
             doctorIdLabel.Text = "Doctor";
             // 
@@ -92,27 +94,31 @@ namespace HealthCarePlus
             // 
             date.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             date.Format = DateTimePickerFormat.Short;
-            date.Location = new Point(77, 173);
+            date.Location = new Point(78, 173);
             date.MinDate = new DateTime(2023, 8, 31, 0, 0, 0, 0);
             date.Name = "date";
-            date.Size = new Size(279, 33);
+            date.Size = new Size(278, 33);
             date.TabIndex = 4;
             // 
             // DateLabel
             // 
             DateLabel.AutoSize = true;
-            DateLabel.Location = new Point(77, 155);
+            DateLabel.BackColor = Color.Transparent;
+            DateLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            DateLabel.Location = new Point(78, 151);
             DateLabel.Name = "DateLabel";
-            DateLabel.Size = new Size(31, 15);
+            DateLabel.Size = new Size(40, 19);
             DateLabel.TabIndex = 5;
             DateLabel.Text = "Date";
             // 
             // StartTimeLabel
             // 
             StartTimeLabel.AutoSize = true;
-            StartTimeLabel.Location = new Point(376, 155);
+            StartTimeLabel.BackColor = Color.Transparent;
+            StartTimeLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            StartTimeLabel.Location = new Point(376, 151);
             StartTimeLabel.Name = "StartTimeLabel";
-            StartTimeLabel.Size = new Size(60, 15);
+            StartTimeLabel.Size = new Size(78, 19);
             StartTimeLabel.TabIndex = 7;
             StartTimeLabel.Text = "Start Time";
             // 
@@ -131,9 +137,11 @@ namespace HealthCarePlus
             // EndTimeLabel
             // 
             EndTimeLabel.AutoSize = true;
-            EndTimeLabel.Location = new Point(676, 155);
+            EndTimeLabel.BackColor = Color.Transparent;
+            EndTimeLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            EndTimeLabel.Location = new Point(676, 151);
             EndTimeLabel.Name = "EndTimeLabel";
-            EndTimeLabel.Size = new Size(56, 15);
+            EndTimeLabel.Size = new Size(70, 19);
             EndTimeLabel.TabIndex = 9;
             EndTimeLabel.Text = "End Time";
             // 
@@ -152,18 +160,22 @@ namespace HealthCarePlus
             // AppointmentLabel
             // 
             AppointmentLabel.AutoSize = true;
-            AppointmentLabel.Location = new Point(676, 88);
+            AppointmentLabel.BackColor = Color.Transparent;
+            AppointmentLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            AppointmentLabel.Location = new Point(676, 84);
             AppointmentLabel.Name = "AppointmentLabel";
-            AppointmentLabel.Size = new Size(105, 15);
+            AppointmentLabel.Size = new Size(133, 19);
             AppointmentLabel.TabIndex = 11;
             AppointmentLabel.Text = "Appointment Type";
             // 
             // patientsLabel
             // 
             patientsLabel.AutoSize = true;
-            patientsLabel.Location = new Point(376, 88);
+            patientsLabel.BackColor = Color.Transparent;
+            patientsLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            patientsLabel.Location = new Point(376, 84);
             patientsLabel.Name = "patientsLabel";
-            patientsLabel.Size = new Size(49, 15);
+            patientsLabel.Size = new Size(62, 19);
             patientsLabel.TabIndex = 13;
             patientsLabel.Text = "Patients";
             // 
@@ -183,18 +195,22 @@ namespace HealthCarePlus
             // locationLabel
             // 
             locationLabel.AutoSize = true;
-            locationLabel.Location = new Point(978, 88);
+            locationLabel.BackColor = Color.Transparent;
+            locationLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            locationLabel.Location = new Point(978, 84);
             locationLabel.Name = "locationLabel";
-            locationLabel.Size = new Size(53, 15);
+            locationLabel.Size = new Size(66, 19);
             locationLabel.TabIndex = 17;
             locationLabel.Text = "Location";
             // 
             // noteLabel
             // 
             noteLabel.AutoSize = true;
-            noteLabel.Location = new Point(978, 155);
+            noteLabel.BackColor = Color.Transparent;
+            noteLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            noteLabel.Location = new Point(978, 151);
             noteLabel.Name = "noteLabel";
-            noteLabel.Size = new Size(33, 15);
+            noteLabel.Size = new Size(42, 19);
             noteLabel.TabIndex = 19;
             noteLabel.Text = "Note";
             // 
@@ -231,6 +247,7 @@ namespace HealthCarePlus
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.White;
             label1.Font = new Font("Calibri", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.DodgerBlue;
             label1.Location = new Point(72, 30);
@@ -468,6 +485,7 @@ namespace HealthCarePlus
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Doctor Schedules";
             TopMost = true;
+            Load += DoctorSchdulesForm_Load;
             ((System.ComponentModel.ISupportInitialize)doctoSchdulesTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
