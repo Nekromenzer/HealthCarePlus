@@ -31,7 +31,7 @@ namespace HealthCarePlus
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DoctorSchdulesForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             doctorId = new TextBox();
             doctorIdLabel = new Label();
             date = new DateTimePicker();
@@ -44,13 +44,16 @@ namespace HealthCarePlus
             patientsLabel = new Label();
             patients = new TextBox();
             locationLabel = new Label();
-            noteLabel = new Label();
-            note = new TextBox();
+            priceLabel = new Label();
+            price = new TextBox();
             submitBtn = new Button();
             label1 = new Label();
             location = new ComboBox();
             appointmentType = new ComboBox();
             doctoSchdulesTable = new DataGridView();
+            updateBtn = new Button();
+            deleteBtn = new Button();
+            clearBtn = new Button();
             ScheduleID = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             PatientID = new DataGridViewTextBoxColumn();
@@ -59,10 +62,7 @@ namespace HealthCarePlus
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             ScheduleDate = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            Notes = new DataGridViewTextBoxColumn();
-            updateBtn = new Button();
-            deleteBtn = new Button();
-            clearBtn = new Button();
+            PriceHeader = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)doctoSchdulesTable).BeginInit();
             SuspendLayout();
             // 
@@ -204,27 +204,28 @@ namespace HealthCarePlus
             locationLabel.Text = "Location";
             locationLabel.Click += locationLabel_Click;
             // 
-            // noteLabel
+            // priceLabel
             // 
-            noteLabel.AutoSize = true;
-            noteLabel.BackColor = Color.Transparent;
-            noteLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            noteLabel.Location = new Point(978, 151);
-            noteLabel.Name = "noteLabel";
-            noteLabel.Size = new Size(38, 17);
-            noteLabel.TabIndex = 19;
-            noteLabel.Text = "Note";
+            priceLabel.AutoSize = true;
+            priceLabel.BackColor = Color.Transparent;
+            priceLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            priceLabel.Location = new Point(978, 151);
+            priceLabel.Name = "priceLabel";
+            priceLabel.Size = new Size(37, 17);
+            priceLabel.TabIndex = 19;
+            priceLabel.Text = "Price";
             // 
-            // note
+            // price
             // 
-            note.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
-            note.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            note.BorderStyle = BorderStyle.FixedSingle;
-            note.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            note.Location = new Point(978, 173);
-            note.Name = "note";
-            note.Size = new Size(279, 33);
-            note.TabIndex = 18;
+            price.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            price.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            price.BorderStyle = BorderStyle.FixedSingle;
+            price.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            price.Location = new Point(978, 173);
+            price.Name = "price";
+            price.Size = new Size(279, 33);
+            price.TabIndex = 18;
+            price.TextChanged += note_TextChanged;
             // 
             // submitBtn
             // 
@@ -290,16 +291,16 @@ namespace HealthCarePlus
             doctoSchdulesTable.BackgroundColor = SystemColors.Control;
             doctoSchdulesTable.BorderStyle = BorderStyle.None;
             doctoSchdulesTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            doctoSchdulesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            doctoSchdulesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             doctoSchdulesTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            doctoSchdulesTable.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, dataGridViewTextBoxColumn1, PatientID, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, ScheduleDate, dataGridViewTextBoxColumn5, Notes });
+            doctoSchdulesTable.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, dataGridViewTextBoxColumn1, PatientID, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, ScheduleDate, dataGridViewTextBoxColumn5, PriceHeader });
             doctoSchdulesTable.GridColor = SystemColors.Control;
             doctoSchdulesTable.Location = new Point(77, 315);
             doctoSchdulesTable.Name = "doctoSchdulesTable";
@@ -317,6 +318,66 @@ namespace HealthCarePlus
             doctoSchdulesTable.CellContentClick += doctoSchdulesTable_CellContentClick;
             doctoSchdulesTable.CellFormatting += doctoSchdulesTable_CellFormatting;
             doctoSchdulesTable.SelectionChanged += doctoSchdulesTable_SelectionChanged;
+            // 
+            // updateBtn
+            // 
+            updateBtn.BackColor = Color.Gold;
+            updateBtn.BackgroundImageLayout = ImageLayout.None;
+            updateBtn.Cursor = Cursors.Hand;
+            updateBtn.FlatAppearance.BorderSize = 0;
+            updateBtn.FlatStyle = FlatStyle.Flat;
+            updateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            updateBtn.ForeColor = SystemColors.ActiveCaptionText;
+            updateBtn.Image = (Image)resources.GetObject("updateBtn.Image");
+            updateBtn.ImageAlign = ContentAlignment.MiddleRight;
+            updateBtn.Location = new Point(282, 235);
+            updateBtn.Name = "updateBtn";
+            updateBtn.Size = new Size(167, 37);
+            updateBtn.TabIndex = 26;
+            updateBtn.Text = "Update ";
+            updateBtn.TextAlign = ContentAlignment.MiddleLeft;
+            updateBtn.UseVisualStyleBackColor = false;
+            updateBtn.Click += updateBtn_Click;
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.BackColor = Color.IndianRed;
+            deleteBtn.BackgroundImageLayout = ImageLayout.None;
+            deleteBtn.Cursor = Cursors.Hand;
+            deleteBtn.FlatAppearance.BorderSize = 0;
+            deleteBtn.FlatStyle = FlatStyle.Flat;
+            deleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            deleteBtn.ForeColor = SystemColors.ButtonHighlight;
+            deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
+            deleteBtn.ImageAlign = ContentAlignment.MiddleRight;
+            deleteBtn.Location = new Point(488, 235);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(167, 37);
+            deleteBtn.TabIndex = 27;
+            deleteBtn.Text = "Delete";
+            deleteBtn.TextAlign = ContentAlignment.MiddleLeft;
+            deleteBtn.UseVisualStyleBackColor = false;
+            deleteBtn.Click += deleteBtn_Click;
+            // 
+            // clearBtn
+            // 
+            clearBtn.BackColor = Color.White;
+            clearBtn.BackgroundImageLayout = ImageLayout.None;
+            clearBtn.Cursor = Cursors.Hand;
+            clearBtn.FlatAppearance.BorderSize = 0;
+            clearBtn.FlatStyle = FlatStyle.Flat;
+            clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            clearBtn.ForeColor = SystemColors.Desktop;
+            clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
+            clearBtn.ImageAlign = ContentAlignment.MiddleRight;
+            clearBtn.Location = new Point(774, 235);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(167, 37);
+            clearBtn.TabIndex = 28;
+            clearBtn.Text = "clear";
+            clearBtn.TextAlign = ContentAlignment.MiddleLeft;
+            clearBtn.UseVisualStyleBackColor = false;
+            clearBtn.Click += clearBtn_Click;
             // 
             // ScheduleID
             // 
@@ -382,73 +443,13 @@ namespace HealthCarePlus
             dataGridViewTextBoxColumn5.HeaderText = "Location";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // Notes
+            // PriceHeader
             // 
-            Notes.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Notes.DataPropertyName = "Notes";
-            Notes.FillWeight = 59.7015038F;
-            Notes.HeaderText = "Notes";
-            Notes.Name = "Notes";
-            // 
-            // updateBtn
-            // 
-            updateBtn.BackColor = Color.Gold;
-            updateBtn.BackgroundImageLayout = ImageLayout.None;
-            updateBtn.Cursor = Cursors.Hand;
-            updateBtn.FlatAppearance.BorderSize = 0;
-            updateBtn.FlatStyle = FlatStyle.Flat;
-            updateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            updateBtn.ForeColor = SystemColors.ActiveCaptionText;
-            updateBtn.Image = (Image)resources.GetObject("updateBtn.Image");
-            updateBtn.ImageAlign = ContentAlignment.MiddleRight;
-            updateBtn.Location = new Point(282, 235);
-            updateBtn.Name = "updateBtn";
-            updateBtn.Size = new Size(167, 37);
-            updateBtn.TabIndex = 26;
-            updateBtn.Text = "Update ";
-            updateBtn.TextAlign = ContentAlignment.MiddleLeft;
-            updateBtn.UseVisualStyleBackColor = false;
-            updateBtn.Click += updateBtn_Click;
-            // 
-            // deleteBtn
-            // 
-            deleteBtn.BackColor = Color.IndianRed;
-            deleteBtn.BackgroundImageLayout = ImageLayout.None;
-            deleteBtn.Cursor = Cursors.Hand;
-            deleteBtn.FlatAppearance.BorderSize = 0;
-            deleteBtn.FlatStyle = FlatStyle.Flat;
-            deleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            deleteBtn.ForeColor = SystemColors.ButtonHighlight;
-            deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
-            deleteBtn.ImageAlign = ContentAlignment.MiddleRight;
-            deleteBtn.Location = new Point(488, 235);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(167, 37);
-            deleteBtn.TabIndex = 27;
-            deleteBtn.Text = "Delete";
-            deleteBtn.TextAlign = ContentAlignment.MiddleLeft;
-            deleteBtn.UseVisualStyleBackColor = false;
-            deleteBtn.Click += deleteBtn_Click;
-            // 
-            // clearBtn
-            // 
-            clearBtn.BackColor = Color.White;
-            clearBtn.BackgroundImageLayout = ImageLayout.None;
-            clearBtn.Cursor = Cursors.Hand;
-            clearBtn.FlatAppearance.BorderSize = 0;
-            clearBtn.FlatStyle = FlatStyle.Flat;
-            clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            clearBtn.ForeColor = SystemColors.Desktop;
-            clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
-            clearBtn.ImageAlign = ContentAlignment.MiddleRight;
-            clearBtn.Location = new Point(774, 235);
-            clearBtn.Name = "clearBtn";
-            clearBtn.Size = new Size(167, 37);
-            clearBtn.TabIndex = 28;
-            clearBtn.Text = "clear";
-            clearBtn.TextAlign = ContentAlignment.MiddleLeft;
-            clearBtn.UseVisualStyleBackColor = false;
-            clearBtn.Click += clearBtn_Click;
+            PriceHeader.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PriceHeader.DataPropertyName = "Price";
+            PriceHeader.FillWeight = 59.7015038F;
+            PriceHeader.HeaderText = "Price per schedule";
+            PriceHeader.Name = "PriceHeader";
             // 
             // DoctorSchdulesForm
             // 
@@ -465,8 +466,8 @@ namespace HealthCarePlus
             Controls.Add(location);
             Controls.Add(label1);
             Controls.Add(submitBtn);
-            Controls.Add(noteLabel);
-            Controls.Add(note);
+            Controls.Add(priceLabel);
+            Controls.Add(price);
             Controls.Add(locationLabel);
             Controls.Add(patientsLabel);
             Controls.Add(patients);
@@ -506,25 +507,25 @@ namespace HealthCarePlus
         private Label patientsLabel;
         private TextBox patients;
         private Label locationLabel;
-        private Label noteLabel;
-        private TextBox note;
+        private Label priceLabel;
+        private TextBox price;
         private Button submitBtn;
         private Label label1;
         private ComboBox location;
         private ComboBox appointmentType;
         private DataGridView doctoSchdulesTable;
         private DataGridViewTextBoxColumn SchedduleID;
+        private Button updateBtn;
+        private Button deleteBtn;
+        private Button clearBtn;
         private DataGridViewTextBoxColumn ScheduleID;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn PatientID;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn ScheduleDate;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn Notes;
+        private DataGridViewTextBoxColumn ScheduleDate;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private Button updateBtn;
-        private Button deleteBtn;
-        private Button clearBtn;
+        private DataGridViewTextBoxColumn PriceHeader;
     }
 }

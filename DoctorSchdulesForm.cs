@@ -139,16 +139,16 @@ namespace HealthCarePlus
             appointmentType.SelectedIndex = -1;
             location.SelectedIndex = -1;
             date.Value = DateTime.Now;
-            note.Text = "";
+            price.Text = "";
         }
-        private bool UpdateDoctorSchedule(string primaryKeyValue, int doctorId, int patientId, DateTime startTime, DateTime endTime, string appointmentType, string location, DateTime scheduleDate, string notes)
+        private bool UpdateDoctorSchedule(string primaryKeyValue, int doctorId, int patientId, DateTime startTime, DateTime endTime, string appointmentType, string location, DateTime scheduleDate, string enteredPrice)
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
                 try
                 {
                     conn.Open();
-                    string updateQuery = "UPDATE doctorschedules SET DoctorID = @DoctorID, PatientID = @PatientID, StartTime = @StartTime, EndTime = @EndTime, AppointmentType = @AppointmentType, Location = @Location, ScheduleDate = @ScheduleDate, Notes = @Notes WHERE ScheduleID = @PrimaryKeyValue";
+                    string updateQuery = "UPDATE doctorschedules SET DoctorID = @DoctorID, PatientID = @PatientID, StartTime = @StartTime, EndTime = @EndTime, AppointmentType = @AppointmentType, Location = @Location, ScheduleDate = @ScheduleDate, Price = @Price WHERE ScheduleID = @PrimaryKeyValue";
                     MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
                     cmd.Parameters.AddWithValue("@DoctorID", doctorId);
                     cmd.Parameters.AddWithValue("@PatientID", patientId);
@@ -157,7 +157,7 @@ namespace HealthCarePlus
                     cmd.Parameters.AddWithValue("@AppointmentType", appointmentType);
                     cmd.Parameters.AddWithValue("@Location", location);
                     cmd.Parameters.AddWithValue("@ScheduleDate", scheduleDate);
-                    cmd.Parameters.AddWithValue("@Notes", notes);
+                    cmd.Parameters.AddWithValue("@Price", enteredPrice);
                     cmd.Parameters.AddWithValue("@PrimaryKeyValue", primaryKeyValue);
                     int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -191,7 +191,7 @@ namespace HealthCarePlus
             string? selectedAppointmentType = appointmentType.SelectedItem.ToString();
             string? selectedLocation = location.SelectedItem.ToString();
             DateTime selectedDate = date.Value;
-            string selectedNote = note.Text;
+            string enteredPrice = price.Text;
 
             int doctorIdSelected = GetDoctorIdByName(selectedDoctorName);
             int patientId = GetPatientIdByName(selectedPatientName);
@@ -199,8 +199,8 @@ namespace HealthCarePlus
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
                 conn.Open();
-                string insertQuery = "INSERT INTO doctorschedules (DoctorID, PatientID, StartTime, EndTime, AppointmentType, Location, ScheduleDate, Notes) " +
-                                     "VALUES (@DoctorID, @PatientID, @StartTime, @EndTime, @AppointmentType, @Location, @ScheduleDate, @Notes)";
+                string insertQuery = "INSERT INTO doctorschedules (DoctorID, PatientID, StartTime, EndTime, AppointmentType, Location, ScheduleDate, Price) " +
+                                     "VALUES (@DoctorID, @PatientID, @StartTime, @EndTime, @AppointmentType, @Location, @ScheduleDate, @Price)";
                 MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
                 cmd.Parameters.AddWithValue("@DoctorID", doctorIdSelected);
                 cmd.Parameters.AddWithValue("@PatientID", patientId);
@@ -209,7 +209,7 @@ namespace HealthCarePlus
                 cmd.Parameters.AddWithValue("@AppointmentType", selectedAppointmentType);
                 cmd.Parameters.AddWithValue("@Location", selectedLocation);
                 cmd.Parameters.AddWithValue("@ScheduleDate", selectedDate);
-                cmd.Parameters.AddWithValue("@Notes", selectedNote);
+                cmd.Parameters.AddWithValue("@Price", enteredPrice);
 
                 int result = cmd.ExecuteNonQuery();
                 if (result > 0)
@@ -240,13 +240,13 @@ namespace HealthCarePlus
                 string? selectedAppointmentType = appointmentType.SelectedItem.ToString();
                 string? selectedLocation = location.SelectedItem.ToString();
                 DateTime selectedDate = date.Value;
-                string selectedNote = note.Text;
+                string enteredPrice = price.Text;
 
                 int doctorIdSelected = GetDoctorIdByName(selectedDoctorName);
                 int patientId = GetPatientIdByName(selectedPatientName);
 
                 // Update the row in the database
-                if (UpdateDoctorSchedule(selectedRow.Cells["ScheduleID"].Value.ToString(), doctorIdSelected, patientId, selectedStartTime, selectedEndTime, selectedAppointmentType, selectedLocation, selectedDate, selectedNote))
+                if (UpdateDoctorSchedule(selectedRow.Cells["ScheduleID"].Value.ToString(), doctorIdSelected, patientId, selectedStartTime, selectedEndTime, selectedAppointmentType, selectedLocation, selectedDate, enteredPrice))
                 {
                     // Update successful, refresh
                     DisplayDoctorSchedules();
@@ -416,7 +416,7 @@ namespace HealthCarePlus
                     {
                         date.Value = DateTime.Now;
                     }
-                    note.Text = row.Cells["Notes"].Value.ToString();
+                    price.Text = row.Cells["PriceHeader"].Value.ToString();
                 }
             }
         }
@@ -458,6 +458,11 @@ namespace HealthCarePlus
         }
 
         private void locationLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void note_TextChanged(object sender, EventArgs e)
         {
 
         }
