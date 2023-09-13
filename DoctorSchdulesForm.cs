@@ -116,7 +116,7 @@ namespace HealthCarePlus
                 using (MySqlConnection conn = new MySqlConnection(mysqlCon))
                 {
                     conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("SELECT RoomType, RoomNumber FROM rooms", conn);
+                    MySqlCommand cmd = new MySqlCommand("SELECT RoomType, RoomNumber FROM rooms WHERE RoomNumber NOT IN (SELECT DISTINCT RoomNumber FROM doctorschedules)", conn);
                     AutoCompleteStringCollection str_coll = new AutoCompleteStringCollection();
                     using (MySqlDataReader myreader = cmd.ExecuteReader())
                     {
@@ -223,6 +223,14 @@ namespace HealthCarePlus
                     MessageBox.Show("Schedule inserted successfully.");
                     ClearFields();
                     DisplayDoctorSchedules();
+
+                    string updateRoomDateQuery = @"
+                    UPDATE rooms r
+                    JOIN doctorschedules ds ON r.RoomNumber = ds.RoomNumber
+                    SET r.Date = ds.ScheduleDate";
+
+                    MySqlCommand updateCmd = new MySqlCommand(updateRoomDateQuery, conn);
+                    int rowsUpdated = updateCmd.ExecuteNonQuery();
                 }
                 else
                 {
