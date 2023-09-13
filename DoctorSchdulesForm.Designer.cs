@@ -83,10 +83,10 @@ namespace HealthCarePlus
             // 
             doctorIdLabel.AutoSize = true;
             doctorIdLabel.BackColor = Color.Transparent;
-            doctorIdLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            doctorIdLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             doctorIdLabel.Location = new Point(77, 83);
             doctorIdLabel.Name = "doctorIdLabel";
-            doctorIdLabel.Size = new Size(55, 19);
+            doctorIdLabel.Size = new Size(49, 17);
             doctorIdLabel.TabIndex = 1;
             doctorIdLabel.Text = "Doctor";
             // 
@@ -104,10 +104,10 @@ namespace HealthCarePlus
             // 
             DateLabel.AutoSize = true;
             DateLabel.BackColor = Color.Transparent;
-            DateLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            DateLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DateLabel.Location = new Point(78, 151);
             DateLabel.Name = "DateLabel";
-            DateLabel.Size = new Size(40, 19);
+            DateLabel.Size = new Size(36, 17);
             DateLabel.TabIndex = 5;
             DateLabel.Text = "Date";
             // 
@@ -115,10 +115,10 @@ namespace HealthCarePlus
             // 
             StartTimeLabel.AutoSize = true;
             StartTimeLabel.BackColor = Color.Transparent;
-            StartTimeLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            StartTimeLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             StartTimeLabel.Location = new Point(376, 151);
             StartTimeLabel.Name = "StartTimeLabel";
-            StartTimeLabel.Size = new Size(78, 19);
+            StartTimeLabel.Size = new Size(70, 17);
             StartTimeLabel.TabIndex = 7;
             StartTimeLabel.Text = "Start Time";
             // 
@@ -138,10 +138,10 @@ namespace HealthCarePlus
             // 
             EndTimeLabel.AutoSize = true;
             EndTimeLabel.BackColor = Color.Transparent;
-            EndTimeLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            EndTimeLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             EndTimeLabel.Location = new Point(676, 151);
             EndTimeLabel.Name = "EndTimeLabel";
-            EndTimeLabel.Size = new Size(70, 19);
+            EndTimeLabel.Size = new Size(64, 17);
             EndTimeLabel.TabIndex = 9;
             EndTimeLabel.Text = "End Time";
             // 
@@ -161,10 +161,10 @@ namespace HealthCarePlus
             // 
             AppointmentLabel.AutoSize = true;
             AppointmentLabel.BackColor = Color.Transparent;
-            AppointmentLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            AppointmentLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             AppointmentLabel.Location = new Point(676, 84);
             AppointmentLabel.Name = "AppointmentLabel";
-            AppointmentLabel.Size = new Size(133, 19);
+            AppointmentLabel.Size = new Size(121, 17);
             AppointmentLabel.TabIndex = 11;
             AppointmentLabel.Text = "Appointment Type";
             // 
@@ -172,10 +172,10 @@ namespace HealthCarePlus
             // 
             patientsLabel.AutoSize = true;
             patientsLabel.BackColor = Color.Transparent;
-            patientsLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            patientsLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             patientsLabel.Location = new Point(376, 84);
             patientsLabel.Name = "patientsLabel";
-            patientsLabel.Size = new Size(62, 19);
+            patientsLabel.Size = new Size(57, 17);
             patientsLabel.TabIndex = 13;
             patientsLabel.Text = "Patients";
             // 
@@ -196,21 +196,22 @@ namespace HealthCarePlus
             // 
             locationLabel.AutoSize = true;
             locationLabel.BackColor = Color.Transparent;
-            locationLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            locationLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             locationLabel.Location = new Point(978, 84);
             locationLabel.Name = "locationLabel";
-            locationLabel.Size = new Size(66, 19);
+            locationLabel.Size = new Size(59, 17);
             locationLabel.TabIndex = 17;
             locationLabel.Text = "Location";
+            locationLabel.Click += locationLabel_Click;
             // 
             // noteLabel
             // 
             noteLabel.AutoSize = true;
             noteLabel.BackColor = Color.Transparent;
-            noteLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            noteLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             noteLabel.Location = new Point(978, 151);
             noteLabel.Name = "noteLabel";
-            noteLabel.Size = new Size(42, 19);
+            noteLabel.Size = new Size(38, 17);
             noteLabel.TabIndex = 19;
             noteLabel.Text = "Note";
             // 

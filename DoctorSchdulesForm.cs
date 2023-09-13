@@ -456,5 +456,10 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void locationLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
