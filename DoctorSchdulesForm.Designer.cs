@@ -56,6 +56,7 @@ namespace HealthCarePlus
             deleteBtn = new Button();
             clearBtn = new Button();
             ScheduleID = new DataGridViewTextBoxColumn();
+            patientIDCol = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             RoomNumber = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -302,7 +303,7 @@ namespace HealthCarePlus
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             doctoSchdulesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             doctoSchdulesTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            doctoSchdulesTable.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, dataGridViewTextBoxColumn1, RoomNumber, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, ScheduleDate, dataGridViewTextBoxColumn5, PriceHeader });
+            doctoSchdulesTable.Columns.AddRange(new DataGridViewColumn[] { ScheduleID, patientIDCol, dataGridViewTextBoxColumn1, RoomNumber, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, ScheduleDate, dataGridViewTextBoxColumn5, PriceHeader });
             doctoSchdulesTable.GridColor = SystemColors.Control;
             doctoSchdulesTable.Location = new Point(77, 315);
             doctoSchdulesTable.Name = "doctoSchdulesTable";
@@ -389,6 +390,14 @@ namespace HealthCarePlus
             ScheduleID.MinimumWidth = 2;
             ScheduleID.Name = "ScheduleID";
             ScheduleID.Width = 43;
+            // 
+            // patientIDCol
+            // 
+            patientIDCol.DataPropertyName = "PatientID";
+            patientIDCol.HeaderText = "p id";
+            patientIDCol.Name = "patientIDCol";
+            patientIDCol.Visible = false;
+            patientIDCol.Width = 52;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -521,6 +530,7 @@ namespace HealthCarePlus
         private Button deleteBtn;
         private Button clearBtn;
         private DataGridViewTextBoxColumn ScheduleID;
+        private DataGridViewTextBoxColumn patientIDCol;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn RoomNumber;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
