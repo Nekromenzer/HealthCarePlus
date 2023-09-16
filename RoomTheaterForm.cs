@@ -393,5 +393,50 @@ namespace HealthCarePlus
             ClearInputFields();
             ClearSelectionWithDelay();
         }
+
+        private void resDeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (resTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = resTable.SelectedRows[0];
+                int selectedId = Convert.ToInt32(selectedRow.Cells["resID"].Value);
+
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this resourc?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+                        {
+                            conn.Open();
+                            string deleteQuery = "DELETE FROM resources WHERE resourceID = @resourceID";
+                            MySqlCommand cmd = new MySqlCommand(deleteQuery, conn);
+                            cmd.Parameters.AddWithValue("@resourceID", selectedId);
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Resource deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                DisplayResourceList();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to delete resource.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a resource to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

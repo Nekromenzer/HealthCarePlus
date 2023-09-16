@@ -543,6 +543,7 @@
             resDeleteBtn.Text = "Delete";
             resDeleteBtn.TextAlign = ContentAlignment.MiddleLeft;
             resDeleteBtn.UseVisualStyleBackColor = false;
+            resDeleteBtn.Click += resDeleteBtn_Click;
             // 
             // resSubmitBtn
             // 
