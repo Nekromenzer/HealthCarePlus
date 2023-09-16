@@ -333,6 +333,7 @@
             RoomSubmitBtn.Text = "Add Room";
             RoomSubmitBtn.TextAlign = ContentAlignment.MiddleLeft;
             RoomSubmitBtn.UseVisualStyleBackColor = false;
+            RoomSubmitBtn.Click += RoomSubmitBtn_Click;
             // 
             // roomAllowcated
             // 

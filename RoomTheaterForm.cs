@@ -18,6 +18,13 @@ namespace HealthCarePlus
         {
             InitializeComponent();
             DisplayRoomsList();
+            ClearSelectionWithDelay();
+        }
+
+        private async void ClearSelectionWithDelay()
+        {
+            await Task.Delay(1000);
+            roomsTable.ClearSelection();
         }
 
         private void DisplayRoomsList()
@@ -48,6 +55,11 @@ namespace HealthCarePlus
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void RoomSubmitBtn_Click(object sender, EventArgs e)
         {
 
         }
