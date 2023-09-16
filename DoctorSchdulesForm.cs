@@ -224,6 +224,26 @@ namespace HealthCarePlus
                     ClearFields();
                     DisplayDoctorSchedules();
 
+                    try
+                    {
+                        using (MySqlConnection connection = new MySqlConnection(mysqlCon))
+                        {
+                            connection.Open();
+                            string updateQuery = "UPDATE rooms SET allocated = 1 WHERE roomNumber = @RoomNumber";
+
+                            using (MySqlCommand command = new MySqlCommand(updateQuery, connection))
+                            {
+                                command.Parameters.AddWithValue("@RoomNumber", selectedRoom);
+                                int rowsAffected = command.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message);
+                    }
+
+
                     string updateRoomDateQuery = @"
                     UPDATE rooms r
                     JOIN doctorschedules ds ON r.RoomNumber = ds.RoomNumber
