@@ -55,7 +55,7 @@
             roomNumber = new TextBox();
             roomType = new ComboBox();
             roomTypeLable = new Label();
-            theaterTab = new TabPage();
+            resourcesTab = new TabPage();
             ((System.ComponentModel.ISupportInitialize)roomsTable).BeginInit();
             tabControl1.SuspendLayout();
             roomsTab.SuspendLayout();
@@ -75,7 +75,7 @@
             roomsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -84,7 +84,7 @@
             roomsTable.Columns.AddRange(new DataGridViewColumn[] { id, roomTypeCol, roomNumberCol, allocatedCol, priceCol, patientIdCol, roomTheaterCol, dateCol });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.HotTrack;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -100,9 +100,9 @@
             roomsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             roomsTable.Size = new Size(1193, 484);
             roomsTable.TabIndex = 0;
+            roomsTable.CellClick += roomsTable_CellClick;
             roomsTable.CellFormatting += roomsTable_CellFormatting;
             roomsTable.SelectionChanged += roomsTable_SelectionChanged;
-            roomsTable.CellClick += roomsTable_CellClick;
             // 
             // id
             // 
@@ -110,7 +110,7 @@
             id.HeaderText = "ID";
             id.Name = "id";
             id.ReadOnly = true;
-            id.Width = 42;
+            id.Width = 44;
             // 
             // roomTypeCol
             // 
@@ -145,6 +145,7 @@
             priceCol.HeaderText = "Price Per Day";
             priceCol.Name = "priceCol";
             priceCol.ReadOnly = true;
+            priceCol.Width = 101;
             // 
             // patientIdCol
             // 
@@ -161,7 +162,7 @@
             roomTheaterCol.HeaderText = "Room/Theater";
             roomTheaterCol.Name = "roomTheaterCol";
             roomTheaterCol.ReadOnly = true;
-            roomTheaterCol.Width = 107;
+            roomTheaterCol.Width = 108;
             // 
             // dateCol
             // 
@@ -174,7 +175,7 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(roomsTab);
-            tabControl1.Controls.Add(theaterTab);
+            tabControl1.Controls.Add(resourcesTab);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             tabControl1.Location = new Point(0, 0);
@@ -201,6 +202,7 @@
             roomsTab.Controls.Add(roomNumber);
             roomsTab.Controls.Add(roomType);
             roomsTab.Controls.Add(roomTypeLable);
+            roomsTab.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             roomsTab.Location = new Point(4, 34);
             roomsTab.Name = "roomsTab";
             roomsTab.Padding = new Padding(3);
@@ -240,7 +242,7 @@
             label1.Name = "label1";
             label1.Size = new Size(211, 36);
             label1.TabIndex = 35;
-            label1.Text = "Rooms/ Theater";
+            label1.Text = "Rooms/ Theatre";
             // 
             // RoomClearBtn
             // 
@@ -382,17 +384,17 @@
             roomTypeLable.TabIndex = 24;
             roomTypeLable.Text = "Room type*";
             // 
-            // theaterTab
+            // resourcesTab
             // 
-            theaterTab.BackgroundImage = (Image)resources.GetObject("theaterTab.BackgroundImage");
-            theaterTab.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            theaterTab.Location = new Point(4, 34);
-            theaterTab.Name = "theaterTab";
-            theaterTab.Padding = new Padding(3);
-            theaterTab.Size = new Size(1317, 796);
-            theaterTab.TabIndex = 1;
-            theaterTab.Text = "Theater";
-            theaterTab.UseVisualStyleBackColor = true;
+            resourcesTab.BackgroundImage = (Image)resources.GetObject("resourcesTab.BackgroundImage");
+            resourcesTab.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            resourcesTab.Location = new Point(4, 34);
+            resourcesTab.Name = "resourcesTab";
+            resourcesTab.Padding = new Padding(3);
+            resourcesTab.Size = new Size(1317, 796);
+            resourcesTab.TabIndex = 1;
+            resourcesTab.Text = "Resources";
+            resourcesTab.UseVisualStyleBackColor = true;
             // 
             // RoomTheaterForm
             // 
@@ -418,7 +420,7 @@
 
         private TabControl tabControl1;
         private TabPage roomsTab;
-        private TabPage theaterTab;
+        private TabPage resourcesTab;
         private ComboBox roomType;
         private Label roomTypeLable;
         private Label priiceLabel;

@@ -107,7 +107,7 @@ namespace HealthCarePlus
         }
         private void roomsTable_SelectionChanged(object sender, EventArgs e)
         {
-        if (roomsTable.SelectedRows.Count > 0)
+            if (roomsTable.SelectedRows.Count > 0)
             {
                 roomSubmitBtn.Enabled = false;
                 roomUpdateBtn.Enabled = true;
