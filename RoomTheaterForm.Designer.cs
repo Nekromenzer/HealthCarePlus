@@ -523,6 +523,7 @@
             button1.Text = "clear";
             button1.TextAlign = ContentAlignment.MiddleLeft;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // resDeleteBtn
             // 

@@ -165,6 +165,8 @@ namespace HealthCarePlus
             roomNumber.Text = "";
             roomPrice.Text = "";
             isRoom.SelectedIndex = -1;
+            resourceType.SelectedIndex = -1;
+            resourceName.Text = "";
         }
 
         private bool IsRoomNumberExists(string roomNumber)
@@ -384,6 +386,12 @@ namespace HealthCarePlus
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClearInputFields();
+            ClearSelectionWithDelay();
         }
     }
 }
