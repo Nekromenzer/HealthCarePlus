@@ -142,6 +142,21 @@ namespace HealthCarePlus
 
         }
 
+        private bool IsRoomNumberExists(string roomNumber)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM rooms WHERE RoomNumber = @RoomNumber";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@RoomNumber", roomNumber);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                return count > 0;
+            }
+        }
+
         private void RoomSubmitBtn_Click(object sender, EventArgs e)
         {
             try
@@ -150,6 +165,12 @@ namespace HealthCarePlus
                 string roomNumberVal = roomNumber.Text;
                 decimal pricePerDay = string.IsNullOrWhiteSpace(roomPrice.Text) ? 0 : decimal.Parse(roomPrice.Text);
                 bool isRoomTheater = isRoom.SelectedIndex == 1;
+
+                if (IsRoomNumberExists(roomNumberVal))
+                {
+                    MessageBox.Show("Room with this room number already exists.", "Duplicate Room Number", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 if (string.IsNullOrEmpty(roomTypeName))
                 {
@@ -188,7 +209,6 @@ namespace HealthCarePlus
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
-
 
 
         private void roomType_SelectedIndexChanged(object sender, EventArgs e)
