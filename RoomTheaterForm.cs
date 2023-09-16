@@ -27,6 +27,66 @@ namespace HealthCarePlus
             roomsTable.ClearSelection();
         }
 
+        private string GetPatientNameById(int patientId)
+        {
+            string? patientName = string.Empty;
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT FullName FROM patients WHERE PatientID = @PatientID";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@PatientID", patientId);
+                object result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    patientName = result.ToString();
+                }
+            }
+            return patientName;
+        }
+
+        private void roomsTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (roomsTable.Columns[e.ColumnIndex].Name == "patientIdCol")
+            {
+                if (e.Value != null && !DBNull.Value.Equals(e.Value))
+                {
+                    string? patientName = GetPatientNameById(Convert.ToInt32(e.Value));
+                    e.Value = patientName;
+                }
+            }
+
+            if (roomsTable.Columns[e.ColumnIndex].Name == "allocatedCol")
+            {
+                if (e.Value != null && e.Value.ToString() == "1")
+                {
+                    string? allocated = "✔️";
+                    e.Value = allocated;
+                }
+                else
+                {
+                    string? notAllocated = "❌";
+                    e.Value = notAllocated;
+                }
+            }
+
+            if (roomsTable.Columns[e.ColumnIndex].Name == "roomTheaterCol")
+            {
+                if (e.Value != null && e.Value.ToString() == "False")
+                {
+                    string? room = "Theater";
+                    e.Value = room;
+                }
+                if (e.Value != null && e.Value.ToString() == "True")
+                {
+                    string? room = "Room";
+                    e.Value = room;
+                }
+            }
+
+        }
+
         private void DisplayRoomsList()
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))

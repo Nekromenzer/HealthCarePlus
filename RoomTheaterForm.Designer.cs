@@ -39,6 +39,7 @@
             priceCol = new DataGridViewTextBoxColumn();
             patientIdCol = new DataGridViewTextBoxColumn();
             roomTheaterCol = new DataGridViewTextBoxColumn();
+            dateCol = new DataGridViewTextBoxColumn();
             tabControl1 = new TabControl();
             roomsTab = new TabPage();
             DateLabel = new Label();
@@ -83,8 +84,7 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             roomsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            roomsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            roomsTable.Columns.AddRange(new DataGridViewColumn[] { id, roomTypeCol, roomNumberCol, allocatedCol, priceCol, patientIdCol, roomTheaterCol });
+            roomsTable.Columns.AddRange(new DataGridViewColumn[] { id, roomTypeCol, roomNumberCol, allocatedCol, priceCol, patientIdCol, roomTheaterCol, dateCol });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -103,6 +103,7 @@
             roomsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             roomsTable.Size = new Size(1193, 484);
             roomsTable.TabIndex = 0;
+            roomsTable.CellFormatting += roomsTable_CellFormatting;
             // 
             // id
             // 
@@ -162,6 +163,14 @@
             roomTheaterCol.Name = "roomTheaterCol";
             roomTheaterCol.ReadOnly = true;
             roomTheaterCol.Width = 107;
+            // 
+            // dateCol
+            // 
+            dateCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dateCol.DataPropertyName = "Date";
+            dateCol.HeaderText = "Availabe after";
+            dateCol.Name = "dateCol";
+            dateCol.Width = 103;
             // 
             // tabControl1
             // 
@@ -462,6 +471,7 @@
         private Label thaterLable;
         private Label DateLabel;
         private DateTimePicker date;
+        private DataGridView roomsTable;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn roomTypeCol;
         private DataGridViewTextBoxColumn roomNumberCol;
@@ -469,6 +479,6 @@
         private DataGridViewTextBoxColumn priceCol;
         private DataGridViewTextBoxColumn patientIdCol;
         private DataGridViewTextBoxColumn roomTheaterCol;
-        private DataGridView roomsTable;
+        private DataGridViewTextBoxColumn dateCol;
     }
 }
