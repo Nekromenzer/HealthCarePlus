@@ -99,12 +99,9 @@ namespace HealthCarePlus
                 decimal pricePerDay = Convert.ToDecimal(selectedRow.Cells["priceCol"].Value);
                 int isRoomTheater = Convert.ToInt32(selectedRow.Cells["roomTheaterCol"].Value);
 
-                // Populate the input fields with the selected row's values
                 roomType.SelectedItem = roomTypeVal;
                 roomNumber.Text = roomNumberVal;
                 roomPrice.Text = pricePerDay.ToString();
-
-                // Set the room type based on isRoomTheater value
                 isRoom.SelectedItem = isRoomTheater == 0 ? "Theater" : "Room";
             }
         }
@@ -147,20 +144,6 @@ namespace HealthCarePlus
             roomNumber.Text = "";
             roomPrice.Text = "";
             isRoom.SelectedIndex = -1;
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void roomsTab_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private bool IsRoomNumberExists(string roomNumber)
@@ -229,27 +212,6 @@ namespace HealthCarePlus
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
-        }
-
-
-        private void roomType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void roomNumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void roomPrice_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void isRoom_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void RoomClearBtn_Click(object sender, EventArgs e)

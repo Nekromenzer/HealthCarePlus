@@ -208,7 +208,6 @@
             roomsTab.TabIndex = 0;
             roomsTab.Text = "Rooms/Theater";
             roomsTab.UseVisualStyleBackColor = true;
-            roomsTab.Click += roomsTab_Click;
             // 
             // isRoom
             // 
@@ -220,7 +219,6 @@
             isRoom.Name = "isRoom";
             isRoom.Size = new Size(286, 33);
             isRoom.TabIndex = 37;
-            isRoom.SelectedIndexChanged += isRoom_SelectedIndexChanged;
             // 
             // thaterLable
             // 
@@ -342,7 +340,6 @@
             roomPrice.Name = "roomPrice";
             roomPrice.Size = new Size(286, 33);
             roomPrice.TabIndex = 28;
-            roomPrice.TextChanged += roomPrice_TextChanged;
             // 
             // roomNumberLabel
             // 
@@ -363,7 +360,6 @@
             roomNumber.Name = "roomNumber";
             roomNumber.Size = new Size(286, 33);
             roomNumber.TabIndex = 26;
-            roomNumber.TextChanged += roomNumber_TextChanged;
             // 
             // roomType
             // 
@@ -375,7 +371,6 @@
             roomType.Name = "roomType";
             roomType.Size = new Size(286, 33);
             roomType.TabIndex = 25;
-            roomType.SelectedIndexChanged += roomType_SelectedIndexChanged;
             // 
             // roomTypeLable
             // 
@@ -412,7 +407,6 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Rooms ";
-            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)roomsTable).EndInit();
             tabControl1.ResumeLayout(false);
             roomsTab.ResumeLayout(false);
