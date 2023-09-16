@@ -223,7 +223,7 @@ namespace HealthCarePlus
                     MessageBox.Show("Schedule inserted successfully.");
                     ClearFields();
                     DisplayDoctorSchedules();
-
+                    // make room allowacted
                     try
                     {
                         using (MySqlConnection connection = new MySqlConnection(mysqlCon))
@@ -243,7 +243,7 @@ namespace HealthCarePlus
                         MessageBox.Show("An error occurred: " + ex.Message);
                     }
 
-
+                    // join quary to update 
                     string updateRoomDateQuery = @"
                     UPDATE rooms r
                     JOIN doctorschedules ds ON r.RoomNumber = ds.RoomNumber
