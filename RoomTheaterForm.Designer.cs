@@ -28,13 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomTheaterForm));
-            DataGridView roomTable;
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomTheaterForm));
+            roomsTable = new DataGridView();
+            id = new DataGridViewTextBoxColumn();
+            roomTypeCol = new DataGridViewTextBoxColumn();
+            roomNumberCol = new DataGridViewTextBoxColumn();
+            allocatedCol = new DataGridViewTextBoxColumn();
+            priceCol = new DataGridViewTextBoxColumn();
+            patientIdCol = new DataGridViewTextBoxColumn();
+            roomTheaterCol = new DataGridViewTextBoxColumn();
             tabControl1 = new TabControl();
             roomsTab = new TabPage();
             DateLabel = new Label();
@@ -54,18 +58,110 @@
             roomType = new ComboBox();
             roomTypeLable = new Label();
             theaterTab = new TabPage();
-            id = new DataGridViewTextBoxColumn();
-            roomTypeCol = new DataGridViewTextBoxColumn();
-            roomNumberCol = new DataGridViewTextBoxColumn();
-            allocatedCol = new DataGridViewTextBoxColumn();
-            priceCol = new DataGridViewTextBoxColumn();
-            patientIdCol = new DataGridViewTextBoxColumn();
-            roomTheaterCol = new DataGridViewTextBoxColumn();
-            roomTable = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)roomsTable).BeginInit();
             tabControl1.SuspendLayout();
             roomsTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)roomTable).BeginInit();
             SuspendLayout();
+            // 
+            // roomsTable
+            // 
+            roomsTable.AllowUserToAddRows = false;
+            roomsTable.AllowUserToDeleteRows = false;
+            roomsTable.AllowUserToOrderColumns = true;
+            roomsTable.AllowUserToResizeColumns = false;
+            roomsTable.AllowUserToResizeRows = false;
+            roomsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            roomsTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            roomsTable.BackgroundColor = SystemColors.Control;
+            roomsTable.BorderStyle = BorderStyle.None;
+            roomsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            roomsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            roomsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            roomsTable.Columns.AddRange(new DataGridViewColumn[] { id, roomTypeCol, roomNumberCol, allocatedCol, priceCol, patientIdCol, roomTheaterCol });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            roomsTable.DefaultCellStyle = dataGridViewCellStyle2;
+            roomsTable.EnableHeadersVisualStyles = false;
+            roomsTable.GridColor = SystemColors.Control;
+            roomsTable.Location = new Point(68, 304);
+            roomsTable.Name = "roomsTable";
+            roomsTable.RowHeadersVisible = false;
+            roomsTable.RowTemplate.Height = 25;
+            roomsTable.ScrollBars = ScrollBars.Vertical;
+            roomsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            roomsTable.Size = new Size(1193, 484);
+            roomsTable.TabIndex = 0;
+            // 
+            // id
+            // 
+            id.DataPropertyName = "RoomID";
+            id.HeaderText = "ID";
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Width = 42;
+            // 
+            // roomTypeCol
+            // 
+            roomTypeCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            roomTypeCol.DataPropertyName = "RoomType";
+            roomTypeCol.HeaderText = "Room Type";
+            roomTypeCol.Name = "roomTypeCol";
+            roomTypeCol.ReadOnly = true;
+            // 
+            // roomNumberCol
+            // 
+            roomNumberCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            roomNumberCol.DataPropertyName = "RoomNumber";
+            roomNumberCol.HeaderText = "Room Number";
+            roomNumberCol.Name = "roomNumberCol";
+            roomNumberCol.ReadOnly = true;
+            roomNumberCol.Width = 110;
+            // 
+            // allocatedCol
+            // 
+            allocatedCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            allocatedCol.DataPropertyName = "Allocated";
+            allocatedCol.HeaderText = "Allocated";
+            allocatedCol.Name = "allocatedCol";
+            allocatedCol.ReadOnly = true;
+            allocatedCol.Width = 81;
+            // 
+            // priceCol
+            // 
+            priceCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            priceCol.DataPropertyName = "PricePerDay";
+            priceCol.HeaderText = "Price Per Day";
+            priceCol.Name = "priceCol";
+            priceCol.ReadOnly = true;
+            // 
+            // patientIdCol
+            // 
+            patientIdCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            patientIdCol.DataPropertyName = "PatientID";
+            patientIdCol.HeaderText = "Patient ";
+            patientIdCol.Name = "patientIdCol";
+            patientIdCol.ReadOnly = true;
+            // 
+            // roomTheaterCol
+            // 
+            roomTheaterCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            roomTheaterCol.DataPropertyName = "Type";
+            roomTheaterCol.HeaderText = "Room/Theater";
+            roomTheaterCol.Name = "roomTheaterCol";
+            roomTheaterCol.ReadOnly = true;
+            roomTheaterCol.Width = 107;
             // 
             // tabControl1
             // 
@@ -83,7 +179,7 @@
             // roomsTab
             // 
             roomsTab.BackgroundImage = (Image)resources.GetObject("roomsTab.BackgroundImage");
-            roomsTab.Controls.Add(roomTable);
+            roomsTab.Controls.Add(roomsTable);
             roomsTab.Controls.Add(DateLabel);
             roomsTab.Controls.Add(date);
             roomsTab.Controls.Add(isRoom);
@@ -108,66 +204,6 @@
             roomsTab.Text = "Rooms";
             roomsTab.UseVisualStyleBackColor = true;
             roomsTab.Click += roomsTab_Click;
-            // 
-            // roomTable
-            // 
-            roomTable.AllowUserToAddRows = false;
-            roomTable.AllowUserToDeleteRows = false;
-            roomTable.AllowUserToOrderColumns = true;
-            roomTable.AllowUserToResizeColumns = false;
-            roomTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.MenuHighlight;
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            roomTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            roomTable.BackgroundColor = SystemColors.Control;
-            roomTable.BorderStyle = BorderStyle.None;
-            roomTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            roomTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            roomTable.ColumnHeadersHeight = 20;
-            roomTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            roomTable.Columns.AddRange(new DataGridViewColumn[] { id, roomTypeCol, roomNumberCol, allocatedCol, priceCol, patientIdCol, roomTheaterCol });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.MenuHighlight;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            roomTable.DefaultCellStyle = dataGridViewCellStyle3;
-            roomTable.Location = new Point(41, 294);
-            roomTable.Name = "roomTable";
-            roomTable.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            roomTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            roomTable.RowHeadersVisible = false;
-            roomTable.RowHeadersWidth = 33;
-            dataGridViewCellStyle5.BackColor = SystemColors.ActiveCaption;
-            roomTable.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            roomTable.RowTemplate.Height = 25;
-            roomTable.ScrollBars = ScrollBars.Vertical;
-            roomTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            roomTable.ShowCellErrors = false;
-            roomTable.ShowCellToolTips = false;
-            roomTable.ShowEditingIcon = false;
-            roomTable.ShowRowErrors = false;
-            roomTable.Size = new Size(1193, 484);
-            roomTable.TabIndex = 40;
             // 
             // DateLabel
             // 
@@ -383,67 +419,6 @@
             theaterTab.Text = "Theater";
             theaterTab.UseVisualStyleBackColor = true;
             // 
-            // id
-            // 
-            id.DataPropertyName = "RoomID";
-            id.HeaderText = "ID";
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Width = 43;
-            // 
-            // roomTypeCol
-            // 
-            roomTypeCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            roomTypeCol.DataPropertyName = "RoomType";
-            roomTypeCol.HeaderText = "Room Type";
-            roomTypeCol.Name = "roomTypeCol";
-            roomTypeCol.ReadOnly = true;
-            roomTypeCol.Width = 91;
-            // 
-            // roomNumberCol
-            // 
-            roomNumberCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            roomNumberCol.DataPropertyName = "RoomNumber";
-            roomNumberCol.HeaderText = "Room Number";
-            roomNumberCol.Name = "roomNumberCol";
-            roomNumberCol.ReadOnly = true;
-            roomNumberCol.Width = 111;
-            // 
-            // allocatedCol
-            // 
-            allocatedCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            allocatedCol.DataPropertyName = "Allocated";
-            allocatedCol.HeaderText = "Allocated";
-            allocatedCol.Name = "allocatedCol";
-            allocatedCol.ReadOnly = true;
-            allocatedCol.Width = 82;
-            // 
-            // priceCol
-            // 
-            priceCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            priceCol.DataPropertyName = "PricePerDay";
-            priceCol.HeaderText = "Price Per Day";
-            priceCol.Name = "priceCol";
-            priceCol.ReadOnly = true;
-            priceCol.Width = 101;
-            // 
-            // patientIdCol
-            // 
-            patientIdCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            patientIdCol.DataPropertyName = "PatientID";
-            patientIdCol.HeaderText = "Patient ";
-            patientIdCol.Name = "patientIdCol";
-            patientIdCol.ReadOnly = true;
-            // 
-            // roomTheaterCol
-            // 
-            roomTheaterCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            roomTheaterCol.DataPropertyName = "Type";
-            roomTheaterCol.HeaderText = "Room/Theater";
-            roomTheaterCol.Name = "roomTheaterCol";
-            roomTheaterCol.ReadOnly = true;
-            roomTheaterCol.Width = 108;
-            // 
             // RoomTheaterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -458,10 +433,10 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Rooms / Theater";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)roomsTable).EndInit();
             tabControl1.ResumeLayout(false);
             roomsTab.ResumeLayout(false);
             roomsTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)roomTable).EndInit();
             ResumeLayout(false);
         }
 
@@ -486,7 +461,6 @@
         private Label thaterLable;
         private Label DateLabel;
         private DateTimePicker date;
-        private DataGridView roomTable;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn roomTypeCol;
         private DataGridViewTextBoxColumn roomNumberCol;
@@ -494,5 +468,6 @@
         private DataGridViewTextBoxColumn priceCol;
         private DataGridViewTextBoxColumn patientIdCol;
         private DataGridViewTextBoxColumn roomTheaterCol;
+        private DataGridView roomsTable;
     }
 }

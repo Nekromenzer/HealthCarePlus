@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,28 @@ namespace HealthCarePlus
 {
     public partial class RoomTheaterForm : Form
     {
+        private string mysqlCon = "Data source=127.0.0.1; user=root; database=hospital; password= ";
         public RoomTheaterForm()
         {
             InitializeComponent();
+            DisplayRoomsList();
+        }
+
+        private void DisplayRoomsList()
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT * FROM rooms";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    roomsTable.DataSource = dataTable;
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -23,6 +43,11 @@ namespace HealthCarePlus
         }
 
         private void roomsTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
