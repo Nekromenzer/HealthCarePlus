@@ -305,15 +305,6 @@ namespace HealthCarePlus
         }
         private void doctoSchdulesTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //if (doctoSchdulesTable.Columns[e.ColumnIndex].Name == "PatientID")
-            //{
-            //    if (e.Value != null)
-            //    {
-            //        string patientName = GetPatientNameById(Convert.ToInt32(e.Value));
-            //       e.Value = patientName;
-            //    }
-            // }
-
             if (doctoSchdulesTable.Columns[e.ColumnIndex].Name == "dataGridViewTextBoxColumn1")
             {
                 if (e.Value != null)
