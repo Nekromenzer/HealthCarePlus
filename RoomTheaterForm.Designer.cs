@@ -75,7 +75,7 @@
             roomsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -84,7 +84,7 @@
             roomsTable.Columns.AddRange(new DataGridViewColumn[] { id, roomTypeCol, roomNumberCol, allocatedCol, priceCol, patientIdCol, roomTheaterCol, dateCol });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.HotTrack;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -108,7 +108,7 @@
             id.HeaderText = "ID";
             id.Name = "id";
             id.ReadOnly = true;
-            id.Width = 42;
+            id.Width = 50;
             // 
             // roomTypeCol
             // 
@@ -125,7 +125,7 @@
             roomNumberCol.HeaderText = "Room Number";
             roomNumberCol.Name = "roomNumberCol";
             roomNumberCol.ReadOnly = true;
-            roomNumberCol.Width = 110;
+            roomNumberCol.Width = 142;
             // 
             // allocatedCol
             // 
@@ -134,7 +134,7 @@
             allocatedCol.HeaderText = "Allocated";
             allocatedCol.Name = "allocatedCol";
             allocatedCol.ReadOnly = true;
-            allocatedCol.Width = 81;
+            allocatedCol.Width = 104;
             // 
             // priceCol
             // 
@@ -143,6 +143,7 @@
             priceCol.HeaderText = "Price Per Day";
             priceCol.Name = "priceCol";
             priceCol.ReadOnly = true;
+            priceCol.Width = 128;
             // 
             // patientIdCol
             // 
@@ -159,7 +160,7 @@
             roomTheaterCol.HeaderText = "Room/Theater";
             roomTheaterCol.Name = "roomTheaterCol";
             roomTheaterCol.ReadOnly = true;
-            roomTheaterCol.Width = 107;
+            roomTheaterCol.Width = 141;
             // 
             // dateCol
             // 
@@ -167,7 +168,7 @@
             dateCol.DataPropertyName = "Date";
             dateCol.HeaderText = "Availabe after";
             dateCol.Name = "dateCol";
-            dateCol.Width = 103;
+            dateCol.Width = 135;
             // 
             // tabControl1
             // 
@@ -204,7 +205,7 @@
             roomsTab.Padding = new Padding(3);
             roomsTab.Size = new Size(1317, 796);
             roomsTab.TabIndex = 0;
-            roomsTab.Text = "Rooms";
+            roomsTab.Text = "Rooms/Theater";
             roomsTab.UseVisualStyleBackColor = true;
             roomsTab.Click += roomsTab_Click;
             // 
@@ -218,6 +219,7 @@
             isRoom.Name = "isRoom";
             isRoom.Size = new Size(286, 33);
             isRoom.TabIndex = 37;
+            isRoom.SelectedIndexChanged += isRoom_SelectedIndexChanged;
             // 
             // thaterLable
             // 
@@ -259,6 +261,7 @@
             RoomClearBtn.Text = "clear";
             RoomClearBtn.TextAlign = ContentAlignment.MiddleLeft;
             RoomClearBtn.UseVisualStyleBackColor = false;
+            RoomClearBtn.Click += RoomClearBtn_Click;
             // 
             // RoomDeleteBtn
             // 
@@ -337,6 +340,7 @@
             roomPrice.Name = "roomPrice";
             roomPrice.Size = new Size(286, 33);
             roomPrice.TabIndex = 28;
+            roomPrice.TextChanged += roomPrice_TextChanged;
             // 
             // roomNumberLabel
             // 
@@ -358,6 +362,7 @@
             roomNumber.Name = "roomNumber";
             roomNumber.Size = new Size(286, 33);
             roomNumber.TabIndex = 26;
+            roomNumber.TextChanged += roomNumber_TextChanged;
             // 
             // roomType
             // 
@@ -369,6 +374,7 @@
             roomType.Name = "roomType";
             roomType.Size = new Size(286, 33);
             roomType.TabIndex = 25;
+            roomType.SelectedIndexChanged += roomType_SelectedIndexChanged;
             // 
             // roomTypeLable
             // 
@@ -404,7 +410,7 @@
             Name = "RoomTheaterForm";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Rooms / Theater";
+            Text = "Rooms ";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)roomsTable).EndInit();
             tabControl1.ResumeLayout(false);

@@ -104,6 +104,13 @@ namespace HealthCarePlus
             }
         }
 
+        private void ClearInputFields()
+        {
+            roomType.SelectedIndex = -1;
+            roomNumber.Text = "";
+            roomPrice.Text = "";
+            isRoom.SelectedIndex = -1;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -121,7 +128,76 @@ namespace HealthCarePlus
 
         private void RoomSubmitBtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string roomTypeName = roomType.SelectedItem?.ToString();
+                string roomNumberVal = roomNumber.Text;
+                decimal pricePerDay = string.IsNullOrWhiteSpace(roomPrice.Text) ? 0 : decimal.Parse(roomPrice.Text);
+                bool isRoomTheater = isRoom.SelectedIndex == 1;
 
+                if (string.IsNullOrEmpty(roomTypeName))
+                {
+                    MessageBox.Show("Please select a room type.");
+                    return;
+                }
+
+                using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+                {
+                    conn.Open();
+                    string insertQuery = "INSERT INTO rooms (RoomType, RoomNumber, PricePerDay, Allocated, Type, Date, PatientID) " +
+                                         "VALUES (@RoomType, @RoomNumber, @PricePerDay, 0, @Type, NULL, NULL)";
+                    MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
+                    cmd.Parameters.AddWithValue("@RoomType", roomTypeName);
+                    cmd.Parameters.AddWithValue("@RoomNumber", roomNumberVal);
+                    cmd.Parameters.AddWithValue("@PricePerDay", pricePerDay);
+                    cmd.Parameters.AddWithValue("@Type", isRoomTheater);
+
+                    int result = cmd.ExecuteNonQuery();
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Room added successfully.");
+                        DisplayRoomsList();
+                        ClearInputFields();
+                        ClearSelectionWithDelay();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add room.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+
+
+
+        private void roomType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void roomNumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void roomPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void isRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RoomClearBtn_Click(object sender, EventArgs e)
+        {
+            ClearInputFields();
         }
     }
 }
