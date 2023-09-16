@@ -347,7 +347,43 @@ namespace HealthCarePlus
 
         private void resSubmitBtn_Click(object sender, EventArgs e)
         {
+            // Get user input from your UI elements
+            string resourceTypeVal = resourceType.Text;
+            string resourceNameVAl = resourceName.Text;
 
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlCon))
+                {
+                    connection.Open();
+                    string insertQuery = "INSERT INTO resources (type, name) VALUES (@Type, @Name)";
+
+                    using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                    {
+                        // Add parameters to prevent SQL injection
+                        command.Parameters.AddWithValue("@Type", resourceTypeVal);
+                        command.Parameters.AddWithValue("@Name", resourceNameVAl);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Resource added successfully.");
+                            DisplayResourceList();
+                            ClearInputFields();
+                            ClearSelectionWithDelay();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to add Resource.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
     }
 }

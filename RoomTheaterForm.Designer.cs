@@ -587,7 +587,7 @@
             resourceType.AutoCompleteCustomSource.AddRange(new string[] { "Diagnostic Equipment", "Therapeutic Equipment", "Monitoring ", "Measurement Devices", "Surgical Instruments", "Patient Mobility and Support" });
             resourceType.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             resourceType.FormattingEnabled = true;
-            resourceType.Items.AddRange(new object[] { "General Ward Room", "Private Room", "Semi-Private Room", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Pediatric Ward", "Maternity Room", "Operating Room (OR)", "Recovery Room", "Isolation Room" });
+            resourceType.Items.AddRange(new object[] { "Diagnostic Equipment", "Therapeutic Equipment", "Monitoring ", "Measurement Devices", "Surgical Instruments", "Patient Mobility and Support" });
             resourceType.Location = new Point(65, 103);
             resourceType.Name = "resourceType";
             resourceType.Size = new Size(286, 33);
