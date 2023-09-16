@@ -215,5 +215,56 @@ namespace HealthCarePlus
         {
             ClearInputFields();
         }
+
+        private void DeleteRoom()
+        {
+            if (roomsTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = roomsTable.SelectedRows[0];
+                int roomID = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this room?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+                        {
+                            conn.Open();
+                            string deleteQuery = "DELETE FROM rooms WHERE RoomID = @RoomID";
+                            MySqlCommand cmd = new MySqlCommand(deleteQuery, conn);
+                            cmd.Parameters.AddWithValue("@RoomID", roomID);
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Room deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                DisplayRoomsList(); // Refresh the room list
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to delete room.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a room to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void roomDeleteBtn_Click(object sender, EventArgs e)
+        {
+            DeleteRoom();
+        }
     }
 }

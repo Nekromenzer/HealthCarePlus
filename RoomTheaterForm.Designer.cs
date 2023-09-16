@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomTheaterForm));
             roomsTable = new DataGridView();
             id = new DataGridViewTextBoxColumn();
@@ -73,23 +73,23 @@
             roomsTable.BackgroundColor = SystemColors.Control;
             roomsTable.BorderStyle = BorderStyle.None;
             roomsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            roomsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            roomsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             roomsTable.Columns.AddRange(new DataGridViewColumn[] { id, roomTypeCol, roomNumberCol, allocatedCol, priceCol, patientIdCol, roomTheaterCol, dateCol });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            roomsTable.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            roomsTable.DefaultCellStyle = dataGridViewCellStyle2;
             roomsTable.EnableHeadersVisualStyles = false;
             roomsTable.GridColor = SystemColors.Control;
             roomsTable.Location = new Point(65, 258);
@@ -109,7 +109,7 @@
             id.HeaderText = "ID";
             id.Name = "id";
             id.ReadOnly = true;
-            id.Width = 50;
+            id.Width = 42;
             // 
             // roomTypeCol
             // 
@@ -126,7 +126,7 @@
             roomNumberCol.HeaderText = "Room Number";
             roomNumberCol.Name = "roomNumberCol";
             roomNumberCol.ReadOnly = true;
-            roomNumberCol.Width = 142;
+            roomNumberCol.Width = 110;
             // 
             // allocatedCol
             // 
@@ -135,7 +135,7 @@
             allocatedCol.HeaderText = "Allocated";
             allocatedCol.Name = "allocatedCol";
             allocatedCol.ReadOnly = true;
-            allocatedCol.Width = 104;
+            allocatedCol.Width = 81;
             // 
             // priceCol
             // 
@@ -144,7 +144,6 @@
             priceCol.HeaderText = "Price Per Day";
             priceCol.Name = "priceCol";
             priceCol.ReadOnly = true;
-            priceCol.Width = 128;
             // 
             // patientIdCol
             // 
@@ -161,7 +160,7 @@
             roomTheaterCol.HeaderText = "Room/Theater";
             roomTheaterCol.Name = "roomTheaterCol";
             roomTheaterCol.ReadOnly = true;
-            roomTheaterCol.Width = 141;
+            roomTheaterCol.Width = 107;
             // 
             // dateCol
             // 
@@ -169,7 +168,7 @@
             dateCol.DataPropertyName = "Date";
             dateCol.HeaderText = "Availabe after";
             dateCol.Name = "dateCol";
-            dateCol.Width = 135;
+            dateCol.Width = 103;
             // 
             // tabControl1
             // 
@@ -282,6 +281,7 @@
             roomDeleteBtn.Text = "Delete";
             roomDeleteBtn.TextAlign = ContentAlignment.MiddleLeft;
             roomDeleteBtn.UseVisualStyleBackColor = false;
+            roomDeleteBtn.Click += roomDeleteBtn_Click;
             // 
             // roomUpdateBtn
             // 
