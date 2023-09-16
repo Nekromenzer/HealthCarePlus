@@ -87,9 +87,30 @@ namespace HealthCarePlus
 
         }
 
-        private void roomsTable_SelectionChanged(object sender, EventArgs e)
+
+        private void roomsTable_CellClick(object sender, EventArgs e)
         {
             if (roomsTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = roomsTable.SelectedRows[0];
+
+                string roomTypeVal = selectedRow.Cells["roomTypeCol"].Value.ToString();
+                string roomNumberVal = selectedRow.Cells["roomNumberCol"].Value.ToString();
+                decimal pricePerDay = Convert.ToDecimal(selectedRow.Cells["priceCol"].Value);
+                int isRoomTheater = Convert.ToInt32(selectedRow.Cells["roomTheaterCol"].Value);
+
+                // Populate the input fields with the selected row's values
+                roomType.SelectedItem = roomTypeVal;
+                roomNumber.Text = roomNumberVal;
+                roomPrice.Text = pricePerDay.ToString();
+
+                // Set the room type based on isRoomTheater value
+                isRoom.SelectedItem = isRoomTheater == 0 ? "Theater" : "Room";
+            }
+        }
+        private void roomsTable_SelectionChanged(object sender, EventArgs e)
+        {
+        if (roomsTable.SelectedRows.Count > 0)
             {
                 roomSubmitBtn.Enabled = false;
                 roomUpdateBtn.Enabled = true;
@@ -234,6 +255,7 @@ namespace HealthCarePlus
         private void RoomClearBtn_Click(object sender, EventArgs e)
         {
             ClearInputFields();
+            ClearSelectionWithDelay();
         }
 
         private void DeleteRoom()
@@ -285,6 +307,61 @@ namespace HealthCarePlus
         private void roomDeleteBtn_Click(object sender, EventArgs e)
         {
             DeleteRoom();
+            ClearSelectionWithDelay();
         }
+
+        private void roomUpdateBtn_Click(object sender, EventArgs e)
+        {
+            if (roomsTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = roomsTable.SelectedRows[0];
+
+                int roomId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+                string roomNumberVal = roomNumber.Text;
+                string roomTypeVal = roomType.SelectedItem?.ToString();
+                decimal pricePerDay = string.IsNullOrWhiteSpace(roomPrice.Text) ? 0 : decimal.Parse(roomPrice.Text);
+                bool isRoomTheater = isRoom.SelectedIndex == 1;
+
+                if (string.IsNullOrWhiteSpace(roomTypeVal) || string.IsNullOrWhiteSpace(roomNumberVal))
+                {
+                    MessageBox.Show("Please fill in all required fields.");
+                    return;
+                }
+
+                using (MySqlConnection connection = new MySqlConnection(mysqlCon))
+                {
+                    connection.Open();
+
+                    string updateQuery = "UPDATE rooms SET RoomNumber = RoomNumber, RoomType = @RoomType, PricePerDay = @PricePerDay, Type = @Type WHERE RoomID = @RoomID";
+
+                    MySqlCommand cmd = new MySqlCommand(updateQuery, connection);
+                    cmd.Parameters.AddWithValue("@RoomID", roomId);
+                    cmd.Parameters.AddWithValue("@RoomNumber", roomNumberVal);
+                    cmd.Parameters.AddWithValue("@RoomType", roomType);
+                    cmd.Parameters.AddWithValue("@PricePerDay", pricePerDay);
+                    cmd.Parameters.AddWithValue("@Type", isRoomTheater);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Room record updated successfully.");
+                        DisplayRoomsList();
+                        ClearInputFields();
+                        ClearSelectionWithDelay();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update room record.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a room record to update.");
+            }
+        }
+
     }
 }

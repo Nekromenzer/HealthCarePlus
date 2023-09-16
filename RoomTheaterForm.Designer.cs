@@ -102,6 +102,7 @@
             roomsTable.TabIndex = 0;
             roomsTable.CellFormatting += roomsTable_CellFormatting;
             roomsTable.SelectionChanged += roomsTable_SelectionChanged;
+            roomsTable.CellClick += roomsTable_CellClick;
             // 
             // id
             // 
@@ -211,7 +212,7 @@
             // 
             // isRoom
             // 
-            isRoom.AutoCompleteCustomSource.AddRange(new string[] { "General Ward Room", "Private Room", "Semi-Private Room", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Pediatric Ward", "Maternity Room", "Operating Room (OR)", "Recovery Room", "Isolation Room" });
+            isRoom.AutoCompleteCustomSource.AddRange(new string[] { "Theater", "Room" });
             isRoom.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             isRoom.FormattingEnabled = true;
             isRoom.Items.AddRange(new object[] { "Theater", "Room" });
@@ -301,6 +302,7 @@
             roomUpdateBtn.Text = "Update ";
             roomUpdateBtn.TextAlign = ContentAlignment.MiddleLeft;
             roomUpdateBtn.UseVisualStyleBackColor = false;
+            roomUpdateBtn.Click += roomUpdateBtn_Click;
             // 
             // roomSubmitBtn
             // 
@@ -334,7 +336,6 @@
             // 
             // roomPrice
             // 
-            roomPrice.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
             roomPrice.BorderStyle = BorderStyle.FixedSingle;
             roomPrice.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             roomPrice.Location = new Point(670, 98);
@@ -356,7 +357,6 @@
             // 
             // roomNumber
             // 
-            roomNumber.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
             roomNumber.BorderStyle = BorderStyle.FixedSingle;
             roomNumber.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             roomNumber.Location = new Point(370, 98);
@@ -370,7 +370,7 @@
             roomType.AutoCompleteCustomSource.AddRange(new string[] { "General Ward Room", "Private Room", "Semi-Private Room", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Pediatric Ward", "Maternity Room", "Operating Room (OR)", "Recovery Room", "Isolation Room" });
             roomType.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             roomType.FormattingEnabled = true;
-            roomType.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
+            roomType.Items.AddRange(new object[] { "General Ward Room", "Private Room", "Semi-Private Room", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Pediatric Ward", "Maternity Room", "Operating Room (OR)", "Recovery Room", "Isolation Room" });
             roomType.Location = new Point(67, 98);
             roomType.Name = "roomType";
             roomType.Size = new Size(286, 33);
