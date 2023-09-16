@@ -95,7 +95,7 @@
             roomsTable.DefaultCellStyle = dataGridViewCellStyle2;
             roomsTable.EnableHeadersVisualStyles = false;
             roomsTable.GridColor = SystemColors.Control;
-            roomsTable.Location = new Point(68, 304);
+            roomsTable.Location = new Point(65, 292);
             roomsTable.Name = "roomsTable";
             roomsTable.RowHeadersVisible = false;
             roomsTable.RowTemplate.Height = 25;
@@ -210,7 +210,7 @@
             DateLabel.AutoSize = true;
             DateLabel.BackColor = Color.Transparent;
             DateLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            DateLabel.Location = new Point(353, 144);
+            DateLabel.Location = new Point(379, 144);
             DateLabel.Name = "DateLabel";
             DateLabel.Size = new Size(36, 17);
             DateLabel.TabIndex = 39;
@@ -220,10 +220,10 @@
             // 
             date.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             date.Format = DateTimePickerFormat.Short;
-            date.Location = new Point(353, 166);
+            date.Location = new Point(379, 166);
             date.MinDate = new DateTime(2023, 8, 31, 0, 0, 0, 0);
             date.Name = "date";
-            date.Size = new Size(278, 33);
+            date.Size = new Size(285, 33);
             date.TabIndex = 38;
             // 
             // isRoom
@@ -232,16 +232,16 @@
             isRoom.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             isRoom.FormattingEnabled = true;
             isRoom.Items.AddRange(new object[] { "Theater", "Room" });
-            isRoom.Location = new Point(41, 166);
+            isRoom.Location = new Point(67, 166);
             isRoom.Name = "isRoom";
-            isRoom.Size = new Size(279, 33);
+            isRoom.Size = new Size(286, 33);
             isRoom.TabIndex = 37;
             // 
             // thaterLable
             // 
             thaterLable.AutoSize = true;
             thaterLable.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            thaterLable.Location = new Point(41, 143);
+            thaterLable.Location = new Point(67, 143);
             thaterLable.Name = "thaterLable";
             thaterLable.Size = new Size(109, 19);
             thaterLable.TabIndex = 36;
@@ -253,7 +253,7 @@
             label1.BackColor = Color.White;
             label1.Font = new Font("Calibri", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.DodgerBlue;
-            label1.Location = new Point(39, 22);
+            label1.Location = new Point(65, 22);
             label1.Name = "label1";
             label1.Size = new Size(211, 36);
             label1.TabIndex = 35;
@@ -270,9 +270,9 @@
             RoomClearBtn.ForeColor = SystemColors.Desktop;
             RoomClearBtn.Image = (Image)resources.GetObject("RoomClearBtn.Image");
             RoomClearBtn.ImageAlign = ContentAlignment.MiddleRight;
-            RoomClearBtn.Location = new Point(738, 225);
+            RoomClearBtn.Location = new Point(764, 225);
             RoomClearBtn.Name = "RoomClearBtn";
-            RoomClearBtn.Size = new Size(167, 37);
+            RoomClearBtn.Size = new Size(174, 37);
             RoomClearBtn.TabIndex = 34;
             RoomClearBtn.Text = "clear";
             RoomClearBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -289,9 +289,9 @@
             RoomDeleteBtn.ForeColor = SystemColors.ButtonHighlight;
             RoomDeleteBtn.Image = (Image)resources.GetObject("RoomDeleteBtn.Image");
             RoomDeleteBtn.ImageAlign = ContentAlignment.MiddleRight;
-            RoomDeleteBtn.Location = new Point(452, 225);
+            RoomDeleteBtn.Location = new Point(478, 225);
             RoomDeleteBtn.Name = "RoomDeleteBtn";
-            RoomDeleteBtn.Size = new Size(167, 37);
+            RoomDeleteBtn.Size = new Size(174, 37);
             RoomDeleteBtn.TabIndex = 33;
             RoomDeleteBtn.Text = "Delete";
             RoomDeleteBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -308,9 +308,9 @@
             RoomUpdateBtn.ForeColor = SystemColors.ActiveCaptionText;
             RoomUpdateBtn.Image = (Image)resources.GetObject("RoomUpdateBtn.Image");
             RoomUpdateBtn.ImageAlign = ContentAlignment.MiddleRight;
-            RoomUpdateBtn.Location = new Point(246, 225);
+            RoomUpdateBtn.Location = new Point(272, 225);
             RoomUpdateBtn.Name = "RoomUpdateBtn";
-            RoomUpdateBtn.Size = new Size(167, 37);
+            RoomUpdateBtn.Size = new Size(174, 37);
             RoomUpdateBtn.TabIndex = 32;
             RoomUpdateBtn.Text = "Update ";
             RoomUpdateBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -326,9 +326,9 @@
             RoomSubmitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             RoomSubmitBtn.Image = (Image)resources.GetObject("RoomSubmitBtn.Image");
             RoomSubmitBtn.ImageAlign = ContentAlignment.MiddleRight;
-            RoomSubmitBtn.Location = new Point(41, 225);
+            RoomSubmitBtn.Location = new Point(67, 225);
             RoomSubmitBtn.Name = "RoomSubmitBtn";
-            RoomSubmitBtn.Size = new Size(167, 37);
+            RoomSubmitBtn.Size = new Size(174, 37);
             RoomSubmitBtn.TabIndex = 31;
             RoomSubmitBtn.Text = "Add Room";
             RoomSubmitBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -337,7 +337,7 @@
             // roomAllowcated
             // 
             roomAllowcated.AutoSize = true;
-            roomAllowcated.Location = new Point(967, 100);
+            roomAllowcated.Location = new Point(993, 100);
             roomAllowcated.Name = "roomAllowcated";
             roomAllowcated.Size = new Size(111, 25);
             roomAllowcated.TabIndex = 30;
@@ -349,7 +349,7 @@
             priiceLabel.AutoSize = true;
             priiceLabel.BackColor = Color.Transparent;
             priiceLabel.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            priiceLabel.Location = new Point(659, 75);
+            priiceLabel.Location = new Point(685, 75);
             priiceLabel.Name = "priiceLabel";
             priiceLabel.Size = new Size(46, 19);
             priiceLabel.TabIndex = 29;
@@ -360,9 +360,9 @@
             roomPrice.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
             roomPrice.BorderStyle = BorderStyle.FixedSingle;
             roomPrice.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            roomPrice.Location = new Point(659, 98);
+            roomPrice.Location = new Point(685, 98);
             roomPrice.Name = "roomPrice";
-            roomPrice.Size = new Size(279, 33);
+            roomPrice.Size = new Size(286, 33);
             roomPrice.TabIndex = 28;
             // 
             // roomNumberLabel
@@ -370,7 +370,7 @@
             roomNumberLabel.AutoSize = true;
             roomNumberLabel.BackColor = Color.Transparent;
             roomNumberLabel.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            roomNumberLabel.Location = new Point(353, 75);
+            roomNumberLabel.Location = new Point(379, 75);
             roomNumberLabel.Name = "roomNumberLabel";
             roomNumberLabel.Size = new Size(107, 19);
             roomNumberLabel.TabIndex = 27;
@@ -381,9 +381,9 @@
             roomNumber.AutoCompleteCustomSource.AddRange(new string[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
             roomNumber.BorderStyle = BorderStyle.FixedSingle;
             roomNumber.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            roomNumber.Location = new Point(353, 98);
+            roomNumber.Location = new Point(379, 98);
             roomNumber.Name = "roomNumber";
-            roomNumber.Size = new Size(279, 33);
+            roomNumber.Size = new Size(286, 33);
             roomNumber.TabIndex = 26;
             // 
             // roomType
@@ -392,16 +392,16 @@
             roomType.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             roomType.FormattingEnabled = true;
             roomType.Items.AddRange(new object[] { "London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Liverpool", "Leeds", "Bristol", "Sheffield", "Newcastle" });
-            roomType.Location = new Point(41, 98);
+            roomType.Location = new Point(67, 98);
             roomType.Name = "roomType";
-            roomType.Size = new Size(279, 33);
+            roomType.Size = new Size(286, 33);
             roomType.TabIndex = 25;
             // 
             // roomTypeLable
             // 
             roomTypeLable.AutoSize = true;
             roomTypeLable.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            roomTypeLable.Location = new Point(41, 75);
+            roomTypeLable.Location = new Point(67, 75);
             roomTypeLable.Name = "roomTypeLable";
             roomTypeLable.Size = new Size(83, 19);
             roomTypeLable.TabIndex = 24;
