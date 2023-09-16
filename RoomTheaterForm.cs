@@ -19,12 +19,14 @@ namespace HealthCarePlus
             InitializeComponent();
             DisplayRoomsList();
             ClearSelectionWithDelay();
+            DisplayResourceList();
         }
 
         private async void ClearSelectionWithDelay()
         {
             await Task.Delay(1000);
             roomsTable.ClearSelection();
+            resTable.ClearSelection();
         }
 
         private string GetPatientNameById(int patientId)
@@ -105,6 +107,7 @@ namespace HealthCarePlus
                 isRoom.SelectedItem = isRoomTheater == 0 ? "Theater" : "Room";
             }
         }
+
         private void roomsTable_SelectionChanged(object sender, EventArgs e)
         {
             if (roomsTable.SelectedRows.Count > 0)
@@ -121,6 +124,24 @@ namespace HealthCarePlus
                 roomDeleteBtn.Enabled = false;
             }
         }
+
+        private void DisplayResourceList()
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT * FROM resources";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    resTable.DataSource = dataTable;
+                }
+            }
+        }
+
         private void DisplayRoomsList()
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
@@ -265,7 +286,6 @@ namespace HealthCarePlus
             }
         }
 
-
         private void roomDeleteBtn_Click(object sender, EventArgs e)
         {
             DeleteRoom();
@@ -325,5 +345,9 @@ namespace HealthCarePlus
             }
         }
 
+        private void resSubmitBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
