@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomTheaterForm));
             roomsTable = new DataGridView();
             id = new DataGridViewTextBoxColumn();
@@ -46,9 +46,9 @@
             thaterLable = new Label();
             label1 = new Label();
             RoomClearBtn = new Button();
-            RoomDeleteBtn = new Button();
-            RoomUpdateBtn = new Button();
-            RoomSubmitBtn = new Button();
+            roomDeleteBtn = new Button();
+            roomUpdateBtn = new Button();
+            roomSubmitBtn = new Button();
             priiceLabel = new Label();
             roomPrice = new TextBox();
             roomNumberLabel = new Label();
@@ -73,23 +73,23 @@
             roomsTable.BackgroundColor = SystemColors.Control;
             roomsTable.BorderStyle = BorderStyle.None;
             roomsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            roomsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            roomsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             roomsTable.Columns.AddRange(new DataGridViewColumn[] { id, roomTypeCol, roomNumberCol, allocatedCol, priceCol, patientIdCol, roomTheaterCol, dateCol });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            roomsTable.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            roomsTable.DefaultCellStyle = dataGridViewCellStyle4;
             roomsTable.EnableHeadersVisualStyles = false;
             roomsTable.GridColor = SystemColors.Control;
             roomsTable.Location = new Point(65, 258);
@@ -101,6 +101,7 @@
             roomsTable.Size = new Size(1193, 484);
             roomsTable.TabIndex = 0;
             roomsTable.CellFormatting += roomsTable_CellFormatting;
+            roomsTable.SelectionChanged += roomsTable_SelectionChanged;
             // 
             // id
             // 
@@ -191,9 +192,9 @@
             roomsTab.Controls.Add(thaterLable);
             roomsTab.Controls.Add(label1);
             roomsTab.Controls.Add(RoomClearBtn);
-            roomsTab.Controls.Add(RoomDeleteBtn);
-            roomsTab.Controls.Add(RoomUpdateBtn);
-            roomsTab.Controls.Add(RoomSubmitBtn);
+            roomsTab.Controls.Add(roomDeleteBtn);
+            roomsTab.Controls.Add(roomUpdateBtn);
+            roomsTab.Controls.Add(roomSubmitBtn);
             roomsTab.Controls.Add(priiceLabel);
             roomsTab.Controls.Add(roomPrice);
             roomsTab.Controls.Add(roomNumberLabel);
@@ -263,62 +264,62 @@
             RoomClearBtn.UseVisualStyleBackColor = false;
             RoomClearBtn.Click += RoomClearBtn_Click;
             // 
-            // RoomDeleteBtn
+            // roomDeleteBtn
             // 
-            RoomDeleteBtn.BackColor = Color.IndianRed;
-            RoomDeleteBtn.BackgroundImageLayout = ImageLayout.None;
-            RoomDeleteBtn.Cursor = Cursors.Hand;
-            RoomDeleteBtn.FlatAppearance.BorderSize = 0;
-            RoomDeleteBtn.FlatStyle = FlatStyle.Flat;
-            RoomDeleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            RoomDeleteBtn.ForeColor = SystemColors.ButtonHighlight;
-            RoomDeleteBtn.Image = (Image)resources.GetObject("RoomDeleteBtn.Image");
-            RoomDeleteBtn.ImageAlign = ContentAlignment.MiddleRight;
-            RoomDeleteBtn.Location = new Point(478, 166);
-            RoomDeleteBtn.Name = "RoomDeleteBtn";
-            RoomDeleteBtn.Size = new Size(174, 37);
-            RoomDeleteBtn.TabIndex = 33;
-            RoomDeleteBtn.Text = "Delete";
-            RoomDeleteBtn.TextAlign = ContentAlignment.MiddleLeft;
-            RoomDeleteBtn.UseVisualStyleBackColor = false;
+            roomDeleteBtn.BackColor = Color.IndianRed;
+            roomDeleteBtn.BackgroundImageLayout = ImageLayout.None;
+            roomDeleteBtn.Cursor = Cursors.Hand;
+            roomDeleteBtn.FlatAppearance.BorderSize = 0;
+            roomDeleteBtn.FlatStyle = FlatStyle.Flat;
+            roomDeleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            roomDeleteBtn.ForeColor = SystemColors.ButtonHighlight;
+            roomDeleteBtn.Image = (Image)resources.GetObject("roomDeleteBtn.Image");
+            roomDeleteBtn.ImageAlign = ContentAlignment.MiddleRight;
+            roomDeleteBtn.Location = new Point(478, 166);
+            roomDeleteBtn.Name = "roomDeleteBtn";
+            roomDeleteBtn.Size = new Size(174, 37);
+            roomDeleteBtn.TabIndex = 33;
+            roomDeleteBtn.Text = "Delete";
+            roomDeleteBtn.TextAlign = ContentAlignment.MiddleLeft;
+            roomDeleteBtn.UseVisualStyleBackColor = false;
             // 
-            // RoomUpdateBtn
+            // roomUpdateBtn
             // 
-            RoomUpdateBtn.BackColor = Color.Gold;
-            RoomUpdateBtn.BackgroundImageLayout = ImageLayout.None;
-            RoomUpdateBtn.Cursor = Cursors.Hand;
-            RoomUpdateBtn.FlatAppearance.BorderSize = 0;
-            RoomUpdateBtn.FlatStyle = FlatStyle.Flat;
-            RoomUpdateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            RoomUpdateBtn.ForeColor = SystemColors.ActiveCaptionText;
-            RoomUpdateBtn.Image = (Image)resources.GetObject("RoomUpdateBtn.Image");
-            RoomUpdateBtn.ImageAlign = ContentAlignment.MiddleRight;
-            RoomUpdateBtn.Location = new Point(272, 166);
-            RoomUpdateBtn.Name = "RoomUpdateBtn";
-            RoomUpdateBtn.Size = new Size(174, 37);
-            RoomUpdateBtn.TabIndex = 32;
-            RoomUpdateBtn.Text = "Update ";
-            RoomUpdateBtn.TextAlign = ContentAlignment.MiddleLeft;
-            RoomUpdateBtn.UseVisualStyleBackColor = false;
+            roomUpdateBtn.BackColor = Color.Gold;
+            roomUpdateBtn.BackgroundImageLayout = ImageLayout.None;
+            roomUpdateBtn.Cursor = Cursors.Hand;
+            roomUpdateBtn.FlatAppearance.BorderSize = 0;
+            roomUpdateBtn.FlatStyle = FlatStyle.Flat;
+            roomUpdateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            roomUpdateBtn.ForeColor = SystemColors.ActiveCaptionText;
+            roomUpdateBtn.Image = (Image)resources.GetObject("roomUpdateBtn.Image");
+            roomUpdateBtn.ImageAlign = ContentAlignment.MiddleRight;
+            roomUpdateBtn.Location = new Point(272, 166);
+            roomUpdateBtn.Name = "roomUpdateBtn";
+            roomUpdateBtn.Size = new Size(174, 37);
+            roomUpdateBtn.TabIndex = 32;
+            roomUpdateBtn.Text = "Update ";
+            roomUpdateBtn.TextAlign = ContentAlignment.MiddleLeft;
+            roomUpdateBtn.UseVisualStyleBackColor = false;
             // 
-            // RoomSubmitBtn
+            // roomSubmitBtn
             // 
-            RoomSubmitBtn.BackColor = Color.MediumSeaGreen;
-            RoomSubmitBtn.BackgroundImageLayout = ImageLayout.None;
-            RoomSubmitBtn.Cursor = Cursors.Hand;
-            RoomSubmitBtn.FlatAppearance.BorderSize = 0;
-            RoomSubmitBtn.FlatStyle = FlatStyle.Flat;
-            RoomSubmitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            RoomSubmitBtn.Image = (Image)resources.GetObject("RoomSubmitBtn.Image");
-            RoomSubmitBtn.ImageAlign = ContentAlignment.MiddleRight;
-            RoomSubmitBtn.Location = new Point(67, 166);
-            RoomSubmitBtn.Name = "RoomSubmitBtn";
-            RoomSubmitBtn.Size = new Size(174, 37);
-            RoomSubmitBtn.TabIndex = 31;
-            RoomSubmitBtn.Text = "Add Room";
-            RoomSubmitBtn.TextAlign = ContentAlignment.MiddleLeft;
-            RoomSubmitBtn.UseVisualStyleBackColor = false;
-            RoomSubmitBtn.Click += RoomSubmitBtn_Click;
+            roomSubmitBtn.BackColor = Color.MediumSeaGreen;
+            roomSubmitBtn.BackgroundImageLayout = ImageLayout.None;
+            roomSubmitBtn.Cursor = Cursors.Hand;
+            roomSubmitBtn.FlatAppearance.BorderSize = 0;
+            roomSubmitBtn.FlatStyle = FlatStyle.Flat;
+            roomSubmitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            roomSubmitBtn.Image = (Image)resources.GetObject("roomSubmitBtn.Image");
+            roomSubmitBtn.ImageAlign = ContentAlignment.MiddleRight;
+            roomSubmitBtn.Location = new Point(67, 166);
+            roomSubmitBtn.Name = "roomSubmitBtn";
+            roomSubmitBtn.Size = new Size(174, 37);
+            roomSubmitBtn.TabIndex = 31;
+            roomSubmitBtn.Text = "Add Room";
+            roomSubmitBtn.TextAlign = ContentAlignment.MiddleLeft;
+            roomSubmitBtn.UseVisualStyleBackColor = false;
+            roomSubmitBtn.Click += RoomSubmitBtn_Click;
             // 
             // priiceLabel
             // 
@@ -431,9 +432,9 @@
         private Label roomNumberLabel;
         private TextBox roomNumber;
         private Button RoomClearBtn;
-        private Button RoomDeleteBtn;
-        private Button RoomUpdateBtn;
-        private Button RoomSubmitBtn;
+        private Button roomDeleteBtn;
+        private Button roomUpdateBtn;
+        private Button roomSubmitBtn;
         private Label label1;
         private ComboBox isRoom;
         private Label thaterLable;

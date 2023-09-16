@@ -2414,7 +2414,7 @@
         Xj3Xvsy4pRcZf3QLVmxDp3q9r/V0eLpQJ67/DwWC+AUbqYtt8Uh0WAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="RoomDeleteBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="roomDeleteBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAxZJREFUWEdjGAWjgBwgLq7HLa+gtUZeUXsVCMspaC+Vk9MVhEpTH4AsVFDQtJNT
@@ -2433,7 +2433,7 @@
         p7ob268gBoPUKitry0K1j4JRMJgBAwMAvcBNMOfIm78AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="RoomUpdateBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="roomUpdateBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAx5JREFUWEfdljtsE0EQhg0kogiCCoqUiCIFUkRNIAhBEaGAaCihQBQUlIjSBQ+R
@@ -2452,7 +2452,7 @@
         HQzCYdufw+on0B2+otH6gKS6x+IanYzp9DA2h6RI5Dt904TPKGVjegAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="RoomSubmitBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="roomSubmitBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAgpJREFUWEftlrlOw0AQhvMMnDVHy1ESCkqIr+waEd4GAlSIBhTES0R4nfAYCAj0

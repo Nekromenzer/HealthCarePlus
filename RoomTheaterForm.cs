@@ -87,6 +87,22 @@ namespace HealthCarePlus
 
         }
 
+        private void roomsTable_SelectionChanged(object sender, EventArgs e)
+        {
+            if (roomsTable.SelectedRows.Count > 0)
+            {
+                roomSubmitBtn.Enabled = false;
+                roomUpdateBtn.Enabled = true;
+                roomDeleteBtn.Enabled = true;
+                ClearInputFields();
+            }
+            else
+            {
+                roomSubmitBtn.Enabled = true;
+                roomUpdateBtn.Enabled = false;
+                roomDeleteBtn.Enabled = false;
+            }
+        }
         private void DisplayRoomsList()
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
