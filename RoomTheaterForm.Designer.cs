@@ -456,7 +456,6 @@
             resTable.RowHeadersVisible = false;
             resTable.RowHeadersWidth = 23;
             resTable.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            resTable.RowTemplate.Height = 25;
             resTable.ScrollBars = ScrollBars.Vertical;
             resTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             resTable.ShowCellErrors = false;
