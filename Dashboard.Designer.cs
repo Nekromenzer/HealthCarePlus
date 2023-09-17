@@ -203,6 +203,7 @@
             addAppointmentBtn.Text = "Appointments";
             addAppointmentBtn.TextAlign = ContentAlignment.MiddleLeft;
             addAppointmentBtn.UseVisualStyleBackColor = false;
+            addAppointmentBtn.Click += addAppointmentBtn_Click;
             // 
             // logoutBtn
             // 
@@ -237,9 +238,9 @@
             roomSearchBtn.Margin = new Padding(0);
             roomSearchBtn.Name = "roomSearchBtn";
             roomSearchBtn.Padding = new Padding(10, 0, 10, 0);
-            roomSearchBtn.Size = new Size(260, 49);
+            roomSearchBtn.Size = new Size(284, 49);
             roomSearchBtn.TabIndex = 13;
-            roomSearchBtn.Text = "Room/Theater";
+            roomSearchBtn.Text = "Room/Theater/Scanners";
             roomSearchBtn.TextAlign = ContentAlignment.MiddleLeft;
             roomSearchBtn.UseVisualStyleBackColor = false;
             roomSearchBtn.Click += roomSearchBtn_Click;
@@ -270,7 +271,7 @@
             scannersBtn.Margin = new Padding(0);
             scannersBtn.Name = "scannersBtn";
             scannersBtn.Padding = new Padding(10, 0, 10, 0);
-            scannersBtn.Size = new Size(260, 49);
+            scannersBtn.Size = new Size(284, 49);
             scannersBtn.TabIndex = 11;
             scannersBtn.Text = "Scanners";
             scannersBtn.TextAlign = ContentAlignment.MiddleLeft;

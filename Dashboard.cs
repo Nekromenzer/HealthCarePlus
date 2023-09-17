@@ -78,5 +78,11 @@ namespace HealthCarePlus
             Login loginForm = new Login();
             loginForm.Show();
         }
+
+        private void addAppointmentBtn_Click(object sender, EventArgs e)
+        {
+            AppointmentForm appointmentForm = new AppointmentForm();
+            appointmentForm.Show();
+        }
     }
 }
