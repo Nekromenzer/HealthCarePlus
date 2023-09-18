@@ -46,11 +46,12 @@
             appointmentTable.AllowUserToDeleteRows = false;
             appointmentTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             appointmentTable.Columns.AddRange(new DataGridViewColumn[] { idCol, sheduleCol, doctorCol, patientCol, dateCol, timeCol, statusCol });
-            appointmentTable.Location = new Point(526, 475);
+            appointmentTable.Location = new Point(56, 326);
             appointmentTable.Name = "appointmentTable";
             appointmentTable.ReadOnly = true;
+            appointmentTable.RowHeadersVisible = false;
             appointmentTable.RowTemplate.Height = 25;
-            appointmentTable.Size = new Size(240, 150);
+            appointmentTable.Size = new Size(1193, 484);
             appointmentTable.TabIndex = 0;
             appointmentTable.CellContentClick += appointmentTable_CellContentClick;
             // 
