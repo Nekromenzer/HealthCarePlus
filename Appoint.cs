@@ -15,6 +15,12 @@ namespace HealthCarePlus
         public AppointmentForm()
         {
             InitializeComponent();
+
+        }
+
+        private void appointmentTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
