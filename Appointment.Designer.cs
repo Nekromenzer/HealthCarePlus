@@ -59,6 +59,7 @@
             // 
             appointmentTable.AllowUserToAddRows = false;
             appointmentTable.AllowUserToDeleteRows = false;
+            appointmentTable.BackgroundColor = SystemColors.Control;
             appointmentTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             appointmentTable.Columns.AddRange(new DataGridViewColumn[] { idCol, sheduleCol, doctorCol, patientCol, dateCol, timeCol, statusCol });
             appointmentTable.Location = new Point(56, 326);
