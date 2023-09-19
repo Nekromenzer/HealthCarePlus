@@ -25,12 +25,24 @@ namespace HealthCarePlus
             LoadDoctorNames();
             // get schdules
             LoadDoctorSchedules();
+            //get patient list
+            LoadPatients();
 
         }
 
         public class DoctorNameFunc
         {
             public int DoctorID { get; set; }
+            public string? FullName { get; set; }
+            public override string ToString()
+            {
+                return FullName;
+            }
+        }
+
+        public class PatientNameFunc
+        {
+            public int PatientID { get; set; }
             public string? FullName { get; set; }
             public override string ToString()
             {
@@ -121,6 +133,38 @@ namespace HealthCarePlus
             }
         }
 
+        // get patient list
+        private void LoadPatients()
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = "SELECT PatientID, FullName FROM patients";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        patient.Items.Clear(); // Clear existing items
+
+                        while (reader.Read())
+                        {
+                            int patientID = reader.GetInt32("PatientID");
+                            string fullName = reader.GetString("FullName");
+                            PatientNameFunc patientName = new PatientNameFunc { PatientID = patientID, FullName = fullName };
+                            patient.Items.Add(patientName);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
+       
         private void DisplayDoctorSchedules()
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
