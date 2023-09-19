@@ -42,6 +42,12 @@
             submitBtn = new Button();
             scheduleLabel = new Label();
             schedule = new ComboBox();
+            date = new DateTimePicker();
+            dateLabel = new Label();
+            timeLabel = new Label();
+            time = new DateTimePicker();
+            patientLabel = new Label();
+            patient = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)appointmentTable).BeginInit();
             SuspendLayout();
             // 
@@ -117,7 +123,8 @@
             state.AutoCompleteCustomSource.AddRange(new string[] { "Pending", "Ongoing", "Complete" });
             state.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             state.FormattingEnabled = true;
-            state.Location = new Point(970, 192);
+            state.Items.AddRange(new object[] { "Pending ", "Ongoing", "Complete" });
+            state.Location = new Point(56, 191);
             state.Name = "state";
             state.Size = new Size(279, 33);
             state.TabIndex = 1;
@@ -126,7 +133,7 @@
             // 
             stateLabel.AutoSize = true;
             stateLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            stateLabel.Location = new Point(970, 172);
+            stateLabel.Location = new Point(56, 171);
             stateLabel.Name = "stateLabel";
             stateLabel.Size = new Size(39, 17);
             stateLabel.TabIndex = 2;
@@ -169,12 +176,76 @@
             schedule.Size = new Size(279, 33);
             schedule.TabIndex = 22;
             // 
+            // date
+            // 
+            date.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            date.Location = new Point(365, 124);
+            date.Name = "date";
+            date.Size = new Size(279, 33);
+            date.TabIndex = 24;
+            // 
+            // dateLabel
+            // 
+            dateLabel.AutoSize = true;
+            dateLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dateLabel.Location = new Point(365, 104);
+            dateLabel.Name = "dateLabel";
+            dateLabel.Size = new Size(36, 17);
+            dateLabel.TabIndex = 25;
+            dateLabel.Text = "Date";
+            // 
+            // timeLabel
+            // 
+            timeLabel.AutoSize = true;
+            timeLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            timeLabel.Location = new Point(675, 104);
+            timeLabel.Name = "timeLabel";
+            timeLabel.Size = new Size(37, 17);
+            timeLabel.TabIndex = 27;
+            timeLabel.Text = "Time";
+            // 
+            // time
+            // 
+            time.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            time.Format = DateTimePickerFormat.Time;
+            time.Location = new Point(675, 124);
+            time.Name = "time";
+            time.Size = new Size(279, 33);
+            time.TabIndex = 26;
+            // 
+            // patientLabel
+            // 
+            patientLabel.AutoSize = true;
+            patientLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            patientLabel.Location = new Point(970, 104);
+            patientLabel.Name = "patientLabel";
+            patientLabel.Size = new Size(51, 17);
+            patientLabel.TabIndex = 29;
+            patientLabel.Text = "Patient";
+            patientLabel.Click += label1_Click;
+            // 
+            // patient
+            // 
+            patient.AutoCompleteCustomSource.AddRange(new string[] { "Pending", "Ongoing", "Complete" });
+            patient.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            patient.FormattingEnabled = true;
+            patient.Location = new Point(970, 124);
+            patient.Name = "patient";
+            patient.Size = new Size(279, 33);
+            patient.TabIndex = 28;
+            // 
             // AppointmentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(patientLabel);
+            Controls.Add(patient);
+            Controls.Add(timeLabel);
+            Controls.Add(time);
+            Controls.Add(dateLabel);
+            Controls.Add(date);
             Controls.Add(scheduleLabel);
             Controls.Add(schedule);
             Controls.Add(submitBtn);
@@ -206,5 +277,11 @@
         private Button submitBtn;
         private Label scheduleLabel;
         private ComboBox schedule;
+        private DateTimePicker date;
+        private Label dateLabel;
+        private Label timeLabel;
+        private DateTimePicker time;
+        private Label patientLabel;
+        private ComboBox patient;
     }
 }
