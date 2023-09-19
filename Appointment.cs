@@ -23,6 +23,8 @@ namespace HealthCarePlus
             ClearSelectionWithDelay();
             //get doctors
             LoadDoctorNames();
+            // get schdules
+            LoadDoctorSchedules();
 
         }
 
@@ -74,6 +76,50 @@ namespace HealthCarePlus
             }
         }
 
+        // get schedule for relevent doctor or get all 
+        private void LoadDoctorSchedules()
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query;
+                    MySqlCommand cmd;
+
+                    if (doctor.SelectedItem != null)
+                    {
+                        // If a doctor is selected, get schedules for that doctor
+                        int selectedDoctorID = ((DoctorNameFunc)doctor.SelectedItem).DoctorID;
+                        query = "SELECT DISTINCT ds.AppointmentType FROM doctorschedules ds " +
+                                "WHERE ds.DoctorID = @DoctorID";
+                        cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@DoctorID", selectedDoctorID);
+                    }
+                    else
+                    {
+                        // If no doctor is selected, display all schedules
+                        query = "SELECT DISTINCT ds.AppointmentType FROM doctorschedules ds";
+                        cmd = new MySqlCommand(query, conn);
+                    }
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        schedule.Items.Clear();
+                        while (reader.Read())
+                        {
+                            string appointmentTypeName = reader.GetString("AppointmentType");
+                            schedule.Items.Add(appointmentTypeName);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
 
         private void DisplayDoctorSchedules()
         {
@@ -122,6 +168,11 @@ namespace HealthCarePlus
         private void clearBtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void doctor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDoctorSchedules();
         }
     }
 }

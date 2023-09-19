@@ -331,6 +331,7 @@
             doctor.Name = "doctor";
             doctor.Size = new Size(279, 33);
             doctor.TabIndex = 30;
+            doctor.SelectedIndexChanged += doctor_SelectedIndexChanged;
             // 
             // AppointmentForm
             // 
