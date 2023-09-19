@@ -48,6 +48,9 @@
             time = new DateTimePicker();
             patientLabel = new Label();
             patient = new ComboBox();
+            updateBtn = new Button();
+            deleteBtn = new Button();
+            clearBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)appointmentTable).BeginInit();
             SuspendLayout();
             // 
@@ -149,11 +152,11 @@
             submitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             submitBtn.Image = (Image)resources.GetObject("submitBtn.Image");
             submitBtn.ImageAlign = ContentAlignment.MiddleRight;
-            submitBtn.Location = new Point(56, 250);
+            submitBtn.Location = new Point(56, 252);
             submitBtn.Name = "submitBtn";
-            submitBtn.Size = new Size(206, 37);
+            submitBtn.Size = new Size(167, 37);
             submitBtn.TabIndex = 21;
-            submitBtn.Text = "Create Appointment";
+            submitBtn.Text = "Add Schedule";
             submitBtn.TextAlign = ContentAlignment.MiddleLeft;
             submitBtn.UseVisualStyleBackColor = false;
             // 
@@ -234,12 +237,73 @@
             patient.Size = new Size(279, 33);
             patient.TabIndex = 28;
             // 
+            // updateBtn
+            // 
+            updateBtn.BackColor = Color.Gold;
+            updateBtn.BackgroundImageLayout = ImageLayout.None;
+            updateBtn.Cursor = Cursors.Hand;
+            updateBtn.FlatAppearance.BorderSize = 0;
+            updateBtn.FlatStyle = FlatStyle.Flat;
+            updateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            updateBtn.ForeColor = SystemColors.ActiveCaptionText;
+            updateBtn.Image = (Image)resources.GetObject("updateBtn.Image");
+            updateBtn.ImageAlign = ContentAlignment.MiddleRight;
+            updateBtn.Location = new Point(261, 252);
+            updateBtn.Name = "updateBtn";
+            updateBtn.Size = new Size(167, 37);
+            updateBtn.TabIndex = 26;
+            updateBtn.Text = "Update ";
+            updateBtn.TextAlign = ContentAlignment.MiddleLeft;
+            updateBtn.UseVisualStyleBackColor = false;
+            updateBtn.Click += updateBtn_Click;
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.BackColor = Color.IndianRed;
+            deleteBtn.BackgroundImageLayout = ImageLayout.None;
+            deleteBtn.Cursor = Cursors.Hand;
+            deleteBtn.FlatAppearance.BorderSize = 0;
+            deleteBtn.FlatStyle = FlatStyle.Flat;
+            deleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            deleteBtn.ForeColor = SystemColors.ButtonHighlight;
+            deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
+            deleteBtn.ImageAlign = ContentAlignment.MiddleRight;
+            deleteBtn.Location = new Point(467, 252);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(167, 37);
+            deleteBtn.TabIndex = 27;
+            deleteBtn.Text = "Delete";
+            deleteBtn.TextAlign = ContentAlignment.MiddleLeft;
+            deleteBtn.UseVisualStyleBackColor = false;
+            // 
+            // clearBtn
+            // 
+            clearBtn.BackColor = Color.White;
+            clearBtn.BackgroundImageLayout = ImageLayout.None;
+            clearBtn.Cursor = Cursors.Hand;
+            clearBtn.FlatAppearance.BorderSize = 0;
+            clearBtn.FlatStyle = FlatStyle.Flat;
+            clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            clearBtn.ForeColor = SystemColors.Desktop;
+            clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
+            clearBtn.ImageAlign = ContentAlignment.MiddleRight;
+            clearBtn.Location = new Point(753, 252);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(167, 37);
+            clearBtn.TabIndex = 28;
+            clearBtn.Text = "clear";
+            clearBtn.TextAlign = ContentAlignment.MiddleLeft;
+            clearBtn.UseVisualStyleBackColor = false;
+            // 
             // AppointmentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(clearBtn);
+            Controls.Add(deleteBtn);
+            Controls.Add(updateBtn);
             Controls.Add(patientLabel);
             Controls.Add(patient);
             Controls.Add(timeLabel);
@@ -283,5 +347,8 @@
         private DateTimePicker time;
         private Label patientLabel;
         private ComboBox patient;
+        private Button updateBtn;
+        private Button deleteBtn;
+        private Button clearBtn;
     }
 }

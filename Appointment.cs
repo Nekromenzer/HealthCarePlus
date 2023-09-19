@@ -56,5 +56,10 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
