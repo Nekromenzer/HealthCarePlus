@@ -186,7 +186,7 @@ namespace HealthCarePlus
                 }
             }
         }
-       
+
         private void DisplayAppointments()
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
