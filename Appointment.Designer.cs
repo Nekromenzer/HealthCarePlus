@@ -51,6 +51,7 @@
             updateBtn = new Button();
             deleteBtn = new Button();
             clearBtn = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)appointmentTable).BeginInit();
             SuspendLayout();
             // 
@@ -159,6 +160,7 @@
             submitBtn.Text = "Add Schedule";
             submitBtn.TextAlign = ContentAlignment.MiddleLeft;
             submitBtn.UseVisualStyleBackColor = false;
+            submitBtn.Click += submitBtn_Click;
             // 
             // scheduleLabel
             // 
@@ -225,7 +227,6 @@
             patientLabel.Size = new Size(51, 17);
             patientLabel.TabIndex = 29;
             patientLabel.Text = "Patient";
-            patientLabel.Click += label1_Click;
             // 
             // patient
             // 
@@ -275,6 +276,7 @@
             deleteBtn.Text = "Delete";
             deleteBtn.TextAlign = ContentAlignment.MiddleLeft;
             deleteBtn.UseVisualStyleBackColor = false;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // clearBtn
             // 
@@ -294,6 +296,19 @@
             clearBtn.Text = "clear";
             clearBtn.TextAlign = ContentAlignment.MiddleLeft;
             clearBtn.UseVisualStyleBackColor = false;
+            clearBtn.Click += clearBtn_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.White;
+            label1.Font = new Font("Calibri", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.DodgerBlue;
+            label1.Location = new Point(56, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(179, 36);
+            label1.TabIndex = 22;
+            label1.Text = "Appointment";
             // 
             // AppointmentForm
             // 
@@ -301,6 +316,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(label1);
             Controls.Add(clearBtn);
             Controls.Add(deleteBtn);
             Controls.Add(updateBtn);
@@ -350,5 +366,6 @@
         private Button updateBtn;
         private Button deleteBtn;
         private Button clearBtn;
+        private Label label1;
     }
 }
