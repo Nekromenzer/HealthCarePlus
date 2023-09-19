@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppointmentForm));
             appointmentTable = new DataGridView();
             idCol = new DataGridViewTextBoxColumn();
@@ -66,20 +66,20 @@
             appointmentTable.AllowUserToDeleteRows = false;
             appointmentTable.AllowUserToOrderColumns = true;
             appointmentTable.AllowUserToResizeColumns = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            appointmentTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            appointmentTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             appointmentTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             appointmentTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             appointmentTable.BackgroundColor = SystemColors.Control;
             appointmentTable.BorderStyle = BorderStyle.None;
             appointmentTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            appointmentTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            appointmentTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             appointmentTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             appointmentTable.Columns.AddRange(new DataGridViewColumn[] { idCol, scheduleCol, doctorCol, patientCol, dateCol, timeCol, statusCol, priceCol });
             appointmentTable.GridColor = SystemColors.Control;
@@ -119,8 +119,8 @@
             // 
             doctorCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             doctorCol.DataPropertyName = "DoctorID ";
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
-            doctorCol.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = SystemColors.ActiveCaption;
+            doctorCol.DefaultCellStyle = dataGridViewCellStyle4;
             doctorCol.HeaderText = "Doctor";
             doctorCol.Name = "doctorCol";
             doctorCol.ReadOnly = true;
@@ -404,7 +404,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "AppointmentForm";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Appointment";
             ((System.ComponentModel.ISupportInitialize)appointmentTable).EndInit();
             ResumeLayout(false);
