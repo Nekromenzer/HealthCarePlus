@@ -211,9 +211,94 @@ namespace HealthCarePlus
             appointmentTable.ClearSelection();
         }
 
-        private void appointmentTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private string GetDoctorNameById(int doctorId)
         {
+            string? doctorName = string.Empty;
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT FullName FROM doctors WHERE DoctorID = @DoctorID";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@DoctorID", doctorId);
+                object result = cmd.ExecuteScalar();
 
+                if (result != null)
+                {
+                    doctorName = result.ToString();
+                }
+            }
+            return doctorName;
+        }
+
+        private string GetPatientNameById(int patientId)
+        {
+            string? patientName = string.Empty;
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT FullName FROM patients WHERE PatientID = @PatientID";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@PatientID", patientId);
+                object result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    patientName = result.ToString();
+                }
+            }
+            return patientName;
+        }
+
+        private string GetAppointmentTypeByScheduleId(int scheduleId)
+        {
+            string appointmentType = string.Empty;
+
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT AppointmentType FROM doctorSchedules WHERE ScheduleID = @ScheduleID";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ScheduleID", scheduleId);
+
+                object result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    appointmentType = result.ToString();
+                }
+            }
+
+            return appointmentType;
+        }
+
+        //format table data col
+        private void appointmentTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (appointmentTable.Columns[e.ColumnIndex].Name == "doctorCol")
+            {
+                if (e.Value != null)
+                {
+                    string? doctorName = GetDoctorNameById(Convert.ToInt32(e.Value));
+                    e.Value = doctorName;
+                }
+            }
+            if (appointmentTable.Columns[e.ColumnIndex].Name == "patientCol")
+            {
+                if (e.Value != null)
+                {
+                    string? patientName = GetPatientNameById(Convert.ToInt32(e.Value));
+                    e.Value = patientName;
+                }
+            }
+            if (appointmentTable.Columns[e.ColumnIndex].Name == "scheduleCol")
+            {
+                if (e.Value != null)
+                {
+                    string? schduleName = GetAppointmentTypeByScheduleId(Convert.ToInt32(e.Value));
+                    e.Value = schduleName;
+                }
+            }
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -302,6 +387,11 @@ namespace HealthCarePlus
         private void doctor_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadDoctorSchedules();
+        }
+
+        private void appointmentTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
