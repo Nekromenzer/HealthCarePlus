@@ -40,6 +40,8 @@
             state = new ComboBox();
             stateLabel = new Label();
             submitBtn = new Button();
+            scheduleLabel = new Label();
+            schedule = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)appointmentTable).BeginInit();
             SuspendLayout();
             // 
@@ -113,18 +115,20 @@
             // state
             // 
             state.AutoCompleteCustomSource.AddRange(new string[] { "Pending", "Ongoing", "Complete" });
+            state.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             state.FormattingEnabled = true;
-            state.Location = new Point(1021, 195);
+            state.Location = new Point(970, 192);
             state.Name = "state";
-            state.Size = new Size(228, 23);
+            state.Size = new Size(279, 33);
             state.TabIndex = 1;
             // 
             // stateLabel
             // 
             stateLabel.AutoSize = true;
-            stateLabel.Location = new Point(1021, 177);
+            stateLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            stateLabel.Location = new Point(970, 172);
             stateLabel.Name = "stateLabel";
-            stateLabel.Size = new Size(33, 15);
+            stateLabel.Size = new Size(39, 17);
             stateLabel.TabIndex = 2;
             stateLabel.Text = "State";
             // 
@@ -146,12 +150,33 @@
             submitBtn.TextAlign = ContentAlignment.MiddleLeft;
             submitBtn.UseVisualStyleBackColor = false;
             // 
+            // scheduleLabel
+            // 
+            scheduleLabel.AutoSize = true;
+            scheduleLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            scheduleLabel.Location = new Point(56, 104);
+            scheduleLabel.Name = "scheduleLabel";
+            scheduleLabel.Size = new Size(62, 17);
+            scheduleLabel.TabIndex = 23;
+            scheduleLabel.Text = "Schedule";
+            // 
+            // schedule
+            // 
+            schedule.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            schedule.FormattingEnabled = true;
+            schedule.Location = new Point(56, 124);
+            schedule.Name = "schedule";
+            schedule.Size = new Size(279, 33);
+            schedule.TabIndex = 22;
+            // 
             // AppointmentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(scheduleLabel);
+            Controls.Add(schedule);
             Controls.Add(submitBtn);
             Controls.Add(stateLabel);
             Controls.Add(state);
@@ -179,5 +204,7 @@
         private ComboBox state;
         private Label stateLabel;
         private Button submitBtn;
+        private Label scheduleLabel;
+        private ComboBox schedule;
     }
 }
