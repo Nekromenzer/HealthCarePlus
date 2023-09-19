@@ -37,6 +37,9 @@
             dateCol = new DataGridViewTextBoxColumn();
             timeCol = new DataGridViewTextBoxColumn();
             statusCol = new DataGridViewTextBoxColumn();
+            state = new ComboBox();
+            stateLabel = new Label();
+            submitBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)appointmentTable).BeginInit();
             SuspendLayout();
             // 
@@ -107,12 +110,51 @@
             statusCol.ReadOnly = true;
             statusCol.Width = 58;
             // 
+            // state
+            // 
+            state.AutoCompleteCustomSource.AddRange(new string[] { "Pending", "Ongoing", "Complete" });
+            state.FormattingEnabled = true;
+            state.Location = new Point(1021, 195);
+            state.Name = "state";
+            state.Size = new Size(228, 23);
+            state.TabIndex = 1;
+            // 
+            // stateLabel
+            // 
+            stateLabel.AutoSize = true;
+            stateLabel.Location = new Point(1021, 177);
+            stateLabel.Name = "stateLabel";
+            stateLabel.Size = new Size(33, 15);
+            stateLabel.TabIndex = 2;
+            stateLabel.Text = "State";
+            // 
+            // submitBtn
+            // 
+            submitBtn.BackColor = Color.MediumSeaGreen;
+            submitBtn.BackgroundImageLayout = ImageLayout.None;
+            submitBtn.Cursor = Cursors.Hand;
+            submitBtn.FlatAppearance.BorderSize = 0;
+            submitBtn.FlatStyle = FlatStyle.Flat;
+            submitBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            submitBtn.Image = (Image)resources.GetObject("submitBtn.Image");
+            submitBtn.ImageAlign = ContentAlignment.MiddleRight;
+            submitBtn.Location = new Point(56, 250);
+            submitBtn.Name = "submitBtn";
+            submitBtn.Size = new Size(206, 37);
+            submitBtn.TabIndex = 21;
+            submitBtn.Text = "Create Appointment";
+            submitBtn.TextAlign = ContentAlignment.MiddleLeft;
+            submitBtn.UseVisualStyleBackColor = false;
+            // 
             // AppointmentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(submitBtn);
+            Controls.Add(stateLabel);
+            Controls.Add(state);
             Controls.Add(appointmentTable);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
@@ -121,6 +163,7 @@
             Text = "Appointment";
             ((System.ComponentModel.ISupportInitialize)appointmentTable).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -133,5 +176,8 @@
         private DataGridViewTextBoxColumn dateCol;
         private DataGridViewTextBoxColumn timeCol;
         private DataGridViewTextBoxColumn statusCol;
+        private ComboBox state;
+        private Label stateLabel;
+        private Button submitBtn;
     }
 }
