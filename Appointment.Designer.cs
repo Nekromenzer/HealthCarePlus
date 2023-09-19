@@ -52,6 +52,8 @@
             deleteBtn = new Button();
             clearBtn = new Button();
             label1 = new Label();
+            doctorLable = new Label();
+            doctor = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)appointmentTable).BeginInit();
             SuspendLayout();
             // 
@@ -167,7 +169,7 @@
             // 
             scheduleLabel.AutoSize = true;
             scheduleLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            scheduleLabel.Location = new Point(56, 104);
+            scheduleLabel.Location = new Point(365, 101);
             scheduleLabel.Name = "scheduleLabel";
             scheduleLabel.Size = new Size(62, 17);
             scheduleLabel.TabIndex = 23;
@@ -177,7 +179,7 @@
             // 
             schedule.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             schedule.FormattingEnabled = true;
-            schedule.Location = new Point(56, 124);
+            schedule.Location = new Point(365, 121);
             schedule.Name = "schedule";
             schedule.Size = new Size(279, 33);
             schedule.TabIndex = 22;
@@ -185,7 +187,7 @@
             // date
             // 
             date.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            date.Location = new Point(365, 124);
+            date.Location = new Point(660, 121);
             date.Name = "date";
             date.Size = new Size(279, 33);
             date.TabIndex = 24;
@@ -194,7 +196,7 @@
             // 
             dateLabel.AutoSize = true;
             dateLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dateLabel.Location = new Point(365, 104);
+            dateLabel.Location = new Point(660, 101);
             dateLabel.Name = "dateLabel";
             dateLabel.Size = new Size(36, 17);
             dateLabel.TabIndex = 25;
@@ -204,7 +206,7 @@
             // 
             timeLabel.AutoSize = true;
             timeLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            timeLabel.Location = new Point(675, 104);
+            timeLabel.Location = new Point(970, 101);
             timeLabel.Name = "timeLabel";
             timeLabel.Size = new Size(37, 17);
             timeLabel.TabIndex = 27;
@@ -214,7 +216,7 @@
             // 
             time.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             time.Format = DateTimePickerFormat.Time;
-            time.Location = new Point(675, 124);
+            time.Location = new Point(970, 121);
             time.Name = "time";
             time.Size = new Size(279, 33);
             time.TabIndex = 26;
@@ -223,7 +225,7 @@
             // 
             patientLabel.AutoSize = true;
             patientLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            patientLabel.Location = new Point(970, 104);
+            patientLabel.Location = new Point(365, 171);
             patientLabel.Name = "patientLabel";
             patientLabel.Size = new Size(51, 17);
             patientLabel.TabIndex = 29;
@@ -234,7 +236,7 @@
             patient.AutoCompleteCustomSource.AddRange(new string[] { "Pending", "Ongoing", "Complete" });
             patient.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             patient.FormattingEnabled = true;
-            patient.Location = new Point(970, 124);
+            patient.Location = new Point(365, 191);
             patient.Name = "patient";
             patient.Size = new Size(279, 33);
             patient.TabIndex = 28;
@@ -311,12 +313,33 @@
             label1.TabIndex = 22;
             label1.Text = "Appointment";
             // 
+            // doctorLable
+            // 
+            doctorLable.AutoSize = true;
+            doctorLable.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            doctorLable.Location = new Point(56, 101);
+            doctorLable.Name = "doctorLable";
+            doctorLable.Size = new Size(49, 17);
+            doctorLable.TabIndex = 31;
+            doctorLable.Text = "Doctor";
+            // 
+            // doctor
+            // 
+            doctor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            doctor.FormattingEnabled = true;
+            doctor.Location = new Point(56, 121);
+            doctor.Name = "doctor";
+            doctor.Size = new Size(279, 33);
+            doctor.TabIndex = 30;
+            // 
             // AppointmentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
+            Controls.Add(doctorLable);
+            Controls.Add(doctor);
             Controls.Add(label1);
             Controls.Add(clearBtn);
             Controls.Add(deleteBtn);
@@ -368,5 +391,7 @@
         private Button deleteBtn;
         private Button clearBtn;
         private Label label1;
+        private Label doctorLable;
+        private ComboBox doctor;
     }
 }
