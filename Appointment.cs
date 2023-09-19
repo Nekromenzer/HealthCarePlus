@@ -20,7 +20,7 @@ namespace HealthCarePlus
         public AppointmentForm()
         {
             InitializeComponent();
-            DisplayDoctorSchedules();
+            DisplayAppointments();
             ClearSelectionWithDelay();
             //get doctors
             LoadDoctorNames();
@@ -48,6 +48,27 @@ namespace HealthCarePlus
             public override string ToString()
             {
                 return FullName;
+            }
+        }
+
+        private int GetScheduleIDByAppointmentType(int doctorID, string appointmentType)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT ScheduleID FROM doctorschedules WHERE DoctorID = @DoctorID AND AppointmentType = @AppointmentType";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@DoctorID", doctorID);
+                cmd.Parameters.AddWithValue("@AppointmentType", appointmentType);
+
+                object result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    return Convert.ToInt32(result);
+                }
+
+                return 0;
             }
         }
 
@@ -166,7 +187,7 @@ namespace HealthCarePlus
             }
         }
        
-        private void DisplayDoctorSchedules()
+        private void DisplayAppointments()
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))
             {
@@ -202,15 +223,68 @@ namespace HealthCarePlus
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Get the selected id
+                int selectedDoctorID = ((DoctorNameFunc)doctor.SelectedItem).DoctorID;
+                int selectedPatientID = ((PatientNameFunc)patient.SelectedItem).PatientID;
+                string? selectedState = state.SelectedItem.ToString();
+                // schdule id 
+                string? selectedAppointmentType = schedule.SelectedItem.ToString();
+                int selectedScheduleID = GetScheduleIDByAppointmentType(selectedDoctorID, selectedAppointmentType);
+                DateTime selectedDate = date.Value;
+                DateTime selectedTime = time.Value;
+                // Fixed price value
+                decimal fixedPrice = 3500;
+                // Check if any required fields are empty
+                if (selectedDoctorID == 0 || selectedPatientID == 0 || string.IsNullOrWhiteSpace(selectedState) || selectedScheduleID == 0)
+                {
+                    MessageBox.Show("Please fill in all required fields.");
+                    return;
+                }
 
+                string insertQuery = "INSERT INTO appointments (DoctorID, PatientID, Status, ScheduleID, Date, Time, Price) " +
+                                     "VALUES (@DoctorID, @PatientID, @Status, @ScheduleID, @Date, @Time, @Price)";
+
+                using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
+                    cmd.Parameters.AddWithValue("@DoctorID", selectedDoctorID);
+                    cmd.Parameters.AddWithValue("@PatientID", selectedPatientID);
+                    cmd.Parameters.AddWithValue("@Status", selectedState);
+                    cmd.Parameters.AddWithValue("@ScheduleID", selectedScheduleID);
+                    cmd.Parameters.AddWithValue("@Date", selectedDate);
+                    cmd.Parameters.AddWithValue("@Time", selectedTime);
+                    cmd.Parameters.AddWithValue("@Price", fixedPrice);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Appointment added successfully.");
+                        ClearFields();
+                        DisplayAppointments();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add appointment.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
+
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void ClearFieldsForAnotherEntity()
+        private void ClearFields()
         {
             date.Value = DateTime.Now;
             time.Value = DateTime.Now;
@@ -222,7 +296,7 @@ namespace HealthCarePlus
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-            ClearFieldsForAnotherEntity();
+            ClearFields();
         }
 
         private void doctor_SelectedIndexChanged(object sender, EventArgs e)
