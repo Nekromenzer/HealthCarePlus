@@ -9,6 +9,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HealthCarePlus
 {
@@ -209,9 +210,19 @@ namespace HealthCarePlus
 
         }
 
+        private void ClearFieldsForAnotherEntity()
+        {
+            date.Value = DateTime.Now;
+            time.Value = DateTime.Now;
+            patient.SelectedIndex = -1;
+            doctor.SelectedIndex = -1;
+            schedule.SelectedIndex = -1;
+            state.SelectedIndex = -1;
+        }
+
         private void clearBtn_Click(object sender, EventArgs e)
         {
-
+            ClearFieldsForAnotherEntity();
         }
 
         private void doctor_SelectedIndexChanged(object sender, EventArgs e)
