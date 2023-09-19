@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,8 +21,59 @@ namespace HealthCarePlus
             InitializeComponent();
             DisplayDoctorSchedules();
             ClearSelectionWithDelay();
+            //get doctors
+            LoadDoctorNames();
 
         }
+
+        public class DoctorNameFunc
+        {
+            public int DoctorID { get; set; }
+            public string? FullName { get; set; }
+            public override string ToString()
+            {
+                return FullName;
+            }
+        }
+
+        // get doctors who has schedule
+        private void LoadDoctorNames()
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT ds.DoctorID, d.FullName FROM doctorschedules ds " +
+                                   "INNER JOIN doctors d ON ds.DoctorID = d.DoctorID";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    // check duplicates of doctor name
+                    HashSet<string> uniqueDoctorNames = new HashSet<string>();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int doctorID = reader.GetInt32("DoctorID");
+                            string fullName = reader.GetString("FullName");
+                            if (!uniqueDoctorNames.Contains(fullName))
+                            {
+                                DoctorNameFunc doctorName = new DoctorNameFunc { DoctorID = doctorID, FullName = fullName };
+                                doctor.Items.Add(doctorName);
+
+                                // Add the doctor name to the HashSet to prevent duplicates
+                                uniqueDoctorNames.Add(fullName);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
+
 
         private void DisplayDoctorSchedules()
         {
