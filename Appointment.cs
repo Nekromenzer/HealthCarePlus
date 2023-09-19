@@ -361,12 +361,13 @@ namespace HealthCarePlus
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
+            ClearSelectionWithDelay();
         }
 
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-
+            ClearSelectionWithDelay();
         }
 
         private void ClearFields()
@@ -382,6 +383,7 @@ namespace HealthCarePlus
         private void clearBtn_Click(object sender, EventArgs e)
         {
             ClearFields();
+            ClearSelectionWithDelay();
         }
 
         private void doctor_SelectedIndexChanged(object sender, EventArgs e)
