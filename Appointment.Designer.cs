@@ -155,9 +155,9 @@
             submitBtn.ImageAlign = ContentAlignment.MiddleRight;
             submitBtn.Location = new Point(56, 252);
             submitBtn.Name = "submitBtn";
-            submitBtn.Size = new Size(167, 37);
+            submitBtn.Size = new Size(220, 37);
             submitBtn.TabIndex = 21;
-            submitBtn.Text = "Add Schedule";
+            submitBtn.Text = "Create Appointment";
             submitBtn.TextAlign = ContentAlignment.MiddleLeft;
             submitBtn.UseVisualStyleBackColor = false;
             submitBtn.Click += submitBtn_Click;
@@ -249,7 +249,7 @@
             updateBtn.ForeColor = SystemColors.ActiveCaptionText;
             updateBtn.Image = (Image)resources.GetObject("updateBtn.Image");
             updateBtn.ImageAlign = ContentAlignment.MiddleRight;
-            updateBtn.Location = new Point(261, 252);
+            updateBtn.Location = new Point(310, 252);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(167, 37);
             updateBtn.TabIndex = 26;
@@ -269,7 +269,7 @@
             deleteBtn.ForeColor = SystemColors.ButtonHighlight;
             deleteBtn.Image = (Image)resources.GetObject("deleteBtn.Image");
             deleteBtn.ImageAlign = ContentAlignment.MiddleRight;
-            deleteBtn.Location = new Point(467, 252);
+            deleteBtn.Location = new Point(516, 252);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(167, 37);
             deleteBtn.TabIndex = 27;
@@ -289,7 +289,7 @@
             clearBtn.ForeColor = SystemColors.Desktop;
             clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
             clearBtn.ImageAlign = ContentAlignment.MiddleRight;
-            clearBtn.Location = new Point(753, 252);
+            clearBtn.Location = new Point(802, 252);
             clearBtn.Name = "clearBtn";
             clearBtn.Size = new Size(167, 37);
             clearBtn.TabIndex = 28;
