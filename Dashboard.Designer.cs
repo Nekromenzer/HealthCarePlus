@@ -149,7 +149,7 @@
             searchPatient.Padding = new Padding(10, 0, 10, 0);
             searchPatient.Size = new Size(260, 49);
             searchPatient.TabIndex = 8;
-            searchPatient.Text = "Search Patient";
+            searchPatient.Text = "Patient History";
             searchPatient.TextAlign = ContentAlignment.MiddleLeft;
             searchPatient.UseVisualStyleBackColor = false;
             // 
