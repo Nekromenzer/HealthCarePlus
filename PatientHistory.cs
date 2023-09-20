@@ -167,7 +167,7 @@ namespace HealthCarePlus
                     e.Value = userNmae;
                 }
             }
-            if (labResultsTable.Columns[e.ColumnIndex].Name == "nameCol")
+            if (labResultsTable.Columns[e.ColumnIndex].Name == "patientCol")
             {
                 if (e.Value != null)
                 {

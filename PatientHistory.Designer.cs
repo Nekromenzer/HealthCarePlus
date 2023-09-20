@@ -38,7 +38,7 @@
             patient = new ComboBox();
             clearBtn = new Button();
             idCol = new DataGridViewTextBoxColumn();
-            nameCol = new DataGridViewTextBoxColumn();
+            patientCol = new DataGridViewTextBoxColumn();
             labResultsCol = new DataGridViewTextBoxColumn();
             dateCol = new DataGridViewTextBoxColumn();
             labTechnicianCol = new DataGridViewTextBoxColumn();
@@ -91,7 +91,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             labResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             labResultsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            labResultsTable.Columns.AddRange(new DataGridViewColumn[] { idCol, nameCol, labResultsCol, dateCol, labTechnicianCol });
+            labResultsTable.Columns.AddRange(new DataGridViewColumn[] { idCol, patientCol, labResultsCol, dateCol, labTechnicianCol });
             labResultsTable.EnableHeadersVisualStyles = false;
             labResultsTable.Location = new Point(56, 186);
             labResultsTable.Name = "labResultsTable";
@@ -160,20 +160,18 @@
             // 
             // idCol
             // 
-            idCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             idCol.DataPropertyName = "LabResultID";
+            idCol.FillWeight = 40F;
             idCol.HeaderText = "ID";
             idCol.Name = "idCol";
-            idCol.ReadOnly = true;
             idCol.Width = 42;
             // 
-            // nameCol
+            // patientCol
             // 
-            nameCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nameCol.DataPropertyName = "PatientID";
-            nameCol.HeaderText = "Full Name";
-            nameCol.Name = "nameCol";
-            nameCol.ReadOnly = true;
+            patientCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            patientCol.DataPropertyName = "PatientID";
+            patientCol.HeaderText = "Patient Name";
+            patientCol.Name = "patientCol";
             // 
             // labResultsCol
             // 
@@ -235,5 +233,6 @@
         private DataGridViewTextBoxColumn labResultsCol;
         private DataGridViewTextBoxColumn dateCol;
         private DataGridViewTextBoxColumn labTechnicianCol;
+        private DataGridViewTextBoxColumn patientCol;
     }
 }
