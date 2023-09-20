@@ -31,6 +31,14 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppointmentForm));
             appointmentTable = new DataGridView();
+            idCol = new DataGridViewTextBoxColumn();
+            scheduleCol = new DataGridViewTextBoxColumn();
+            patientCol = new DataGridViewTextBoxColumn();
+            doctorCol = new DataGridViewTextBoxColumn();
+            dateCol = new DataGridViewTextBoxColumn();
+            timeCol = new DataGridViewTextBoxColumn();
+            statusCol = new DataGridViewTextBoxColumn();
+            priceCol = new DataGridViewTextBoxColumn();
             state = new ComboBox();
             stateLabel = new Label();
             submitBtn = new Button();
@@ -48,14 +56,6 @@
             label1 = new Label();
             doctorLable = new Label();
             doctor = new ComboBox();
-            idCol = new DataGridViewTextBoxColumn();
-            scheduleCol = new DataGridViewTextBoxColumn();
-            patientCol = new DataGridViewTextBoxColumn();
-            doctorCol = new DataGridViewTextBoxColumn();
-            dateCol = new DataGridViewTextBoxColumn();
-            timeCol = new DataGridViewTextBoxColumn();
-            statusCol = new DataGridViewTextBoxColumn();
-            priceCol = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)appointmentTable).BeginInit();
             SuspendLayout();
             // 
@@ -88,14 +88,83 @@
             appointmentTable.RowTemplate.Height = 25;
             appointmentTable.RowTemplate.Resizable = DataGridViewTriState.True;
             appointmentTable.ScrollBars = ScrollBars.Vertical;
+            appointmentTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             appointmentTable.ShowCellErrors = false;
             appointmentTable.ShowCellToolTips = false;
             appointmentTable.ShowEditingIcon = false;
             appointmentTable.ShowRowErrors = false;
             appointmentTable.Size = new Size(1180, 484);
             appointmentTable.TabIndex = 0;
-            appointmentTable.CellContentClick += appointmentTable_CellContentClick;
+            appointmentTable.CellClick += appointmentTable_CellClick;
             appointmentTable.CellFormatting += appointmentTable_CellFormatting;
+            appointmentTable.SelectionChanged += appointmentTable_SelectionChanged;
+            // 
+            // idCol
+            // 
+            idCol.DataPropertyName = "AppointmentID";
+            idCol.FillWeight = 50F;
+            idCol.HeaderText = "ID";
+            idCol.Name = "idCol";
+            idCol.ReadOnly = true;
+            idCol.Width = 43;
+            // 
+            // scheduleCol
+            // 
+            scheduleCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            scheduleCol.DataPropertyName = "ScheduleID";
+            scheduleCol.HeaderText = "Schedule";
+            scheduleCol.Name = "scheduleCol";
+            scheduleCol.ReadOnly = true;
+            // 
+            // patientCol
+            // 
+            patientCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            patientCol.DataPropertyName = "PatientID";
+            patientCol.HeaderText = "Patient";
+            patientCol.Name = "patientCol";
+            patientCol.ReadOnly = true;
+            // 
+            // doctorCol
+            // 
+            doctorCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            doctorCol.DataPropertyName = "DoctorID";
+            doctorCol.HeaderText = "Related Doctor";
+            doctorCol.Name = "doctorCol";
+            // 
+            // dateCol
+            // 
+            dateCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dateCol.DataPropertyName = "Date";
+            dateCol.HeaderText = "Date";
+            dateCol.Name = "dateCol";
+            dateCol.ReadOnly = true;
+            dateCol.Width = 56;
+            // 
+            // timeCol
+            // 
+            timeCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            timeCol.DataPropertyName = "Time";
+            timeCol.HeaderText = "Time";
+            timeCol.Name = "timeCol";
+            timeCol.ReadOnly = true;
+            timeCol.Width = 58;
+            // 
+            // statusCol
+            // 
+            statusCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            statusCol.DataPropertyName = "Status";
+            statusCol.HeaderText = "States";
+            statusCol.Name = "statusCol";
+            statusCol.ReadOnly = true;
+            statusCol.Width = 63;
+            // 
+            // priceCol
+            // 
+            priceCol.DataPropertyName = "Price";
+            priceCol.HeaderText = "Charge";
+            priceCol.Name = "priceCol";
+            priceCol.ReadOnly = true;
+            priceCol.Width = 70;
             // 
             // state
             // 
@@ -305,73 +374,6 @@
             doctor.Size = new Size(279, 33);
             doctor.TabIndex = 30;
             doctor.SelectedIndexChanged += doctor_SelectedIndexChanged;
-            // 
-            // idCol
-            // 
-            idCol.DataPropertyName = "AppointmentID";
-            idCol.FillWeight = 50F;
-            idCol.HeaderText = "ID";
-            idCol.Name = "idCol";
-            idCol.ReadOnly = true;
-            idCol.Width = 43;
-            // 
-            // scheduleCol
-            // 
-            scheduleCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            scheduleCol.DataPropertyName = "ScheduleID";
-            scheduleCol.HeaderText = "Schedule";
-            scheduleCol.Name = "scheduleCol";
-            scheduleCol.ReadOnly = true;
-            // 
-            // patientCol
-            // 
-            patientCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            patientCol.DataPropertyName = "PatientID";
-            patientCol.HeaderText = "Patient";
-            patientCol.Name = "patientCol";
-            patientCol.ReadOnly = true;
-            // 
-            // doctorCol
-            // 
-            doctorCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            doctorCol.DataPropertyName = "DoctorID";
-            doctorCol.HeaderText = "Related Doctor";
-            doctorCol.Name = "doctorCol";
-            // 
-            // dateCol
-            // 
-            dateCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dateCol.DataPropertyName = "Date";
-            dateCol.HeaderText = "Date";
-            dateCol.Name = "dateCol";
-            dateCol.ReadOnly = true;
-            dateCol.Width = 56;
-            // 
-            // timeCol
-            // 
-            timeCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            timeCol.DataPropertyName = "Time";
-            timeCol.HeaderText = "Time";
-            timeCol.Name = "timeCol";
-            timeCol.ReadOnly = true;
-            timeCol.Width = 58;
-            // 
-            // statusCol
-            // 
-            statusCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            statusCol.DataPropertyName = "Status";
-            statusCol.HeaderText = "States";
-            statusCol.Name = "statusCol";
-            statusCol.ReadOnly = true;
-            statusCol.Width = 63;
-            // 
-            // priceCol
-            // 
-            priceCol.DataPropertyName = "Price";
-            priceCol.HeaderText = "Charge";
-            priceCol.Name = "priceCol";
-            priceCol.ReadOnly = true;
-            priceCol.Width = 70;
             // 
             // AppointmentForm
             // 

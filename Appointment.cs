@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -211,6 +212,24 @@ namespace HealthCarePlus
             appointmentTable.ClearSelection();
         }
 
+        // get names by id
+        private int GetPatientIdByName(string patientName)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT PatientID FROM patients WHERE FullName = @FullName";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@FullName", patientName);
+                object result = cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    return Convert.ToInt32(result);
+                }
+                return -1;
+            }
+        }
+       
         private string GetDoctorNameById(int doctorId)
         {
             string? doctorName = string.Empty;
@@ -247,6 +266,27 @@ namespace HealthCarePlus
                 }
             }
             return patientName;
+        }
+
+        private string GetAppointmentTypeById(int ScheduleID)
+        {
+            string? AppointmentType = string.Empty;
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                conn.Open();
+                string query = "SELECT AppointmentType FROM doctorschedules WHERE ScheduleID = @ScheduleID";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ScheduleID", ScheduleID);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        AppointmentType = reader.GetString("AppointmentType");
+                    }
+                }
+            }
+            return AppointmentType;
         }
 
         private string GetAppointmentTypeByScheduleId(int scheduleId)
@@ -301,6 +341,74 @@ namespace HealthCarePlus
             }
         }
 
+        private void appointmentTable_SelectionChanged(object sender, EventArgs e)
+        {
+            if (appointmentTable.SelectedRows.Count > 0)
+            {
+                submitBtn.Enabled = false;
+                updateBtn.Enabled = true;
+                deleteBtn.Enabled = true;
+                ClearFields();
+            }
+            else
+            {
+                submitBtn.Enabled = true;
+                updateBtn.Enabled = false;
+                deleteBtn.Enabled = false;
+            }
+        }
+
+        private void SyncDataWithInput(DataGridViewRow selectedRow)
+        {
+            if (selectedRow != null)
+            {
+                string? doctorName = GetDoctorNameById(Convert.ToInt32(selectedRow.Cells["doctorCol"].Value.ToString()));
+                string? patientName = selectedRow.Cells["patientCol"].Value.ToString();
+                string? stateVal = selectedRow.Cells["statusCol"].Value.ToString();
+                string? scheduleId = GetAppointmentTypeById(Convert.ToInt32(selectedRow.Cells["scheduleCol"].Value.ToString()));
+                DateTime dateVal = Convert.ToDateTime(selectedRow.Cells["dateCol"].Value);
+                if (selectedRow.Cells["timeCol"].Value != null)
+                {
+                    if (TimeSpan.TryParse(selectedRow.Cells["timeCol"].Value.ToString(), out TimeSpan endTimeValue))
+                    {
+                        time.Value = DateTime.Today.Add(endTimeValue);
+                    }
+                    else
+                    {
+                        time.Value = DateTime.Now;
+                    }
+                }
+                else
+                {
+                    time.Value = DateTime.Now;
+                }
+                doctor.Enabled = false;
+                doctor.Text = doctorName;
+                patient.SelectedIndex = int.Parse(patientName);
+                state.SelectedItem = stateVal;
+                schedule.Enabled = false; 
+                schedule.Text = scheduleId;
+                date.Value = dateVal;
+            }
+            else
+            {
+                ClearFields();
+            }
+        }
+
+        private void appointmentTable_CellClick(object sender, EventArgs e)
+        {
+            // Handle the selection change event of the DataGridView
+            if (appointmentTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = appointmentTable.SelectedRows[0];
+                SyncDataWithInput(selectedRow);
+            }
+            else
+            {
+                ClearFields();
+            }
+        }
         private void updateBtn_Click(object sender, EventArgs e)
         {
 
@@ -374,6 +482,10 @@ namespace HealthCarePlus
         {
             date.Value = DateTime.Now;
             time.Value = DateTime.Now;
+            schedule.Enabled = true;
+            doctor.Enabled = true;
+            schedule.Text = "";
+            doctor.Text = "";
             patient.SelectedIndex = -1;
             doctor.SelectedIndex = -1;
             schedule.SelectedIndex = -1;
@@ -383,6 +495,7 @@ namespace HealthCarePlus
         private void clearBtn_Click(object sender, EventArgs e)
         {
             ClearFields();
+            LoadDoctorSchedules();
             ClearSelectionWithDelay();
         }
 
