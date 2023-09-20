@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientHsitory));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             labTab = new TabPage();
+            labResultsTable = new DataGridView();
             diagnosesTab = new TabPage();
             perscriptionTab = new TabPage();
             patient = new ComboBox();
             clearBtn = new Button();
-            labResultsTable = new DataGridView();
             idCol = new DataGridViewTextBoxColumn();
             nameCol = new DataGridViewTextBoxColumn();
             labResultsCol = new DataGridViewTextBoxColumn();
@@ -72,12 +72,48 @@
             labTab.Text = "Lab results";
             labTab.Click += tabPage1_Click;
             // 
+            // labResultsTable
+            // 
+            labResultsTable.AllowUserToAddRows = false;
+            labResultsTable.AllowUserToOrderColumns = true;
+            labResultsTable.AllowUserToResizeColumns = false;
+            labResultsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            labResultsTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            labResultsTable.BackgroundColor = SystemColors.Control;
+            labResultsTable.BorderStyle = BorderStyle.None;
+            labResultsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            labResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            labResultsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            labResultsTable.Columns.AddRange(new DataGridViewColumn[] { idCol, nameCol, labResultsCol, dateCol, labTechnicianCol });
+            labResultsTable.EnableHeadersVisualStyles = false;
+            labResultsTable.Location = new Point(56, 186);
+            labResultsTable.Name = "labResultsTable";
+            labResultsTable.RowHeadersVisible = false;
+            labResultsTable.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            labResultsTable.RowTemplate.Height = 25;
+            labResultsTable.ScrollBars = ScrollBars.Vertical;
+            labResultsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            labResultsTable.ShowCellErrors = false;
+            labResultsTable.ShowCellToolTips = false;
+            labResultsTable.ShowEditingIcon = false;
+            labResultsTable.ShowRowErrors = false;
+            labResultsTable.Size = new Size(1193, 451);
+            labResultsTable.TabIndex = 1;
+            labResultsTable.CellFormatting += labResultsTable_CellFormatting;
+            // 
             // diagnosesTab
             // 
             diagnosesTab.Location = new Point(4, 24);
             diagnosesTab.Name = "diagnosesTab";
             diagnosesTab.Padding = new Padding(3);
-            diagnosesTab.Size = new Size(192, 72);
+            diagnosesTab.Size = new Size(1317, 672);
             diagnosesTab.TabIndex = 1;
             diagnosesTab.Text = "Diagnoses";
             diagnosesTab.UseVisualStyleBackColor = true;
@@ -86,7 +122,7 @@
             // 
             perscriptionTab.Location = new Point(4, 24);
             perscriptionTab.Name = "perscriptionTab";
-            perscriptionTab.Size = new Size(192, 72);
+            perscriptionTab.Size = new Size(1317, 672);
             perscriptionTab.TabIndex = 2;
             perscriptionTab.Text = "Perscription";
             perscriptionTab.UseVisualStyleBackColor = true;
@@ -122,36 +158,6 @@
             clearBtn.UseVisualStyleBackColor = false;
             clearBtn.Click += clearBtn_Click;
             // 
-            // labResultsTable
-            // 
-            labResultsTable.AllowUserToAddRows = false;
-            labResultsTable.AllowUserToOrderColumns = true;
-            labResultsTable.AllowUserToResizeColumns = false;
-            labResultsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            labResultsTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            labResultsTable.BackgroundColor = SystemColors.Control;
-            labResultsTable.BorderStyle = BorderStyle.None;
-            labResultsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            labResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            labResultsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            labResultsTable.Columns.AddRange(new DataGridViewColumn[] { idCol, nameCol, labResultsCol, dateCol, labTechnicianCol });
-            labResultsTable.EnableHeadersVisualStyles = false;
-            labResultsTable.Location = new Point(56, 186);
-            labResultsTable.Name = "labResultsTable";
-            labResultsTable.RowHeadersVisible = false;
-            labResultsTable.RowTemplate.Height = 25;
-            labResultsTable.ScrollBars = ScrollBars.Vertical;
-            labResultsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            labResultsTable.Size = new Size(1193, 451);
-            labResultsTable.TabIndex = 1;
-            // 
             // idCol
             // 
             idCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -163,13 +169,11 @@
             // 
             // nameCol
             // 
-            nameCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            nameCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             nameCol.DataPropertyName = "PatientID";
             nameCol.HeaderText = "Full Name";
             nameCol.Name = "nameCol";
             nameCol.ReadOnly = true;
-            nameCol.Visible = false;
-            nameCol.Width = 85;
             // 
             // labResultsCol
             // 
