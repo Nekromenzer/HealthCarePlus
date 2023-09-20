@@ -21,5 +21,15 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void patient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

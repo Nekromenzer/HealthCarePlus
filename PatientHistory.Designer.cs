@@ -33,6 +33,8 @@
             labTab = new TabPage();
             diagnosesTab = new TabPage();
             perscriptionTab = new TabPage();
+            patient = new ComboBox();
+            clearBtn = new Button();
             tabControl1.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,11 +80,44 @@
             perscriptionTab.Text = "Perscription";
             perscriptionTab.UseVisualStyleBackColor = true;
             // 
+            // patient
+            // 
+            patient.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            patient.FormattingEnabled = true;
+            patient.Location = new Point(394, 67);
+            patient.Name = "patient";
+            patient.Size = new Size(272, 33);
+            patient.TabIndex = 1;
+            patient.Text = "Select Patient";
+            patient.SelectedIndexChanged += patient_SelectedIndexChanged;
+            // 
+            // clearBtn
+            // 
+            clearBtn.BackColor = Color.PeachPuff;
+            clearBtn.BackgroundImageLayout = ImageLayout.None;
+            clearBtn.Cursor = Cursors.Hand;
+            clearBtn.FlatAppearance.BorderSize = 0;
+            clearBtn.FlatStyle = FlatStyle.Flat;
+            clearBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            clearBtn.ForeColor = SystemColors.Desktop;
+            clearBtn.Image = (Image)resources.GetObject("clearBtn.Image");
+            clearBtn.ImageAlign = ContentAlignment.MiddleRight;
+            clearBtn.Location = new Point(691, 65);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(228, 37);
+            clearBtn.TabIndex = 39;
+            clearBtn.Text = "clear patient selection";
+            clearBtn.TextAlign = ContentAlignment.MiddleLeft;
+            clearBtn.UseVisualStyleBackColor = false;
+            clearBtn.Click += clearBtn_Click;
+            // 
             // PatientHsitory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1325, 834);
+            Controls.Add(clearBtn);
+            Controls.Add(patient);
             Controls.Add(tabControl1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
@@ -100,5 +135,7 @@
         private TabPage labTab;
         private TabPage diagnosesTab;
         private TabPage perscriptionTab;
+        private ComboBox patient;
+        private Button clearBtn;
     }
 }
