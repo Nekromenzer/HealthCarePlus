@@ -211,24 +211,6 @@ namespace HealthCarePlus
             await Task.Delay(1000);
             appointmentTable.ClearSelection();
         }
-
-        // get names by id
-        private int GetPatientIdByName(string patientName)
-        {
-            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
-            {
-                conn.Open();
-                string query = "SELECT PatientID FROM patients WHERE FullName = @FullName";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@FullName", patientName);
-                object result = cmd.ExecuteScalar();
-                if (result != null)
-                {
-                    return Convert.ToInt32(result);
-                }
-                return -1;
-            }
-        }
        
         private string GetDoctorNameById(int doctorId)
         {
@@ -409,9 +391,73 @@ namespace HealthCarePlus
                 ClearFields();
             }
         }
+
+        private void UpdateAppointment(int appointmentId, int doctorId, int patientId, string state, int scheduleId, DateTime date, DateTime time)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string updateQuery = "UPDATE appointments " +
+                                         "SET DoctorID = @DoctorID, PatientID = @PatientID, Status = @Status, ScheduleID = @ScheduleID, Date = @Date, Time = @Time " +
+                                         "WHERE AppointmentID = @AppointmentID";
+
+                    MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
+                    cmd.Parameters.AddWithValue("@DoctorID", doctorId);
+                    cmd.Parameters.AddWithValue("@PatientID", patientId);
+                    cmd.Parameters.AddWithValue("@Status", state);
+                    cmd.Parameters.AddWithValue("@ScheduleID", scheduleId);
+                    cmd.Parameters.AddWithValue("@Date", date);
+                    cmd.Parameters.AddWithValue("@Time", time);
+                    cmd.Parameters.AddWithValue("@AppointmentID", appointmentId);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Appointment updated successfully.");
+                        ClearFields();
+                        DisplayAppointments();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update appointment.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
+
         private void updateBtn_Click(object sender, EventArgs e)
         {
-
+            if (appointmentTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = appointmentTable.SelectedRows[0];
+                int appointmentId = Convert.ToInt32(selectedRow.Cells["idCol"].Value);
+                int selectedDoctorID = ((DoctorNameFunc)doctor.SelectedItem).DoctorID;
+                int selectedPatientID = ((PatientNameFunc)patient.SelectedItem).PatientID;
+                string? stateVal = state.SelectedItem.ToString();
+                string? selectedAppointmentType = schedule.SelectedItem.ToString();
+                int selectedScheduleID = GetScheduleIDByAppointmentType(selectedDoctorID, selectedAppointmentType);
+                DateTime dateVal = date.Value;
+                DateTime timeVal = time.Value;
+                if (selectedDoctorID == 0 || selectedPatientID == 0 || string.IsNullOrWhiteSpace(stateVal) || selectedScheduleID == 0)
+                {
+                    MessageBox.Show("Please fill in all required fields.");
+                    return;
+                }
+                // Call the update function with the updated values
+                UpdateAppointment(appointmentId, selectedDoctorID, selectedPatientID, stateVal, selectedScheduleID, dateVal, timeVal);
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to update.");
+            }
         }
 
         private void submitBtn_Click(object sender, EventArgs e)
@@ -471,7 +517,6 @@ namespace HealthCarePlus
             }
             ClearSelectionWithDelay();
         }
-
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
