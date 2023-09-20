@@ -29,13 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientHsitory));
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             labTab = new TabPage();
             diagnosesTab = new TabPage();
             perscriptionTab = new TabPage();
             patient = new ComboBox();
             clearBtn = new Button();
+            labResultsTable = new DataGridView();
+            idCol = new DataGridViewTextBoxColumn();
+            nameCol = new DataGridViewTextBoxColumn();
+            labResultsCol = new DataGridViewTextBoxColumn();
+            dateCol = new DataGridViewTextBoxColumn();
+            labTechnicianCol = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
+            labTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)labResultsTable).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -52,13 +61,15 @@
             // 
             // labTab
             // 
+            labTab.BackColor = Color.LightGray;
+            labTab.BackgroundImage = (Image)resources.GetObject("labTab.BackgroundImage");
+            labTab.Controls.Add(labResultsTable);
             labTab.Location = new Point(4, 24);
             labTab.Name = "labTab";
             labTab.Padding = new Padding(3);
             labTab.Size = new Size(1317, 672);
             labTab.TabIndex = 0;
             labTab.Text = "Lab results";
-            labTab.UseVisualStyleBackColor = true;
             labTab.Click += tabPage1_Click;
             // 
             // diagnosesTab
@@ -111,10 +122,85 @@
             clearBtn.UseVisualStyleBackColor = false;
             clearBtn.Click += clearBtn_Click;
             // 
+            // labResultsTable
+            // 
+            labResultsTable.AllowUserToAddRows = false;
+            labResultsTable.AllowUserToOrderColumns = true;
+            labResultsTable.AllowUserToResizeColumns = false;
+            labResultsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            labResultsTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            labResultsTable.BackgroundColor = SystemColors.Control;
+            labResultsTable.BorderStyle = BorderStyle.None;
+            labResultsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            labResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            labResultsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            labResultsTable.Columns.AddRange(new DataGridViewColumn[] { idCol, nameCol, labResultsCol, dateCol, labTechnicianCol });
+            labResultsTable.EnableHeadersVisualStyles = false;
+            labResultsTable.Location = new Point(56, 186);
+            labResultsTable.Name = "labResultsTable";
+            labResultsTable.RowHeadersVisible = false;
+            labResultsTable.RowTemplate.Height = 25;
+            labResultsTable.ScrollBars = ScrollBars.Vertical;
+            labResultsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            labResultsTable.Size = new Size(1193, 451);
+            labResultsTable.TabIndex = 1;
+            // 
+            // idCol
+            // 
+            idCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            idCol.DataPropertyName = "LabResultID";
+            idCol.HeaderText = "ID";
+            idCol.Name = "idCol";
+            idCol.ReadOnly = true;
+            idCol.Width = 42;
+            // 
+            // nameCol
+            // 
+            nameCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            nameCol.DataPropertyName = "PatientID";
+            nameCol.HeaderText = "Full Name";
+            nameCol.Name = "nameCol";
+            nameCol.ReadOnly = true;
+            nameCol.Visible = false;
+            nameCol.Width = 85;
+            // 
+            // labResultsCol
+            // 
+            labResultsCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            labResultsCol.DataPropertyName = "LabResultText";
+            labResultsCol.HeaderText = "Lab Results";
+            labResultsCol.Name = "labResultsCol";
+            labResultsCol.ReadOnly = true;
+            // 
+            // dateCol
+            // 
+            dateCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dateCol.DataPropertyName = "LabResultDate";
+            dateCol.HeaderText = "Date";
+            dateCol.Name = "dateCol";
+            dateCol.ReadOnly = true;
+            dateCol.Width = 55;
+            // 
+            // labTechnicianCol
+            // 
+            labTechnicianCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            labTechnicianCol.DataPropertyName = "LabTechnicianID";
+            labTechnicianCol.HeaderText = "Lab Technician";
+            labTechnicianCol.Name = "labTechnicianCol";
+            labTechnicianCol.ReadOnly = true;
+            // 
             // PatientHsitory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1325, 834);
             Controls.Add(clearBtn);
             Controls.Add(patient);
@@ -126,6 +212,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Patient History  Mangement";
             tabControl1.ResumeLayout(false);
+            labTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)labResultsTable).EndInit();
             ResumeLayout(false);
         }
 
@@ -137,5 +225,11 @@
         private TabPage perscriptionTab;
         private ComboBox patient;
         private Button clearBtn;
+        private DataGridView labResultsTable;
+        private DataGridViewTextBoxColumn idCol;
+        private DataGridViewTextBoxColumn nameCol;
+        private DataGridViewTextBoxColumn labResultsCol;
+        private DataGridViewTextBoxColumn dateCol;
+        private DataGridViewTextBoxColumn labTechnicianCol;
     }
 }

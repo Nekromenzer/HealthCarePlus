@@ -29,7 +29,7 @@ namespace HealthCarePlus
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-
+            patient.SelectedIndex = -1;
         }
     }
 }
