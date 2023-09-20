@@ -152,6 +152,7 @@
             searchPatient.Text = "Patient History";
             searchPatient.TextAlign = ContentAlignment.MiddleLeft;
             searchPatient.UseVisualStyleBackColor = false;
+            searchPatient.Click += searchPatient_Click;
             // 
             // pictureBox2
             // 

@@ -25,10 +25,11 @@ namespace HealthCarePlus
 
         }
 
+        // patient class
         public class PatientInfo
         {
             public int PatientID { get; set; }
-            public string FullName { get; set; }
+            public string? FullName { get; set; }
 
             public override string ToString()
             {
@@ -36,6 +37,7 @@ namespace HealthCarePlus
             }
         }
 
+        // load patients
         private void LoadPatients()
         {
             using (MySqlConnection conn = new MySqlConnection(mysqlCon))

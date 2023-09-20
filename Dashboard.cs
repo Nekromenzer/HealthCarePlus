@@ -84,5 +84,11 @@ namespace HealthCarePlus
             AppointmentForm appointmentForm = new AppointmentForm();
             appointmentForm.Show();
         }
+
+        private void searchPatient_Click(object sender, EventArgs e)
+        {
+            PatientHsitory patientHistory = new PatientHsitory();
+            patientHistory.Show();
+        }
     }
 }
