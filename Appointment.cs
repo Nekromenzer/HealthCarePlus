@@ -518,9 +518,56 @@ namespace HealthCarePlus
             ClearSelectionWithDelay();
         }
 
+        private void DeleteAppointment(int appointmentId)
+        {
+            using (MySqlConnection conn = new MySqlConnection(mysqlCon))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string deleteQuery = "DELETE FROM appointments WHERE AppointmentID = @AppointmentID";
+
+                    MySqlCommand cmd = new MySqlCommand(deleteQuery, conn);
+                    cmd.Parameters.AddWithValue("@AppointmentID", appointmentId);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Appointment deleted successfully.");
+                        ClearFields();
+                        DisplayAppointments();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete appointment.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
+
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            ClearSelectionWithDelay();
+            if (appointmentTable.SelectedRows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this appointment?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    DataGridViewRow selectedRow = appointmentTable.SelectedRows[0];
+                    int appointmentId = Convert.ToInt32(selectedRow.Cells["idCol"].Value);
+                    DeleteAppointment(appointmentId);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to delete.");
+            }
         }
 
         private void ClearFields()
