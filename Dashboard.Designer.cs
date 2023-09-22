@@ -45,6 +45,8 @@
             scannersBtn = new Button();
             textBox1 = new TextBox();
             pictureBox4 = new PictureBox();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -304,14 +306,50 @@
             pictureBox4.TabIndex = 15;
             pictureBox4.TabStop = false;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Teal;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = Color.White;
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+            button1.Location = new Point(1087, 95);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 10, 0);
+            button1.Size = new Size(133, 49);
+            button1.TabIndex = 16;
+            button1.Text = "Invoice";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_2;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Teal;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = Color.White;
+            button2.ImageAlign = ContentAlignment.MiddleRight;
+            button2.Location = new Point(1087, 150);
+            button2.Name = "button2";
+            button2.Padding = new Padding(10, 0, 10, 0);
+            button2.Size = new Size(133, 49);
+            button2.TabIndex = 17;
+            button2.Text = "Invoice";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = false;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1325, 834);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(pictureBox4);
             Controls.Add(textBox1);
             Controls.Add(roomSearchBtn);
@@ -358,5 +396,7 @@
         private Button scannersBtn;
         private TextBox textBox1;
         private PictureBox pictureBox4;
+        private Button button1;
+        private Button button2;
     }
 }

@@ -90,5 +90,11 @@ namespace HealthCarePlus
             PatientHsitory patientHistory = new PatientHsitory();
             patientHistory.Show();
         }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            frminvoice1 frminvoice1 = new frminvoice1();
+            frminvoice1.Show();
+        }
     }
 }

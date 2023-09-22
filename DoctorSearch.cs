@@ -113,5 +113,10 @@ namespace HealthCarePlus
             available.Checked = false;
             DisplayDoctorList();
         }
+
+        private void searchForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -404,6 +404,7 @@
             Name = "AppointmentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Appointment";
+            Load += AppointmentForm_Load;
             ((System.ComponentModel.ISupportInitialize)appointmentTable).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -211,7 +211,7 @@ namespace HealthCarePlus
             await Task.Delay(1000);
             appointmentTable.ClearSelection();
         }
-       
+
         private string GetDoctorNameById(int doctorId)
         {
             string? doctorName = string.Empty;
@@ -368,7 +368,7 @@ namespace HealthCarePlus
                 doctor.Text = doctorName;
                 patient.SelectedIndex = int.Parse(patientName);
                 state.SelectedItem = stateVal;
-                schedule.Enabled = false; 
+                schedule.Enabled = false;
                 schedule.Text = scheduleId;
                 date.Value = dateVal;
             }
@@ -597,6 +597,11 @@ namespace HealthCarePlus
         }
 
         private void appointmentTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void AppointmentForm_Load(object sender, EventArgs e)
         {
 
         }

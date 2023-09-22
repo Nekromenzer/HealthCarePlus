@@ -222,6 +222,7 @@ namespace HealthCarePlus
             Name = "searchForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Search";
+            Load += searchForm_Load;
             ((System.ComponentModel.ISupportInitialize)doctorTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
